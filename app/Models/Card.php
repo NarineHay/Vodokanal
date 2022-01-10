@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Card extends Model
 {
-    use HasFactory;
+    use HasFactory,  HasApiTokens;
+
     protected $fillable = [
         'user_id',
         'card_number',
@@ -34,5 +36,10 @@ class Card extends Model
     public function job()
     {
         return $this->hasMany(Job::class);
+    }
+
+    public function job_status()
+    {
+        return $this->hasMany(JobStatus::class);
     }
 }

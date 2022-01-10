@@ -20,6 +20,7 @@ class CreateTarifsTable extends Migration
             $table->integer('price');
             $table->string('parametr');
             $table->string('status');
+            $table->string('type');
             $table->timestamps();
         });
     }

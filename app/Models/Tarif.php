@@ -13,7 +13,8 @@ class Tarif extends Model
         'description',
         'price',
         'parametr',
-        'status'
+        'status',
+        'type'
     ];
 
 

@@ -4,23 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Sanctum\HasApiTokens;
 
-
-class Job extends Model
+class JobStatus extends Model
 {
-    use HasFactory, HasApiTokens;
+    use HasFactory;
     protected $fillable = [
+        'job_id',
         'user_id',
         'tarif_id',
         'card_id',
-        'status',
         'price',
-        'date_start',
-        'date_end',
+        'status',
         'amount',
         'type'
     ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,9 +31,8 @@ class Job extends Model
     {
         return $this->belongsTo(Card::class);
     }
-
     public function job_status()
     {
-        return $this->hasOne(JobStatus::class);
+        return $this->belongsTo(JobStatus::class);
     }
 }
