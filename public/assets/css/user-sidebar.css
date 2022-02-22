@@ -1,0 +1,56 @@
+.sidebar, .sidebar ul, .sidebar nav{
+    background: #fff;
+    width: 220px !important;
+    /*color: #000*/
+}
+
+.sidebar .nav-link{
+    color: #000 !important
+}
+html:not([dir=rtl]) .sidebar {
+    margin-left: -220px;
+}
+.out-container{
+        width: 22%;
+        background: #fff;
+        height: 100vh;
+        position: fixed;
+        z-index: -1;
+}
+.fio{
+    letter-spacing: 5px;
+}
+.account-name{
+    color: #143B57;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+.li-title{
+    font-size: 16px;
+}
+.nav-icon{
+    font-size: 16px !important;
+}
+.ft-size-14{
+   font-size: 14px;
+}
+.sidebar .nav-link.active {
+    font-weight: bold;
+    background: #fff !important;
+}
+.sidebar .nav-link.active .nav-icon{
+    color:  #143B57 !important;
+}
+@media (max-width:768px){
+
+    .sidebar-toggler{
+        background: #153d5a;
+        border-radius: 0 8px 8px 0;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+    .out-container{
+        display: none;
+    }
+
+}

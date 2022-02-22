@@ -29,7 +29,7 @@ class CardController extends BaseController
      */
     public function store(CardRequest $request)
     {
-     return "ok";
+
     }
 
     /**
@@ -42,19 +42,9 @@ class CardController extends BaseController
     {
         $card = Card::find($id);
 
-        if (is_null($card)) {
-            return $this->sendError('Card not found.');
-        }
-        else{
-            if($card->status!='active'){
-                return $this->sendResponse(new CardResource($card), 'Card is not active.');
-
-            }
-            else{
-                return $this->sendResponse(new CardResource($card), 'Card finded successfully.');
-            }
-        }
-
+        return is_null($card) ? $this->sendError('Card not found.') :
+                ( $card->status != 'active' ?  $this->sendResponse(new CardResource($card), 'Card is not active.') :
+                $this->sendResponse(new CardResource($card), 'Card find successfully.') );
     }
 
     /**

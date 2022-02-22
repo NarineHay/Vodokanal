@@ -27,9 +27,25 @@ class ReplenishBalanceController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReplenishBalanceRequest $request, $id)
     {
-        //
+        $card = Card::find($id);
+        if (is_null($card)) {
+            return $this->sendError('Card not found.');
+        }
+        else{
+            $price=intval($request->price);
+            $balance=$card->balance;
+            $total_balance=$balance+$price;
+            $update_card=$card->update(['balance'=>$total_balance]);
+            if($update_card){
+                return $this->sendResponse(new ReplenishBalanceResource($card), 'Invoice received successfully');
+            }
+            else{
+                return $this->sendError('Error.');
+            }
+        }
+
     }
 
     /**
@@ -50,24 +66,8 @@ class ReplenishBalanceController extends BaseController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ReplenishBalanceRequest $request, $id)
+    public function update(Request $request)
     {
-        $card = Card::find($id);
-        if (is_null($card)) {
-            return $this->sendError('Card not found.');
-        }
-        else{
-            $price=intval($request->price);
-            $balance=$card->balance;
-            $total_balance=$balance+$price;
-            $update_card=$card->update(['balance'=>$total_balance]);
-            if($update_card){
-                return $this->sendResponse(new ReplenishBalanceResource($card), 'Invoice received successfully');
-            }
-            else{
-                return $this->sendError('Error.');
-            }
-        }
 
     }
 

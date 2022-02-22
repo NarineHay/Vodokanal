@@ -1,0 +1,209 @@
+body{
+    background: #f4f4f4 !important;
+}
+.balance_in{
+    top:60%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.balance{
+	font-size:18px;
+    background: #fff;
+    color: #143B57;
+    border:none;
+    padding: 1rem 3rem;
+}
+.payment, .payment-methods>div{
+    font-size: 20px;
+    font-weight: bold;
+}
+.about-us div{
+    width: 22%;
+}
+hr{
+    margin-top: 0.8rem;
+    opacity: 1;
+    color: #143B57;
+}
+.about-us hr{
+    width: 50%;
+}
+.main-activities hr{
+    width: 30%;
+}
+.tarif-cont hr, .payment-methods hr{
+    width: 40%;
+}
+.company-details hr, .terminal-locations hr{
+    width: 38%;
+}
+
+.line,.text{
+    background-color:#F4F4F4;
+}
+
+/* ---section_second_img  tart --------------------------------------------*/
+.tarif-cont{
+    color: #fff;
+    position: relative;
+
+}
+.tarif-cont hr{
+    color: #fff;
+}
+.tariff{
+    font-size: 20px;
+    font-weight: bold;
+}
+.section_second_img{
+      height:380px;
+      background-size:100% 500px;
+      background-position: inherit;
+      background-attachment: center;
+
+}
+.video-container {
+  height: 380px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.video-container video {
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.section_second_img li{
+    margin: 10px;
+}
+.price{
+    border:3px solid #8BB0BA;
+    text-decoration:none;
+    font-size:20px;
+}
+  /* --------------------------------------------------------- */
+  /* payment section start------------------------------------ */
+.payment{
+    color:#143B57;
+}
+.water>div{
+    width:300px;
+}
+.water_text{
+    height:130px;
+    overflow:hidden;
+}
+.icon{
+  background: #143B57;
+  height:100px;
+  width:100px;
+  line-height: 100px;
+}
+
+/* ------------------------------------------------------- */
+/*--- terminal section start------------------------------ */
+.section_fifth_terminal{
+    background: #E5E5E5;
+}
+iframe{
+    border: none !important
+}
+/* media for .balance_in div */
+@media screen and (max-width:768px){
+    .balance_in{
+        top:30% !important;
+    }
+    .section-divider{
+        width:100% !important
+    }
+    .about-us div{
+        width: 36%;
+    }
+    .about-us hr{
+        width: 30%;
+    }
+    .main-activities hr{
+        width: 18%;
+    }
+    .tarif-cont hr, .payment-methods hr, .terminal-locations hr{
+        width: 36%;
+    }
+    .company-details hr{
+        width: 32%;
+    }
+
+}
+@media (max-width:425px){
+    .balance{
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    .water{
+        flex-direction: column;
+        align-items:center !important;
+    }
+    .about-us div{
+        width: 70%;
+    }
+    .about-us hr{
+        width: 28%;
+    }
+    .main-activities hr{
+        width: 24%;
+    }
+    .tarif-cont hr, .payment-methods hr{
+        width: 26%;
+    }
+    .company-details hr{
+        width: 18%;
+    }
+    .terminal-locations hr{
+        width: 24%;
+    }
+}
+
+@media screen and (max-width:375px){
+    .balance{
+        font-size: 16px;
+    }
+    .payment{
+        font-size: 18px;
+    }
+    .about-us div{
+        width: 80%;
+    }
+    .main-activities hr{
+        width: 16%;
+    }
+    .payment-methods hr{
+        width: 22%;
+    }
+}
+
+@media screen and (max-width:320px){
+    .balance{
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    .about-us div{
+        width: 99%;
+        font-size: 18px;
+    }
+    .main-activities hr{
+        width: 12%;
+    }
+    .tarif-cont hr, .payment-methods hr{
+        width: 20%;
+    }
+    .company-details hr{
+        width: 12%;
+    }
+    .terminal-locations hr{
+        width: 18%;
+    }
+}

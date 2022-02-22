@@ -25,9 +25,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'card' => CardController::class,
-    'start' => StartController::class,
-    'stop' => StopController::class,
-    'completed' => CompletedController::class,
-    'replenish-balance' => ReplenishBalanceController::class,
+    'job/start' => StartController::class,
+    'job/{id}/stop' => StopController::class,
+    'job/{id}/completed' => CompletedController::class,
+    'job/{id}/replenish-balance' => ReplenishBalanceController::class,
 
 ]);

@@ -1,0 +1,49 @@
+.footer_first{
+    background: #8BB0BA;
+}
+.foot>h2{
+    color: #143B57;
+}
+.foot ul{
+    list-style:none;
+    padding:0
+}
+.foot_end{
+    background: #143B57;
+
+}
+.send-message{
+    background: #143B57;
+    color: #fff;
+    border: none
+}
+.message-cont{
+    width: 50%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+@media screen and (max-width:700px){
+    .foot_header{
+        flex-direction: column !important;
+    }
+    .foot{
+        width:100% !important;
+    }
+
+}
+@media screen and (max-width:500px){
+    .foot_end_text>p{
+        font-size:10px
+    }
+    .message-cont{
+        width: 80% !important;
+        padding-left: unset !important;
+        padding-right: unset !important;
+    }
+}
+@media (max-width:375px){
+    .message-cont{
+        width: 100% !important;
+
+    }
+}

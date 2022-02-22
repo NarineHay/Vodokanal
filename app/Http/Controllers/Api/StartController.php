@@ -45,12 +45,12 @@ class StartController extends BaseController
 
         date_default_timezone_set( 'Europe/Moscow' );
         $mytime = Carbon::now();
-        $tarif=Tarif::find($request->tarif_id);
-        $user=User::find($request->user_id);
-        $card=Card::find($request->card_id);
+        $tarif = Tarif::find($request->tarif_id);
+        $user = User::find($request->user_id);
+        $card = Card::find($request->card_id);
 
-        $price=$tarif->price;
-        $total_card_balance=$card->balance-$price;
+        $price = $tarif->price;
+        $total_card_balance = $card->balance-$price;
         if(is_null($tarif) || is_null($user) ||is_null($card)){
             return $this->sendError('Error.');
         }
@@ -59,20 +59,20 @@ class StartController extends BaseController
                 return $this->sendError('Insufficient funds on the card.');
             }
             if($request->validated()){
-                $job_request=$request->all();
-                $job_status_request=$request->all();
+                $job_request = $request->all();
+                $job_status_request = $request->all();
 
-                $job_request['status']='start';
-                $job_request['date_start']=$mytime->toDateTimeString();
-                $job_request['type']=$tarif->type;
-                $job=Job::create($job_request);
+                $job_request['status'] = 'start';
+                $job_request['date_start'] = $mytime->toDateTimeString();
+                $job_request['type'] = $tarif->type;
+                $job = Job::create($job_request);
 
-                $job_status_request['job_id']=$job->id;
-                $job_status_request['status']='in_process';
-                $job_status_request['price']=$tarif->price;
-                $job_status_request['type']=$tarif->type;
+                $job_status_request['job_id'] = $job->id;
+                $job_status_request['status'] = 'in_process';
+                $job_status_request['price'] = $tarif->price;
+                $job_status_request['type'] = $tarif->type;
 
-                $job_status=JobStatus::create($job_status_request);
+                $job_status = JobStatus::create($job_status_request);
 
                 $card->balance = $total_card_balance;
                 $card->update();

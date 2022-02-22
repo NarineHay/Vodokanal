@@ -25,7 +25,7 @@ class Card extends Model
 
     public function car()
     {
-        return $this->hasOne(Car::class);
+        return $this->hasOne(Car::class)->where('status', 1);
     }
 
     public function history_of_card_replenishment()
@@ -33,13 +33,13 @@ class Card extends Model
         return $this->hasMany(History_of_card_replenishment::class);
     }
 
-    public function job()
+    public function card_job()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(CardJob::class, 'card_id');
     }
 
     public function job_status()
     {
-        return $this->hasMany(JobStatus::class);
+        return $this->hasMany(JobStatus::class, 'card_id');
     }
 }

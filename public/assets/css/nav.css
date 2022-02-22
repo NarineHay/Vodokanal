@@ -1,0 +1,68 @@
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Roboto', sans-serif;
+}
+/* header section start */
+header{
+    position: fixed;
+    background: linear-gradient(89.98deg, #143B57 0.01%, #1C6DA7 101.61%);
+    width:100%;
+    z-index: 1000000;
+}
+
+header>.container{
+
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
+header li a{
+    font-size:18px
+}
+.after-header{
+    height: 76px;
+}
+.login_li{
+    border-left:2px solid #FFF
+}
+.active{
+    border-bottom:1px solid white;
+    display:inline-block !important;
+}
+.user-account-header{
+    display: none;
+}
+button{
+    outline: none !important;
+}
+.hidden {
+    display: none !important;
+}
+
+  /* media for header  login li start-------------------- */
+  @media screen and (max-width:991px){
+    .login_li{
+        border-left:unset !important;
+    }
+    .login_li>a{
+        padding:0 !important;
+    }
+    .reg li{
+        padding:unset !important;
+    }
+}
+@media (max-width:768px){
+    .user-account-containet{
+       margin: 0;
+       padding: 0;
+    }
+    .user-account-header{
+        display: unset;
+        background: none !important;
+    }
+    .app-header{
+        border: none;
+        text-align: unset !important;
+    }
+
+}

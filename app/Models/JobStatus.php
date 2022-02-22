@@ -21,7 +21,7 @@ class JobStatus extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
     public function tarif()
     {
@@ -29,10 +29,10 @@ class JobStatus extends Model
     }
     public function card()
     {
-        return $this->belongsTo(Card::class);
+        return $this->belongsTo(Card::class, 'card_id');
     }
     public function job_status()
     {
-        return $this->belongsTo(JobStatus::class);
+        return $this->belongsTo(JobStatus::class, 'job_id');
     }
 }

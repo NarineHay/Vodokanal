@@ -1,0 +1,44 @@
+.register form{
+    width:45%;
+  }
+  h1 {
+      display: flex;
+      flex-direction: row;
+      color:#143B57;
+      font-weight:bold;
+    }
+    h1:before, h1:after{
+      content: "";
+      flex: 1 1;
+      border-bottom: 2px solid  #143B57;
+      margin: auto;
+    }
+    h1:before {
+      margin-right: 10px
+    }
+    h1:after {
+      margin-left: 10px
+    }
+    #nametext, #secondname, #email, #password, #repassword, #surname{
+      background: #EFEFEF;
+
+    }
+
+    .acount a{
+      text-decoration:none;
+      color:#143B57;
+    }
+    .acount>.btn{
+      background: #143B57;
+
+
+    }
+    /* -------------------------------------------------- */
+
+  /* media for regisster form start------------- */
+  @media screen and (max-width:1000px){
+    form{
+        width:90% !important;
+    }
+  }
+

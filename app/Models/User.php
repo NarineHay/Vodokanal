@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -18,14 +19,20 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name',
-        'surname',
+
+        'first_name',
+        'last_name',
+        'username',
         'email',
+        'avatar_type',
+        'avatar_location',
         'password',
-        'type_registration',
-        'compony_name',
         'balance',
-        'role'
+        'company_type',
+        'company_name',
+        'balance',
+        'status',
+        'type',
     ];
 
     /**
@@ -79,12 +86,26 @@ class User extends Authenticatable
         return $this->hasMany(History_of_card_replenishment::class);
     }
 
-    public function job()
+    public function card_job()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(CardJob::class,  'user_id');
     }
     public function job_status()
     {
-        return $this->hasMany(JobStatus::class);
+        return $this->hasMany(JobStatus::class,  'user_id');
+    }
+
+
+    public function isAdmin() {
+
+        foreach ($this->roles()->get() as $role)
+        {
+            if ($role->name == 'Admin')
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

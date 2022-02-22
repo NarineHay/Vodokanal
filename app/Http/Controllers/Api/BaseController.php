@@ -19,7 +19,6 @@ class BaseController extends Controller
             'message' => $message,
         ];
 
-
         return response()->json($response, 200);
     }
 

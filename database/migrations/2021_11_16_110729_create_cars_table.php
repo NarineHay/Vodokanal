@@ -19,7 +19,7 @@ class CreateCarsTable extends Migration
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade')->onUpdate('cascade');
             $table->string('model');
             $table->string('car_numbers');
-            $table->string('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
