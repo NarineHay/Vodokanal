@@ -1,10 +1,14 @@
 @extends('user.layouts.app')
 
-@section('title')
+@section('title' )
 @section('style')
     <link href="{{ asset('assets/css/user-support.css') }}" rel="stylesheet">
 @endsection
 @section('content')
+<div class="col-md-10">
+            <h3 style="color:#143B57;" class=" fw-bold">Служба поддержки</h3>
+             <h6 class="mb-4">Пожалуйста сообщите нам если есть проблемы</h6>
+<div class="container shadow bg-white p-3">
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -12,24 +16,39 @@
 
         <div class="row">
             <div class="col pl-5">
-                    <div class="sec" style="margin-bottom: 80px;">
-                        <h4 class=" mt-5">Оплата в кассе</h4>
-                        <h6>Обзор способов оплаты</h6>
-                        <div class="cont bg-white p-3 shadow">
-                          <h6>Описание оплаты</h6>
+                <form action="/support" method="post">
+                    @csrf
+                    
+                    <div class="reg form-group my-3" style="width:100%">
+                   
+                        <input type="text" class="form-control py-2 @error('theme') is-invalid @enderror" name="theme" placeholder="Тема" style="background: #EFEFEF;">
+                        @error('theme')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="form-group my-3" style="width:100%">
+                        <textarea  class="form-control py-2  @error('message') is-invalid @enderror" name="message" placeholder="Сообщение" rows="6" cols="50" style="background: #EFEFEF;"></textarea>
+                        @error('message')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="form-group my-3">
+                            <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143B57; color: #fff;">
                         </div>
                     </div>
-                    <div class="sec" style="margin-bottom: 300px;">
-                        <h4 class="">Онлайн платеж</h4>
-                        <h6>Обзор способов оплаты</h6>
-                        <div class="cont bg-white p-3 shadow">
-                           <h6>Описание оплаты</h6>
-                        </div>
-                    </div>
+                </form>
             </div><!--col-->
         </div><!--row-->
     </div>
     <!--animated-->
 </div>
-
+</div>
+</div>
+{{-- @include('frontend.includes.footer') --}}
 @endsection
+
