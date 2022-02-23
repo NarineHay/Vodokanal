@@ -1,5 +1,5 @@
 <footer>
-    <div class="footer_first pt-4" id="section5">
+    <div class="footer_first pt-4" id="section5" id="DebugContainer">
         <div class="container">
             <div class="d-flex flex-wrap justify-content-between foot_header">
                 <div class="foot w-50 ">
@@ -39,7 +39,7 @@
                             <span style="color:red">@error('message'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="submit" class="py-1 px-4 send-message">
+                            <input type="submit" class="py-1 px-4 send-message" id="msm">
                         </div>
                     </form>
                 </div>

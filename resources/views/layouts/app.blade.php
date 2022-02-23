@@ -42,11 +42,6 @@
 // https://paulund.co.uk/smooth-scroll-to-internal-links-with-jquery
 $(document).ready(function(){
 
-    @error('email')
-        $('.send-message').on('click',function () {
-           alert("dkjslksajd");
-        });
-    @enderror
 	$('a[href^="#"]').on('click',function (e) {
 	    e.preventDefault();
 	    var target = this.hash;
@@ -56,6 +51,14 @@ $(document).ready(function(){
 	    },100, 'swing', function () {
 	    });
 	});
+
+
+    $("#button").click(function() {
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#elementtoScrollToID").offset().top
+    }, 2000);
+    });
+    
 });
         </script>
     </body>
