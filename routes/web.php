@@ -14,7 +14,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
-
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -33,6 +33,7 @@ Auth::routes(['verify'=>true]);
 Route::get('/', [WelcomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'index'])->name('contact');
+Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
 
 Route::group(['middleware' => 'auth'], function () {
     // Route::resource('roles', RoleController::class);
@@ -66,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
         });
 
     });
+   
 });
 
 // Route::group(['middleware' => 'guest'], function () {
@@ -83,7 +85,5 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 Route::get('card11/{id}', [CardController::class, 'show']);
-
-
 
 
