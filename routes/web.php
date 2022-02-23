@@ -42,6 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
+            Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
             Route::get('balance_replenishment', [BalanceReplenishmentController::class, 'index'])->name('balance_replenishment');
 
         });
@@ -83,7 +84,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('card11/{id}', [CardController::class, 'show']);
 
-Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
 
 
 
