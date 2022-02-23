@@ -11375,10 +11375,10 @@ input[type=button].btn-block {
     position: absolute;
   }
 
-  .navbar-expand-lg .navbar-nav .nav-link {
+  /* .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
-  }
+  } */
 
   .navbar-expand-lg > .container,
   .navbar-expand-lg > .container-fluid {
@@ -12200,6 +12200,7 @@ a.badge-dark.focus {
 .alert-success {
   color: #28623c;
   background-color: #dbf2e3;
+  text-align: center;
   border-color: #cdedd8;
 }
 
