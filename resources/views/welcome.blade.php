@@ -5,7 +5,13 @@
     <link href="{{ asset('assets/css/index.css') }}" rel="stylesheet">
 @endsection
 @section('content')
+
 <section>
+    @if (session('status'))
+        <div class="alert alert-success text-center">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> <i class="fa fa-check" aria-hidden="true">{{ session('status') }}</i>
+        </div>
+    @endif
     <!-- img section start -->
       <div class="position-relative w-100">
         <img src="{{ asset('assets/images/img_index/drop-of-water-g8da463e9a_1920 1.png') }}" class="w-100 ">
@@ -14,6 +20,7 @@
         </div>
       </div>
 </section>
+    <!----------------------------->
     <!-- line and text  section start -->
 <section class="container my-5">
         <div class="d-flex justify-content-center p-3 line about-us">
@@ -30,8 +37,10 @@
             </p>
         </div>
 </section>
-<section class="container my-5">
-    <div class="mb-4 d-flex align-items-center justify-content-center main-activities">
+<section class="container my-5" 
+
+>
+    <div class="mb-4 d-flex align-items-center justify-content-center main-activities" >
         <hr>
         <div class="text-center payment px-1">Основные виды деятельности предприятия </div>
         <hr>
@@ -54,21 +63,21 @@
         <div class="text-center payment px-1">Основные виды деятельности предприятия </div>
         <hr>
     </div>
-    <ul style="text-align: justify;color:#000000;">
+    <ul  style="text-align: justify;color:#000000;">
         <li>В хозяйстве Водоканала имеется:</li>
         <li>Поверхностный водозабор на реке Волга</li>
         <li>Станция очистки воды</li>
         <li>10 грунтовых подземных водозаборов</li>
         <li>13 артезианских скважин в поселках</li>
         <li>173 очистных сооружений канализационных стоков</li>
-        <li>3349 километров сетей водопровода и канализации</li>
+        <li id="section1">3349 километров сетей водопровода и канализации</li>
         <li>154 водопроводных и канализационных насосных станций.</li>
     </ul>
     <p style="text-align: justify;color:#000000;text-indent:5%;" >
         На предприятии трудится 2450 человек разных профессий. В целях защиты социально-трудовых прав и профессиональных интересов каждого работника в 2018 году принят коллективный договор, сроком действия 3 года. Документ регламентирует трудовые отношения между работодателем и работником.
     </p>
 </section>
-<section class=" my-5">
+<section class=" my-5"  >
     <div class="section_second_img ">
         <div class="video-container">
             <video autoplay muted loop id="myVideo">
@@ -84,7 +93,7 @@
                   <li> Нужно заключить договор</li>
                   <li> Заегистрироватся на сайте</li>
                   <li> Указать количество машин</li>
-                  <li> Получить индивидуальную карту</li>
+                  <li id="section3"> Получить индивидуальную карту</li>
                 </ol>
                 <div class="text-center pt-5 ">
                     <a class="py-2 px-5 text-white price">19.55 ₽ за куб.</a>
@@ -114,7 +123,7 @@
                     <div  class="icon rounded-circle text-center">
                         <img src="{{ asset('assets/images/img_index/Frame.png') }}">
                     </div>
-                    <div class=" mt-2 water_text">Платеж в кассе</div>
+                    <div id="section2" class=" mt-2 water_text">Платеж в кассе</div>
                 </div>
             </div>
         </div>
@@ -122,6 +131,7 @@
 </section>
 <!-------------------------------------------------------------->
 <section class="container">
+   
     <div class="p-3 align-items-center d-flex justify-content-center company-details">
         <hr>
         <div class="mx-2 payment text-center">Реквизиты компании</div>
@@ -135,9 +145,9 @@
         <li>Юр. Адрес: 420087, РТ, г. Казань, ул. Родины, д.9</li>
         <li>Почт. адрес 420015, РТ. г. Казань, ул. М. Горького, д.34</li>
         <li>р/с: 40602810600000000043 в ООО КБЭП "БАНК КАЗАНИ" г. Казань</li>
-        <li>к/с: 301018101000000000844</li>
+        <li id="section4">к/с: 301018101000000000844</li>
         <li>БИК:049205844</li>
-        <li>Первый заместитель директора С М. Н.Алахов действует на основании доверенности №34-0/29742 от 02.12.2020г.</li>
+        <li >Первый заместитель директора С М. Н.Алахов действует на основании доверенности №34-0/29742 от 02.12.2020г.</li>
     </ul>
 </section>
 <section class="pt-5">
