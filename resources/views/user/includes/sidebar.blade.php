@@ -2,8 +2,23 @@
     <nav class="sidebar-nav user-sidebar-nav ps">
         <ul class="nav">
             <li class="nav-title ">
-                <div class="account-name">Имя Фамилия Отчество</div>
-               <div>Пассивный статус</div>
+                <div class="account-name">
+                
+                    <th >{{Auth::user()->first_name}}</th>
+                    <th >{{Auth::user()->last_name}}</th>
+
+                    @if(Auth::user()->status==1)
+
+                        <h6 class="active-color2">активный статус</h6>
+
+                        @elseif(Auth::user()->status==0)
+
+                        <h6 class="active-color1">Пассивный статус</h6>
+
+                    @endif      
+                          
+                </div>
+               
             </li>
             <li class="nav-item">
                 <a class="nav-link  {{ request()->is('admin/email-templates') ? 'active' : ''
@@ -72,3 +87,5 @@
 
     <button class="sidebar-minimizer brand-minimizer" type="button"></button>
 </div><!--sidebar-->
+
+

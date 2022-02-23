@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RoleController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\Backend\SupportController as BackendSupportController;
 use App\Http\Controllers\Mqtt\CardController;
 use App\Http\Controllers\User\AccountController;
@@ -36,14 +36,14 @@ Route::get('/contact', [HomeController::class, 'index'])->name('contact');
 Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('roles', RoleController::class);
+    // Route::resource('roles', RoleController::class);
     Route::group(['middleware' => ['verified']], function () {
 
-        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
+        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
+            Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
             Route::get('balance_replenishment', [BalanceReplenishmentController::class, 'index'])->name('balance_replenishment');
 
         });
@@ -54,9 +54,16 @@ Route::group(['middleware' => 'auth'], function () {
 
         //     });
         // });
+        Route::resource('/backend/roles', RoleController::class);
+
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
-
+            // Route::resource('roles', RoleController::class);
+    // Route::resource('/backend/roles', RoleController::class)->only([
+    //     'index', 'show'
+    // ]);
+            // Route::resource('users', UserController::class);
+            // Route::resource('products', ProductController::class);
         });
 
     });
@@ -69,6 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware(['auth'])->name('verification.notice');
+
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
@@ -77,4 +85,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 Route::get('card11/{id}', [CardController::class, 'show']);
+
+
 

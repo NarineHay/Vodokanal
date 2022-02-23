@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link href="{{ asset('assets/css/nav.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/user-sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/backend-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
 
     @yield('style')
@@ -74,6 +75,9 @@
     <script>
         $('.sidebar-toggler').on('click', function(){
             $('.sidebar-lg-show').toggleClass('sidebar-show')
+        })
+        $('.nav-dropdown-toggle').on('click', function(){
+            $(this).parent().toggleClass('open')
         })
     </script>
     </body>
