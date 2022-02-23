@@ -14,6 +14,7 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\SupportController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -37,9 +38,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::resource('roles', RoleController::class);
     Route::group(['middleware' => ['verified']], function () {
 
-        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
+        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
             Route::get('balance_replenishment', [BalanceReplenishmentController::class, 'index'])->name('balance_replenishment');
@@ -73,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware(['auth'])->name('verification.notice');
+
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
@@ -81,3 +82,8 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 Route::get('card11/{id}', [CardController::class, 'show']);
+
+Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
+
+
+

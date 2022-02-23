@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('balance')->nullable();
             $table->string('remember_token')->nullable();
             $table->boolean('type')->default(0);
-            $table->boolean('status')->default(1);
+            $table->boolean('status')->default(0);
             $table->timestamps();
 
         });

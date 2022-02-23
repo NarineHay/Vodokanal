@@ -25,6 +25,12 @@ html:not([dir=rtl]) .sidebar {
     font-size: 20px;
     text-transform: capitalize;
 }
+.active-color1{
+    color: rgb(212, 9, 9);
+}
+.active-color2{
+    color: rgb(8, 204, 51);
+}
 .li-title{
     font-size: 16px;
 }

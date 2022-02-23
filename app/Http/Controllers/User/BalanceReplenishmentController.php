@@ -12,4 +12,5 @@ class BalanceReplenishmentController extends Controller
         return view('user.balance_replenishment.index');
 
     }
+    
 }
