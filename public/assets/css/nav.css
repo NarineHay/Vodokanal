@@ -10,6 +10,13 @@ header{
     width:100%;
     z-index: 1000000;
 }
+.nav_bar_color{
+    position: fixed;
+     background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);;
+    width:100%;
+    z-index: 1000000;
+}
 
 header>.container{
 
@@ -25,9 +32,9 @@ header li a{
 .login_li{
     border-left:2px solid #FFF
 }
-.active{
+.act:focus{
     border-bottom:1px solid white;
-    display:inline-block !important;
+    /* display:inline-block !important; */
 }
 .user-account-header{
     display: none;

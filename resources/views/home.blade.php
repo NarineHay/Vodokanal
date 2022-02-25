@@ -7,36 +7,32 @@
 @section('content')
 
 <section>
-    @if (session('status'))
-        <div class="alert alert-success">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> <i class="fa fa-check" aria-hidden="true">{{ session('status') }}</i>
-        </div>
-    @endif
     
     <!-- img section start -->
       <div class="position-relative w-100">
         <img src="{{ asset('assets/images/img_index/drop-of-water-g8da463e9a_1920 1.png') }}" class="w-100 ">
-        <div class=" justify-content-center position-absolute  balance_in">
+        <div   class=" justify-content-center position-absolute  balance_in">
             <button type="button" class="font-weight-bold balance">Пополнить баланс</button>
         </div>
       </div>
 </section>
     <!----------------------------->
     <!-- line and text  section start -->
-<section class="container my-5">
+    <section id="section2" class="container my-5">
         <div class="d-flex justify-content-center p-3 line about-us">
-            <hr >
-            <div class="text-center payment">О нашей компании </div>
-            <hr >
+            <hr>
+            @foreach ($Aboutus as $About_us )
+                 <div  class="text-center payment">{{$About_us->title}}</div>
+            @endforeach
+            <hr>
         </div>
+        
         <div class="px-4 mt-2 mb-5 pb-4 ">
-            <p style="text-align: justify;color:#000000; text-indent:5%">
-                Коммунальное водопроводно-канализационное хозяйство города Казани – отрасль народного хозяйства. Наряду с теплоэнергетикой является важнейшей составной частью социальной инфраструктуры. Результаты работы МУП«Водоканал» во многом определяют здоровье и продолжительность жизни человека, санитарно-эпидемиологическую обстановку на территории города, нормальное функционирование промышленных предприятий, всей социальной сферы.
-            </p>
-            <p style="text-align: justify;text-indent: 5%;color:#000000;">
-                Муниципальное унитарное предприятие «Водоканал» г.Казани создано в соответствии с постановлением главы Администрации г.Казани № 1366 от 30.12.1993г. Реорганизовано в форме присоединения к нему МУП «Управление по эксплуатации гидротехнических сооружений» в соответствии с Постановлением руководителя Исполнительного комитета г.Казани от 11.11.2009г. № 9619.
-            </p>
+            @foreach ($Aboutus as $About_us)
+                {!!$About_us->content!!}
+            @endforeach
         </div>
+        
 </section>
 <section class="container my-5" 
 
@@ -94,10 +90,10 @@
                   <li> Нужно заключить договор</li>
                   <li> Заегистрироватся на сайте</li>
                   <li> Указать количество машин</li>
-                  <li id="section3"> Получить индивидуальную карту</li>
+                  <li> Получить индивидуальную карту</li>
                 </ol>
                 <div class="text-center pt-5 ">
-                    <a class="py-2 px-5 text-white price">19.55 ₽ за куб.</a>
+                    <a id="section3" class="py-2 px-5 text-white price">19.55 ₽ за куб.</a>
                 </div>
             </div>
         </div>
@@ -124,7 +120,7 @@
                     <div  class="icon rounded-circle text-center">
                         <img src="{{ asset('assets/images/img_index/Frame.png') }}">
                     </div>
-                    <div id="section2" class=" mt-2 water_text">Платеж в кассе</div>
+                    <div  class=" mt-2 water_text">Платеж в кассе</div>
                 </div>
             </div>
         </div>
