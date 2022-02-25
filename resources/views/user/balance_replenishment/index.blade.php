@@ -10,7 +10,7 @@
         <div class="content-header"></div>
         <!--content-header-->
 
-        <div class="row">
+        <div class="rowo">
             <div class="col pl-5">
                     <div class="sec" style="margin-bottom: 10px;">
                         <h4 class=" mt-2">Оплата в кассе</h4>

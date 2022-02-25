@@ -2,48 +2,34 @@
     <nav class="sidebar-nav user-sidebar-nav ps">
         <ul class="nav">
             <li class="nav-title ">
-                <div class="account-name">
-                
+                <div class="account-name">               
                     <th >{{Auth::user()->first_name}}</th>
                     <th >{{Auth::user()->last_name}}</th>
-
                     @if(Auth::user()->status==1)
-
                         <h6 class="active-color2">активный статус</h6>
-
                         @elseif(Auth::user()->status==0)
-
                         <h6 class="active-color1">Пассивный статус</h6>
-
-                    @endif      
-                          
-                </div>
-               
+                    @endif                              
+                </div>            
             </li>
             <li class="nav-item">
-                <a class="nav-link  {{ request()->is('admin/email-templates') ? 'active' : ''
-                    }}" href="http://localhost:8000/admin/pages">
+                <a class="nav-link {{ request()->is('infos') ? 'active' : ''
+                    }}" href="{{ route('user.infos') }}">
                     <i class="nav-icon bi bi-gear"></i>
-                    <span class="li-title">Личные данные</span>
-
+                    <span class="li-title">Личные данные</span>                 
                     <div>
-                        <i class="bi bi-telephone"></i>
-                        <span class="ml-2 ft-size-14">+X XXX XXX XX</span>
-                    </div>
-                    <div>
-                        <i class="bi bi-telephone"></i>
-                        <span class="ml-2 ft-size-14">+X XXX XXX XX</span>
-                    </div>
-                    <div>
-                        @
-                        <span class="ml-2 ft-size-14">example@gmail.com</span>
+                        <i class="bi bi-telephone"></i>                     
+                        <span class="ml-2 ft-size-14">{{Auth::user()->phone_number[0]['phone_number']}}</span>
+                    </div>                   
+                    <div> 
+                        <span class="ml-2 ft-size-14">{{Auth::user()->email}}</span>
                     </div>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link  {{ request()->is('admin/email-templates') ? 'active' : ''
-                    }}" href="http://localhost:8000/admin/pages">
+            <a class="nav-link {{ request()->is('mycars') ? 'active' : ''
+                    }}" href="{{ route('user.mycars') }}">
                     <i class="nav-icon bi bi-truck"></i>
                     <span class="li-title">Машины</span>
 

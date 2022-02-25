@@ -18,8 +18,9 @@ class CreatePhoneNumbersTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('phone_number');
-            $table->string('status');
-            $table->string('token');
+            $table->string('status')->default(1);
+            $table->string('token')->default(null);
+            $table->string('count')->from(1);
             $table->timestamps();
         });
     }
