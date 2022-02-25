@@ -62,7 +62,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function phone_number()
     {
-        return $this->hasOne(Phone_number::class);
+        return $this->hasMany(Phone_number::class);
     }
 
 

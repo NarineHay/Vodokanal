@@ -1,3 +1,17 @@
 .nav-dropdown-toggle{
     font-size: 18px;
 }
+.card-m{
+    background-color: #e2e0e0;
+    margin-top: 100px;
+}
+.col-md-8{
+    height: 370px;
+}
+.card-header{
+    width:100%;
+    text-align: center;
+}
+.alert{
+    text-align: center;
+}

@@ -12,7 +12,8 @@ class Phone_number extends Model
         'user_id',
         'phone_number',
         'token',
-        'status'
+        'status',
+        'count'
     ];
 
     public function user()

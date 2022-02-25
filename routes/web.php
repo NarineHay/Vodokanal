@@ -42,11 +42,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['verified']], function () {
 
         Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
-            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('dashboard', [DashboardController::class, 'index'])->name('infos');
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
             Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
             Route::get('balance_replenishment', [BalanceReplenishmentController::class, 'index'])->name('balance_replenishment');
+            Route::post('dashboard', [DashboardController::class, 'savenumber'])->name('add_phone');
+            Route::get('mycars', [DashboardController::class, 'indexcars'])->name('mycars');
+            Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
 
         });
 
@@ -85,10 +88,19 @@ Route::get('/email/verify', function () {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
-    return redirect('/dashboard');
+    return redirect('/infos');
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
 Route::get('card11/{id}', [CardController::class, 'show']);
+Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
+
+
+
+
+
+
+
+
 
 

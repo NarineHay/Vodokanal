@@ -38,7 +38,7 @@
                     @auth
                         @if (Request::is('dashboard'))
                             <li class="nav-item ">
-                                <a href="#" class="fio nav-link text-white {{ request()->is(['user.dashboard', 'user.support']) ? 'active' : '' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ФИО</a>
+                                <a href="#" class="fio nav-link text-white {{ request()->is(['user.infos', 'user.support']) ? 'active' : '' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ФИО</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -47,7 +47,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-nav-ul" aria-labelledby="navbarDropdownMenuLink">
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('user.dashboard') }}">Профиль </a>
+                                        <a class="dropdown-item" href="{{ route('user.infos') }}">Профиль </a>
                                     </li>
                                     <li>
                                      

@@ -4,17 +4,17 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Support_task;
-use App\Models\User;
+
 use Illuminate\Support\Facades\Auth;
 
 class SupportController extends Controller
 {
     public function index()
     {   
-
+        
         return view('user.support.index');
     }
+   
     public function support_tasks(Request $request)
     {
         $this->validate($request, [
@@ -32,7 +32,14 @@ class SupportController extends Controller
             'message'=>$request->message,
             
         ]);
-        return redirect()->back();
+        
+        return view('user.support.supportaproved');
     }
+    public function show_aproved_smm()
+    {
+        return view('user.support.supportaproved');
+    }
+    
+    
  
 }
