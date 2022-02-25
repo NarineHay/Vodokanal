@@ -15,6 +15,8 @@ use App\Http\Controllers\User\SupportController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\MainactivitiesController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -58,6 +60,9 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
+            Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_as');
+            Route::get('edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
+            Route::get('/main_activities', [MainactivitiesController::class, 'index'])->name('about_as');
             // Route::resource('roles', RoleController::class);
     // Route::resource('/backend/roles', RoleController::class)->only([
     //     'index', 'show'
@@ -85,6 +90,5 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 
 Route::get('card11/{id}', [CardController::class, 'show']);
-
 
 

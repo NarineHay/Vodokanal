@@ -1,6 +1,11 @@
 <footer>
-    <div class="footer_first pt-4" id="section5" id="DebugContainer">
+    <div class="footer_first pt-4" id="section5">
         <div class="container">
+            @if (session('status'))
+                <div class="alert alert-success text-center">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> <i class="fa fa-check" aria-hidden="true">{{ session('status') }}</i>
+                </div>
+            @endif
             <div class="d-flex flex-wrap justify-content-between foot_header">
                 <div class="foot w-50 ">
                     <h2 class="py-3">Контакты</h2>
@@ -31,11 +36,11 @@
                         @csrf
                         <h2 >Обратная связь</h2>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Эл. адрес:">
+                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Эл. адрес:" value="{{ old('email') }}">
                             <span style="color:red">@error('email'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group my-2">
-                            <textarea  name="message" class="form-control @error('message') is-invalid @enderror" placeholder="Сообщение:"></textarea>
+                            <textarea  name="message" class="form-control @error('message') is-invalid @enderror" placeholder="Сообщение:" value="{{ old('message') }}"></textarea>
                             <span style="color:red">@error('message'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group mb-3">

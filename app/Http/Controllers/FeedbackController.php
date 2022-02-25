@@ -14,19 +14,12 @@ class FeedbackController extends Controller
             'email' => 'required |email',
             'message' => 'required'
         ]);
-       
-        $data = new Feedback;
-        $data->email=$request->email;
-        $data->message=$request->message;
+         
+        $insert = Feedback::create([
+            'email'=>$request->email,
+            'message'=>$request->message
+        ]);
         Mail::to($request->email)->send(new FeedbackMail);
-        $data->save();
-        return redirect()->back()->with('status', 'You have successfully Created!');
-        
-
-
-        // $insert = SubCategories::create([
-        //     'categories_id'=>$request->categories_id,
-        //     'name'=>$catigory,
-        // ]);
+        return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');
      }
 }
