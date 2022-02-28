@@ -21,6 +21,10 @@ use App\Http\Controllers\Backend\MainActivities1Controller;
 use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
 
+use App\Http\Controllers\Backend\MainactivitiesController;
+use App\Http\Controllers\Backend\UserController;
+
+
 
 use App\Http\Controllers\Backend\CartController;
 
@@ -67,6 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
         //     });
         // });
         Route::resource('/backend/roles', RoleController::class);
+        Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -85,18 +90,18 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
-          
-       
+
+
             // Route::resource('roles', RoleController::class);
     // Route::resource('/backend/roles', RoleController::class)->only([
     //     'index', 'show'
     // ]);*
             // Route::resource('users', UserController::class);
-            // Route::resource('products', ProductController::class);
+
         });
 
     });
-   
+
 });
 
 // Route::group(['middleware' => 'guest'], function () {

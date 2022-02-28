@@ -2,17 +2,17 @@
     <nav class="sidebar-nav user-sidebar-nav ps">
         <ul class="nav">
 
-            <li class="nav-item nav-dropdown">
+            <li class="nav-item nav-dropdown {{ request()->routeIs('roles*') ? 'open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle " href="#"> Система </a>
 
-                <ul class="nav-dropdown-items">
+                <ul class="nav-dropdown-items ">
                     <li class="nav-item">
                         <a class="nav-link " href="">
                             Доступы Администраторов
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
                             Управление ролями
                         </a>
                     </li>
@@ -60,7 +60,7 @@
 
             </li>
 
-            <li class="nav-item nav-dropdown">
+            <li class="nav-item nav-dropdown {{ request()->routeIs('users*') ? 'open' : '' }}" >
                 <a class="nav-link nav-dropdown-toggle " href="#"> Пользователи </a>
 
                 <ul class="nav-dropdown-items">
@@ -70,6 +70,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
+
                         <a class="nav-link " href="{{ route('backend.cart') }}">
                         Добавить карту
                         </a>
@@ -80,7 +81,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link {{ request()->routeIs('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
                             Список зарегистрированных
                         </a>
                     </li>

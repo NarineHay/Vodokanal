@@ -16,6 +16,11 @@
     text-align: center;
 }
 
+.background-with{
+    background: #fff;
+}
+
+
 
         #container{
             width:380px;
