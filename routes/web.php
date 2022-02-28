@@ -17,6 +17,7 @@ use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\MainactivitiesController;
+use App\Http\Controllers\Backend\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -60,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
         //     });
         // });
         Route::resource('/backend/roles', RoleController::class);
+        Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
@@ -71,11 +73,11 @@ Route::group(['middleware' => 'auth'], function () {
     //     'index', 'show'
     // ]);
             // Route::resource('users', UserController::class);
-            // Route::resource('products', ProductController::class);
+
         });
 
     });
-   
+
 });
 
 // Route::group(['middleware' => 'guest'], function () {

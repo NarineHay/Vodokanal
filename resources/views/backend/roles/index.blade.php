@@ -10,8 +10,8 @@
         <div class="content-header"></div>
         <!--content-header-->
 
-        <div class="row">
-            <div class="col pl-5">
+        <div class="row pl-4">
+            <div class="col pt-2 px-4 pb-4 background-with">
 
                     <div class="row">
                         <div class="col-lg-12 margin-tb">
@@ -51,7 +51,7 @@
                                 @endcan
                                 @can('role-delete')
                                     {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                        {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
                                     {!! Form::close() !!}
                                 @endcan
                             </td>

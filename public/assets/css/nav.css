@@ -46,6 +46,15 @@ button{
     display: none !important;
 }
 
+.btn-main{
+    padding-left: 3rem;
+    padding-right: 3rem;
+    background: #143B57;
+    color: #fff;
+}
+.btn-main:hover{
+    color: #fff;
+}
   /* media for header  login li start-------------------- */
   @media screen and (max-width:991px){
     .login_li{
