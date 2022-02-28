@@ -27,6 +27,7 @@
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/user-dashboard.css') }}" rel="stylesheet">
 
+
     @yield('style')
     @stack('after-styles')
 

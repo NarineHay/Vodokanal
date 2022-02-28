@@ -9,6 +9,7 @@ use Laravel\Sanctum\HasApiTokens;
 class Card extends Model
 {
     use HasFactory,  HasApiTokens;
+    public $table ='cards';
 
     protected $fillable = [
         'user_id',
