@@ -70,6 +70,16 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link " href="{{ route('backend.cart') }}">
+                        Добавить карту
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="">
+                        Карта
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link " href="">
                             Список зарегистрированных
                         </a>
