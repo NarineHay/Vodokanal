@@ -29,7 +29,9 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-nav-ul" aria-labelledby="navbarDropdownMenuLink">
                                     <li>
+
                                         <a class="dropdown-item" href="{{ route('backend.dashboard') }}" >Профиль </a>
+
                                     </li>
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"

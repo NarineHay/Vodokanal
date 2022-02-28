@@ -9,9 +9,13 @@
 <section >
     <!-- img section start -->
       <div class="position-relative w-100">
-        <img src="{{ asset('assets/images/img_index/drop-of-water-g8da463e9a_1920 1.png') }}" class="w-100 ">
+        @foreach ($Main as $Mains)
+               <img src="/assets/images/img_index/{{$Mains->img_path}}" class="w-100 ">
+          @endforeach
         <div  class=" justify-content-center position-absolute  balance_in">
-            <button type="button" class="font-weight-bold balance">Пополнить баланс</button>
+         @foreach ($Main as $Mains)
+           <button type="button" class="font-weight-bold balance"><a href="{{$Mains->url}}" style="text-decoration:unset;">Пополнить баланс</a></button>
+         @endforeach
         </div>
       </div>
 </section>
@@ -33,45 +37,31 @@
         </div>
         
 </section>
-<section class="container my-5" 
-
->
+<section class="container my-5">
     <div class="mb-4 d-flex align-items-center justify-content-center main-activities" >
-        <hr>
-        <div class="text-center payment px-1">Основные виды деятельности предприятия </div>
-        <hr>
+        @foreach ($MainActivitie1 as $MainActivitie1s)
+            <hr>
+            <div class="text-center payment px-1">{{$MainActivitie1s->title}}</div>
+            <hr>
+        @endforeach
+        
     </div>
-    <ul style="text-align: justify;color:#000000;">
-        <li>Снабжение питьевой водой жителей Казани, предприятий бюджетной и социальной сфер, а так же предприятий различной форм собственности</li>
-        <li>Контроль качества питьевой воды, подаваемой потребителям</li>
-        <li>Очистка и обработка стоков</li>
-        <li>Отведение сточных до очистных сооружений</li>
-        <li>Контроль качества сбрасываемых сточных вод предприятиями и организациями города в городскую систему водоотведения</li>
-        <li>Эксплуатация сетей и сооружений</li>
-        <li>Проведение капитального ремонта</li>
-        <li>Реконструкция и строительство инженерных сетей, сооружений систем водоснабжения и водоотведения</li>
-        <li>Текущее содержание объектов гидротехнических сооружений, проведение противопаводковых мероприятий, откачка поверхностных и дренажных вод.</li>
-    </ul>
+    @foreach ($MainActivitie1 as $MainActivitie1s )
+      {!!$MainActivitie1s->content!!}  
+    @endforeach
 </section>
 <section class="container my-5">
-    <div class="mb-4 d-flex align-items-center justify-content-center main-activities">
-        <hr>
-        <div class="text-center payment px-1">Основные виды деятельности предприятия </div>
-        <hr>
+    <div class="mb-4 d-flex align-items-center justify-content-center main-activities" >
+        @foreach ($MainActivitie2 as $MainActivitie2s)
+            <hr>
+            <div class="text-center payment px-1">{{$MainActivitie2s->title}}</div>
+            <hr>
+        @endforeach
+        
     </div>
-    <ul  style="text-align: justify;color:#000000;">
-        <li>В хозяйстве Водоканала имеется:</li>
-        <li>Поверхностный водозабор на реке Волга</li>
-        <li>Станция очистки воды</li>
-        <li>10 грунтовых подземных водозаборов</li>
-        <li>13 артезианских скважин в поселках</li>
-        <li>173 очистных сооружений канализационных стоков</li>
-        <li id="section1">3349 километров сетей водопровода и канализации</li>
-        <li>154 водопроводных и канализационных насосных станций.</li>
-    </ul>
-    <p style="text-align: justify;color:#000000;text-indent:5%;" >
-        На предприятии трудится 2450 человек разных профессий. В целях защиты социально-трудовых прав и профессиональных интересов каждого работника в 2018 году принят коллективный договор, сроком действия 3 года. Документ регламентирует трудовые отношения между работодателем и работником.
-    </p>
+    @foreach ($MainActivitie2 as $MainActivitie2s)
+      {!!$MainActivitie2s->content!!}  
+    @endforeach
 </section>
 <section class=" my-5"  >
     <div class="section_second_img ">
