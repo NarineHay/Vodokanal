@@ -37,13 +37,23 @@
                 <a class="nav-link nav-dropdown-toggle " href="#"> домашняя страница </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.main_home_page')}}">
+                            главная домашняя страница
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link " href="{{ route('backend.about_as') }}">
                             О нашей компании
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#">
-                            Основные виды деятельности предприятия
+                        <a class="nav-link " href="{{ route('backend.main_activities')}}">
+                            Основные виды деятельности предприятия первый
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('backend.main_activities2')}}">
+                            Основные виды деятельности предприятия второй
                         </a>
                     </li>
                 </ul>

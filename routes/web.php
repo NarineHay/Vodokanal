@@ -16,7 +16,9 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
-use App\Http\Controllers\Backend\MainactivitiesController;
+use App\Http\Controllers\Backend\MainActivities1Controller;
+use App\Http\Controllers\Backend\MainActivities2Controller;
+use App\Http\Controllers\Backend\MainHomePageController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -63,13 +65,19 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
+
+            Route::get('/main_home_page', [MainHomePageController::class, 'index'])->name('main_home_page');
+            Route::post('/edit_main_home', [MainHomePageController::class, 'edit_main_home'])->name('edit_main_home');
             Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_as');
             Route::get('edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
-            Route::get('/main_activities', [MainactivitiesController::class, 'index'])->name('about_as');
+            Route::get('/main_activities', [MainActivities1Controller::class, 'index'])->name('main_activities');
+            Route::get('main_activities_edit/{id}', [MainActivities1Controller::class, 'edit_main_activities'])->name('edit_main_activities');
+            Route::get('/main_activities2', [MainActivities2Controller::class, 'index'])->name('main_activities2');
+            Route::get('main_activities2_edit/{id}', [MainActivities2Controller::class, 'edit_main_activities2'])->name('edit_main_activities2');
             // Route::resource('roles', RoleController::class);
     // Route::resource('/backend/roles', RoleController::class)->only([
     //     'index', 'show'
-    // ]);
+    // ]);*
             // Route::resource('users', UserController::class);
             // Route::resource('products', ProductController::class);
         });
