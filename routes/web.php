@@ -16,8 +16,13 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
+
 use App\Http\Controllers\Backend\MainactivitiesController;
 use App\Http\Controllers\Backend\UserController;
+
+
+use App\Http\Controllers\Backend\CartController;
+
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -64,10 +69,16 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
+            // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('cart', [CartController::class, 'index'])->name('cart');
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
             Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_as');
             Route::get('edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
-            Route::get('/main_activities', [MainactivitiesController::class, 'index'])->name('about_as');
+            Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
+            Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
+          
+          
+           
             // Route::resource('roles', RoleController::class);
     // Route::resource('/backend/roles', RoleController::class)->only([
     //     'index', 'show'
