@@ -28,6 +28,7 @@
     <link href="{{ asset('assets/css/user-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/backend-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     @yield('style')
     @stack('after-styles')
@@ -82,5 +83,41 @@
             $(this).parent().toggleClass('open')
         })
     </script>
+    <script>
+        var varCount = 1;
+        $(function () {
+            $('#addVar').on('click', function(){
+                varCount++;
+                $node = '<p>'
+                  + '<input class="form-control "placeholder="Card number" type="number" name="card_number[]" id="var1">'
+                  + '<br>'
+                  + '<span class = "removeVar"> Удалить </span> </p>';
+                $(this).parent().before($node);
+            });
+          $('form').on('click', '.removeVar', function(){
+            $(this).parent().remove();
+          });
+        });
+    </script>
+    <script>
+    // const btn1 = document.getElementById('btn1');
+    // const box1 = document.getElementById('box1');
+
+    // const btn2 = document.getElementById('btn2');
+    // const box2 = document.getElementById('box2');
+
+        btn1.addEventListener('click', function onClick(event) {
+
+            box1.style.backgroundColor = 'red';
+            box2.style.backgroundColor = 'white';
+
+        });
+        btn2.addEventListener('click', function onClick(event) {
+
+            box2.style.backgroundColor = 'green';
+            box1.style.backgroundColor = 'white';
+
+        });
+</script>
     </body>
 </html>
