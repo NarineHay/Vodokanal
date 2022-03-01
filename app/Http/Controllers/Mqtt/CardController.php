@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\CardResource;
 use App\Models\Card;
 use Illuminate\Http\Request;
+
+
 use Salman\Mqtt\MqttClass\Mqtt;
-// use \Mqtt;
+// use Mqtt;
 class CardController extends Controller
 {
 
@@ -15,23 +17,35 @@ class CardController extends Controller
 public function show($id)
     {
         $card = Card::find($id);
-        $topic='some/topic';
+        $topic='kazan/cont/1/status';
         $message='Hello 111';
+        $mqtt = new Mqtt();
+// $mqtt->host='zv1632.su';
+        dd($mqtt);
+        $client_id = '125478';
+        $output = $mqtt->ConnectAndPublish($topic, $message, $client_id);
+
+        if ($output === true)
+        {
+            return "published";
+        }
+
+        return "Failed";
         // $this->SendMsgViaMqtt($topic, $message, $id);
         // function SendMsgViaMqtt($topic, $message, $id)
         // {
         //         // $client_id = Auth::user()->id;
-        //         $mqtt = new Mqtt();
+                // $mqtt = new Mqtt();
 
 
-        //         $output = $mqtt->ConnectAndPublish($topic, $message);
+                // $output = $mqtt->ConnectAndPublish($topic, $message);
 
-        //         if ($output === true)
-        //         {
-        //             return "published";
-        //         }
+                // if ($output === true)
+                // {
+                //     return "published";
+                // }
 
-        //         return "Failed";
+                // return "Failed";
         // }
         // SendMsgViaMqtt($topic, $message, $id);
 //         if (!function_exists('connectToPublish'))
@@ -39,19 +53,20 @@ public function show($id)
     // function connectToPublish($topic, $message, $client_id=null, $retain=null)
     // {
         // $mqtt = new Mqtt();
-        // $m = $mqtt->ConnectAndPublish('some/topic', 'helloo ooo', $client_id=1000010, $retain=null);
+        // $m = $mqtt->ConnectAndPublish('kazan/cont/1/id', 'helloo ooo');
         // if($m){
-        //     echo 111;
+        //     dd(111);
         // }
         // else{
-        //     echo 222;
+        //     dd(222);
         // }
-        $mqtt = new Mqtt();
-        return $mqtt->ConnectAndSubscribe($topic, function($topic, $msg){
-            echo "Msg Received: \n";
-            echo "Topic: {$topic}\n\n";
-            echo "\t$msg\n\n";
-        }, Null);
+    // }
+        // $mqtt = new Mqtt();
+        // return $mqtt->ConnectAndSubscribe($topic, function($topic, $msg){
+        //     echo "Msg Received: \n";
+        //     echo "Topic: {$topic}\n\n";
+        //     echo "\t$msg\n\n";
+        // }, Null);
     // }
 // }
 // else{
