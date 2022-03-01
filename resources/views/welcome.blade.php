@@ -66,51 +66,53 @@
 <section class=" my-5"  >
     <div class="section_second_img ">
         <div class="video-container">
-            <video autoplay muted loop id="myVideo">
-                <source src="{{ asset('assets/images/img_index/water.mp4') }}" type="video/mp4">
-            </video>
+            @foreach ($Tarif as $Tarifs )
+             <video autoplay muted loop id="myVideo">
+               <source src="/assets/images/img_index/{{$Tarifs->img_path}}" type="video/mp4">
+             </video>
+            @endforeach
+           
             <div class="container tarif-cont py-5">
-                <div class="d-flex justify-content-center mb-4">
+                @foreach ($Tarif as $Tarifs )
+                 <div class="d-flex justify-content-center mb-4">
                     <hr>
-                    <div class="tariff mx-2 text-center" >Детали тарифа</div>
+                    <div class="tariff mx-2 text-center" >{{$Tarifs->name}}</div>
                     <hr>
-                </div>
-                <ol >
-                  <li> Нужно заключить договор</li>
-                  <li> Заегистрироватся на сайте</li>
-                  <li> Указать количество машин</li>
-                  <li> Получить индивидуальную карту</li>
-                </ol>
-                <div class="text-center pt-5 ">
-                    <a  id="section3" class="py-2 px-5 text-white price">19.55 ₽ за куб.</a>
-                </div>
+                  </div>
+                @endforeach
+                @foreach ($Tarif as $Tarifs )
+                    {!!$Tarifs->detailes!!}
+                @endforeach
+                @foreach ($Tarif as $Tarifs )
+                    <div class="text-center pt-5 ">
+                        <a id="section3" class="py-2 px-5 text-white price">{{$Tarifs->price}} ₽ за куб.</a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
 </section>
 <!---------------------------------------------------------->
 <!-- payment section start --------------------------------->
-<section  class="container my-5">
+<section class="container my-5">
     <div class="section_third_payment">
-        <div class="d-flex align-items-center justify-content-center payment-methods">
+       
+            <div class="d-flex align-items-center justify-content-center payment-methods">
             <hr>
             <div class="text-center payment mx-2">Способы оплаты</div>
             <hr>
         </div>
+        
         <div class="container pt-5 ">
             <div class="d-flex justify-content-center water">
-                <div class="d-flex flex-column  align-items-center mb-2" >
-                    <div  class="icon rounded-circle text-center"  >
-                        <img src="{{ asset('assets/images/img_index/Vector.png') }}">
+                @foreach ($Payment_method as $Payment_methods)
+                    <div class="d-flex flex-column  align-items-center mb-2" >
+                        <div  class="icon rounded-circle text-center"  >
+                           <a href="{{$Payment_methods->link}}"><img src="/assets/images/img_index/{{$Payment_methods->img_path}}"></a>
+                        </div>
+                        <div class="mt-2 water_text">{{$Payment_methods->title}}</div>
                     </div>
-                    <div class="mt-2 water_text">Онлайн платеж</div>
-                </div>
-                <div class="d-flex flex-column  align-items-center  mb-2">
-                    <div  class="icon rounded-circle text-center">
-                        <img src="{{ asset('assets/images/img_index/Frame.png') }}">
-                    </div>
-                    <div id="section2" class=" mt-2 water_text">Платеж в кассе</div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -123,18 +125,9 @@
         <div class="mx-2 payment text-center">Реквизиты компании</div>
         <hr>
     </div>
-    <ul style="list-style-type: none;">
-        <li>МУП << ВОДОКАНАЛ >></li>
-        <li>ИНН 1653006666 КПП 166001001</li>
-        <li>ОГРН 1021602830370</li>
-        <li>ОКПО 03317648 ОКВЕД 41.00</li>
-        <li>Юр. Адрес: 420087, РТ, г. Казань, ул. Родины, д.9</li>
-        <li>Почт. адрес 420015, РТ. г. Казань, ул. М. Горького, д.34</li>
-        <li>р/с: 40602810600000000043 в ООО КБЭП "БАНК КАЗАНИ" г. Казань</li>
-        <li id="section4">к/с: 301018101000000000844</li>
-        <li>БИК:049205844</li>
-        <li >Первый заместитель директора С М. Н.Алахов действует на основании доверенности №34-0/29742 от 02.12.2020г.</li>
-    </ul>
+    @foreach ($Our_company_details as $Our_company_detailss)
+        {!! $Our_company_detailss->content !!}
+    @endforeach
 </section>
 <section class="pt-5">
     <div class="section_fifth_terminal pt-5">

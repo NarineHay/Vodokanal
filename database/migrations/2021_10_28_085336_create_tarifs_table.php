@@ -21,6 +21,7 @@ class CreateTarifsTable extends Migration
             $table->string('parametr');
             $table->string('status');
             $table->string('type');
+            $table->string('img_path');
             $table->timestamps();
         });
     }

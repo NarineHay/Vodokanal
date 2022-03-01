@@ -11,7 +11,9 @@ class Payment_method extends Model
     protected $fillable = [
         'img_path',
         'title',
-        'content'
+        'content',
+        'link',
+        'status'
 
     ];
 }

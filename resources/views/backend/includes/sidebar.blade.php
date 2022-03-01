@@ -56,6 +56,21 @@
                             Основные виды деятельности предприятия второй
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.tariff_details')}}">
+                            Детали тарифа
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.payment_method')}}">
+                            Способы оплаты
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.company_details')}}">
+                            Реквизиты компании
+                        </a>
+                    </li>
                 </ul>
 
             </li>

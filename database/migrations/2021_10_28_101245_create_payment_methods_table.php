@@ -18,6 +18,8 @@ class CreatePaymentMethodsTable extends Migration
             $table->string('img_path');
             $table->string('title');
             $table->longText('content');
+            $table->longText('link');
+            $table->string('status')->default('1');
             $table->timestamps();
         });
     }

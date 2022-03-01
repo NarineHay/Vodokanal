@@ -16,10 +16,13 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\CompanyDetailsController;
 
 use App\Http\Controllers\Backend\MainActivities1Controller;
 use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
+use App\Http\Controllers\Backend\TariffDetailsController;
+use App\Http\Controllers\Backend\PaymentMethodController;
 
 use App\Http\Controllers\Backend\MainactivitiesController;
 use App\Http\Controllers\Backend\UserController;
@@ -47,6 +50,7 @@ Route::get('/', [WelcomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'index'])->name('contact');
 Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
+
 
 Route::group(['middleware' => 'auth'], function () {
     // Route::resource('roles', RoleController::class);
@@ -87,6 +91,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('main_activities_edit/{id}', [MainActivities1Controller::class, 'edit_main_activities'])->name('edit_main_activities');
             Route::get('/main_activities2', [MainActivities2Controller::class, 'index'])->name('main_activities2');
             Route::get('main_activities2_edit/{id}', [MainActivities2Controller::class, 'edit_main_activities2'])->name('edit_main_activities2');
+            Route::get('/tariff_details', [TariffDetailsController::class, 'index'])->name('tariff_details');
+            Route::post('edit_tariff_details/{id}', [TariffDetailsController::class, 'edit_tarif'])->name('edit_tariffss');
+            Route::get('/payment_method', [PaymentMethodController::class, 'index'])->name('payment_method');
+            Route::post('edit_payment_method/{id}', [PaymentMethodController::class, 'payment_method_edit'])->name('edit_payment');
+            Route::get('/show_new_payment_method', [PaymentMethodController::class, 'create_new'])->name('create');
+            Route::post('/add_new_payment_method', [PaymentMethodController::class, 'add_new_payment_method'])->name('add_new');
+            Route::get('/company_details', [CompanyDetailsController::class, 'index'])->name('company_details');
+            Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
@@ -120,13 +132,6 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('card11/{id}', [CardController::class, 'show']);
 Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
-
-
-
-
-
-
-
 
 
 
