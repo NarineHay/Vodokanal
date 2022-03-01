@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
         <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
         <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="{{ asset('assets/css/nav.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
        
@@ -72,5 +73,21 @@ $(document).ready(function(){
 });
 
         </script>
+        <script>
+        var varCount = 1;
+        $(function () {
+            $('#addVar').on('click', function(){
+                varCount++;
+                $node = '<p>'
+                  + '<input class="form-control "placeholder="Card number" type="number" name="card_number[]" id="var1">'
+                  + '<br>'
+                  + '<span class = "removeVar"> Удалить </span> </p>';
+                $(this).parent().before($node);
+            });
+          $('form').on('click', '.removeVar', function(){
+            $(this).parent().remove();
+          });
+        });
+    </script>
     </body>
 </html>
