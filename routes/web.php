@@ -61,6 +61,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('dashboard', [DashboardController::class, 'savenumber'])->name('add_phone');
             Route::get('mycars', [DashboardController::class, 'indexcars'])->name('mycars');
             Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
+            Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');
+           
 
         });
 
@@ -74,7 +76,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
-            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('cart', [CartController::class, 'index'])->name('cart');
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
 

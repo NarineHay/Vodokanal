@@ -44,7 +44,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </header>
-            <div class="out-container sidebar"></div>
+            <div class="out-container"></div>
             <div class="container user-account-containet">
 
                 <div class="app-body mt-0">
@@ -80,7 +80,6 @@
             $('.sidebar-lg-show').toggleClass('sidebar-show')
         })
         $('.nav-dropdown-toggle').on('click', function(){
-            $('.nav-dropdown').not($(this).parent()).removeClass('open')
             $(this).parent().toggleClass('open')
         })
 
@@ -209,5 +208,6 @@ function initDropEffect(box){
 
         });
 </script>
+
     </body>
 </html>
