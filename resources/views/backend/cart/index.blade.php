@@ -11,13 +11,13 @@
         <div class="ml">
             <div class="i_1 d-flex justify-content-between flex-wrap">
              </div>
-            
-           
+
+
              <a href="/createcard1"><input type="submit" class="py-2 mx-auto" id="btn" style="background: #143B57; color: #fff;" value="create card"></a>
-            
+
                 <table class="table shadow mb-5 bg-white rounded">
-                    
-                   
+
+
                         <tr>
                           <th  class="border border-1">#</th>
                           <th  class="border border-1">name</th>
@@ -29,21 +29,21 @@
                         <!-- @if(auth()->user())  -->
                         @foreach($cards as $key => $card)
 
-                            @foreach($users as $key => $user)
+                            {{-- @foreach($users as $key => $user) --}}
                             <tr>
                             <td class=" border border-1 py-3">
                                 <h4>{{$key+1}}</h4>
                             </td>
                             <td class=" border border-1 py-3">
-                                
-                                <h1>{{$user->first_name}}</h1><br> <h6>{{$user->email}}</h6>
+
+                                <h1>{{$card->user->first_name}}</h1><br> <h6>{{$card->user->email}}</h6>
                             </td>
                             <td class=" border border-1 py-3">
                                 <h1>{{$card->card_number}}</h1>
                             </td>
 
                             <!-- <td class=" border border-1 py-3">
-                                <h1>{{$user['balance']}}</h1>
+
                             </td> -->
                             <td class=" border border-1 py-3" id="box2">
                             <!-- <input type="submit" class="form-control py-2 mx-auto" id="btn2" style="background: #143B57; color: #fff;" value="active"> -->
@@ -55,9 +55,9 @@
                             </td>
 
                             </tr>
+                            {{-- @endforeach --}}
                             @endforeach
-                            @endforeach
-            
+
 
                         <!-- @endif -->
 

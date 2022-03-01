@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Phone_number;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\Phone_number;  
 use App\Models\balance; 
 use App\Models\User; 
 use App\Models\Card; 
 use Illuminate\Support\Facades\Validator;
+
 
 /**
  * Class DashboardController.
@@ -23,6 +24,7 @@ class DashboardController extends Controller
     {
         // return view('user.dashboard');
         if (! auth()->user()->isAdmin()) {
+            // $phone_number=Phone_number::where('user_id', Auth::user()->id)->first();
             // return redirect(route('user.dashboard'))->withFlashDanger('You are not authorized to view admin dashboard.');
 
             $cards=Auth::user();
@@ -36,6 +38,7 @@ class DashboardController extends Controller
         // dd(auth()->user()->roles);
 
     }
+
     public function savenumber(Request $request)    
     {    
         $this->validate($request, [
@@ -75,5 +78,6 @@ class DashboardController extends Controller
         ]);
           return redirect()->back();
     }
+
 
 }
