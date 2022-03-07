@@ -11,12 +11,18 @@ class Contracts extends Model
     protected $fillable = [
         'user_id',
         'number',
-        'date_and',
+        'date_start',
+        'date_end',
         'status'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function ContractFile()
+    {
+        return $this->hasMany(ContractFile::class ,'contract_id');
     }
 }

@@ -80,7 +80,7 @@
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link " href="{{route('backend.contract_page')}}">
                             Договор
                         </a>
                     </li>
