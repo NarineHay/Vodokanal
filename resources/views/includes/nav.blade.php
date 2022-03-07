@@ -47,7 +47,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-nav-ul" aria-labelledby="navbarDropdownMenuLink">
                                     <li>
-                                        <a class="dropdown-item" href="">Профиль </a>
+                                        <a class="dropdown-item" href="{{ route('user.dashboard') }}">Профиль </a>
                                     </li>
                                     <li>
                                      

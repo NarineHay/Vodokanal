@@ -54,14 +54,7 @@
                           </div>
                       </div>
                       <div class="col-lg-6 col-md-6  col-sm-12 col-12 mb-2 p-3">
-                            <div class="card p-3" style="border-radius: 20px;">
-                                  <h6>Машина - номер машины </h6>
-                                <div>
-                                  <p class="text-success h3">Текущий баланс</p>
-                                  <p class="text-success h3"> 3000 руб.</p>
-                                </div>
-                                 <h6 class="text-danger">+Пополнить карту</h6>
-                            </div>
+                           <!-- some cod -->
                       </div>
         </div>
 
