@@ -66,18 +66,37 @@ class DashboardController extends Controller
     }
     
     public function CreateBlance(Request $request)
-    {
-        $validArr = [ "balance"  => "required" ];
+    {    
         
-        $this->validate($request,$validArr);
-        $input = $request->all();//take all validates lines
-         
-            $insert = Card::create([//put inide datebase
-            'balance'=>$request->balance,
-          
+        $this->validate($request, [
+        'balance'=> 'required',
+        'card_id'=> 'required',
+
+        ]); 
+
+
+        $cardbalance=Card::find($request->card_id)->balance;
+        $cardFind = Card::find($request->card_id);
+        $cardbalance += $request->balance;
+
+        // if($cardFind['balance']<= 300){
+        //     return redirect()->back()->withErrors(['balance' => 'ededed']);
+        // }
+
+        $cardFind->update([
+            'balance'=>$cardbalance,
+        ]);     
+
+        $balance = Auth::user()->balance;
+        $balance -= $request->balance;
+        Auth::user()->update([
+          'balance'=>$balance,
         ]);
-          return redirect()->back();
+        return redirect()->back(); 
+
+          
     }
+    
 
 
 }

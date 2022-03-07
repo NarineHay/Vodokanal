@@ -29,14 +29,14 @@
                         <!-- @if(auth()->user())  -->
                         @foreach($cards as $key => $card)
 
-                            {{-- @foreach($users as $key => $user) --}}
+                           
                             <tr>
                             <td class=" border border-1 py-3">
                                 <h4>{{$key+1}}</h4>
                             </td>
                             <td class=" border border-1 py-3">
 
-                                <h1>{{$card->user->first_name}}</h1><br> <h6>{{$card->user->email}}</h6>
+                                <h1>{{$card->user->first_name}}</h1><br><h6>{{$card->user->email}}</h6>
                             </td>
                             <td class=" border border-1 py-3">
                                 <h1>{{$card->card_number}}</h1>
@@ -45,17 +45,27 @@
                             <!-- <td class=" border border-1 py-3">
 
                             </td> -->
-                            <td class=" border border-1 py-3" id="box2">
-                            <!-- <input type="submit" class="form-control py-2 mx-auto" id="btn2" style="background: #143B57; color: #fff;" value="active"> -->
-                                    <h4 class="{{ $card->status == 'active' ? 'text-success' : 'text-danger' }}">{{ $card->status == 'active' ? 'active' : 'deactive' }}</h4>
-                            </td>
-                            <td class=" border border-1 py-3" id="box1 ">
-                            <input type="submit" class="form-control py-2 mx-auto {{ $card->status == 'active' ? 'btn-danger' : 'btn-success' }}" id="{{ $card->status == 'active' ? 'btn2' : 'btn1' }}"  value="{{ $card->status == 'active' ? 'deactive' : 'active' }}">
+                            
+                               
+                                <td class=" border border-1 py-3" id="box2">
+                                    @if($card->status == 'active')
+                                    <h4 class="text-success">active</h4>
+                                    @elseif( $card->status == 'deactive')
+                                    <h4 class="text-danger">deactive</h4>
+                                    @endif
+                                </td>
+                               
+                                <td class=" border border-1 py-3" id="box1 ">
+                                <form action="{{route('backend.cart_accept',$card->id)}}" method="get">
+                                    <!-- <input type="submit" class="form-control py-2 mx-auto {{ $card->status == '1' ? 'btn-danger' : 'btn-success' }}" id="{{ $card->status == '1' ? 'btn2' : 'btn1' }}"  value="{{ $card->status == '1' ? 'deactive' : 'active' }}"> -->
+                                    <input type="submit" class="form-control py-2 mx-auto bg-dark">
 
-                            </td>
+                                </form>
+                                </td>
+                            
 
                             </tr>
-                            {{-- @endforeach --}}
+                           
                             @endforeach
 
 
