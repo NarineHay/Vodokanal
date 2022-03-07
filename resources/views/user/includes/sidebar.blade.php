@@ -13,7 +13,7 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="{{ route('user.infos') }}">
+                <a class="nav-link " href="{{ route('user.dashboard') }}">
                     <i class="nav-icon bi bi-gear"></i>
                     <span class="li-title">Личные данные</span>
                     <div>

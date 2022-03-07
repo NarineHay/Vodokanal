@@ -17,27 +17,38 @@
                 <form action="/createcard" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
-                        <select class="selectpicker form-control" data-live-search="true" name="user_id">
+                        <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                      @foreach($users as $user)
-                        <option data-tokens="ketchup mustard" class="option" value='{{$user->id}}'>{{$user->first_name}},{{$user->email}}</option>
+                        <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}},{{$user->email}}</option>
                        @endforeach
                         </select>
                         
                         <div class="reg form-group my-3" style="width:100%">
-                            <!-- <input type="number" class="form-control py-2 @error('card_number') is-invalid @enderror" name="card_number[]" placeholder="Card number" style="background: #EFEFEF;"><a href="">click</a> -->
+                            
                             <p>
-                                <input class="form-control @error('card_number') is-invalid @enderror"  placeholder="Card number" type="number" name="card_number[]" id="var1">
+                                @error('user_id')
+    								<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
+                                <input class="form-control " value="номер карты" type="number"  name="object[0][card_number]">
+                              
                                 <p></p>
-                                <span class="removeVar"> Удалить </span>
+                                @error('model')
+    								<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
+                                <input class="form-control "value="номер машины"  type="text" name="object[0][model]" >
+                                <p></p>
+                                @error('car_numbers')
+    								<div class="alert alert-danger">{{ $message }}</div>
+								@enderror
+                                <input class="form-control "value="модель машины" type="text" name="object[0][car_numbers]" >
+                                <p></p>
+                               
+                                <span class="removeVar">Удалить</span> 
                                 <p></p>
                                 <p><span id="addVar"> Добавить новый элемент </span> </p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
                             </p>
-                                @error('card_number[0]')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror  
+                                
                         </div>  
  
                     </div>
