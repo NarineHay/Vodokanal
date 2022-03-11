@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Backend\DashboardController as BackendDashboardController;
 use App\Http\Controllers\Backend\RoleController;
@@ -17,20 +16,14 @@ use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\CompanyDetailsController;
-
 use App\Http\Controllers\Backend\MainActivities1Controller;
 use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
 use App\Http\Controllers\Backend\TariffDetailsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
-
 use App\Http\Controllers\Backend\MainactivitiesController;
 use App\Http\Controllers\Backend\UserController;
-
-
-
 use App\Http\Controllers\Backend\CartController;
-
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 
 /*
@@ -43,15 +36,11 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Auth::routes(['verify'=>true]);
-
 Route::get('/', [WelcomeController::class, 'index'])->name('index');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'index'])->name('contact');
 Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
-
-
 Route::group(['middleware' => 'auth'], function () {
     // Route::resource('roles', RoleController::class);
     Route::group(['middleware' => ['verified']], function () {
@@ -67,7 +56,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
             Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');
            
-
         });
 
         // Route::group(['middleware' => ['backend']], function () {
@@ -78,22 +66,16 @@ Route::group(['middleware' => 'auth'], function () {
         // });
         Route::resource('/backend/roles', RoleController::class);
         Route::resource('/backend/users', UserController::class);
-
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
-
             // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
             Route::get('/backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
             Route::get('cart', [CartController::class, 'index'])->name('cart');
             Route::get('cart_accept/{id}', [CartController::class, 'cart_acceptfoo'])->name('cart_accept');
             Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
-
             Route::get('/main_home_page', [MainHomePageController::class, 'index'])->name('main_home_page');
             Route::post('/edit_main_home', [MainHomePageController::class, 'edit_main_home'])->name('edit_main_home');
             Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_as');
             Route::get('edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
-
             Route::get('/main_activities', [MainActivities1Controller::class, 'index'])->name('main_activities');
             Route::get('main_activities_edit/{id}', [MainActivities1Controller::class, 'edit_main_activities'])->name('edit_main_activities');
             Route::get('/main_activities2', [MainActivities2Controller::class, 'index'])->name('main_activities2');
@@ -106,37 +88,25 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/add_new_payment_method', [PaymentMethodController::class, 'add_new_payment_method'])->name('add_new');
             Route::get('/company_details', [CompanyDetailsController::class, 'index'])->name('company_details');
             Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
-
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
-
-
             // Route::resource('roles', RoleController::class);
-    // Route::resource('/backend/roles', RoleController::class)->only([
-    //     'index', 'show'
-    // ]);*
+            // Route::resource('/backend/roles', RoleController::class)->only([
+            //     'index', 'show'
+            // ]);*
             // Route::resource('users', UserController::class);
-
         });
-
     });
-
 });
-
 // Route::group(['middleware' => 'guest'], function () {
-
 // });
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware(['auth'])->name('verification.notice');
-
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
-
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
-
-
 Route::get('card11/{id}', [CardController::class, 'show']);
 Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
 

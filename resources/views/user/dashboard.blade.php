@@ -1,5 +1,6 @@
-@extends('user.layouts.app') @section('title' ) @section('content')
-
+@extends('user.layouts.app')
+@section('title' )
+@section('content')
 <header></header>
 <section>
     <div class="ml">
@@ -12,7 +13,6 @@
                 <h6>Обзор баланса</h6>
             </div>
             <div class="a_1 d-flex mt-3">
-                
             </div>
         </div>
         <h4 class="fw-bold">Личные данные</h4>
@@ -43,7 +43,6 @@
                 <th class="border border-1">мои номера телефонов</th>
                 <th class="border border-1">действие</th>
             </tr>
-
             @foreach(Auth::user()->phone_number as $key=> $number)
             <tr>
                 <td class="border border-1 py-3">
@@ -61,8 +60,6 @@
         @if(isset(Auth::user()->card)) 
         @foreach(Auth::user()->card as $num => $card)
         <form action="/dashboard_blance" method="post">
-          
-          
             <input type="text" hidden value="{{$card->id}}" name="card_id" />
             <div class="row justify-content-between">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 p-3">
