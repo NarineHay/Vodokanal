@@ -9,7 +9,7 @@ use App\Models\MainActivitie1;
 class MainActivities1Controller extends Controller
 {
     public function index(){
-        $data = MainActivitie1::All();
+        $data = MainActivitie1::first();
         return view('backend.homepage.main_activities1',compact('data'));
     }
 

@@ -16,6 +16,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\AdministrationController;
 use App\Http\Controllers\Backend\CompanyDetailsController;
 
 use App\Http\Controllers\Backend\MainActivities1Controller;
@@ -67,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('mycars', [DashboardController::class, 'indexcars'])->name('mycars');
             Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
             Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');
-           
+
 
         });
 
@@ -77,6 +78,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //     });
         // });
+        Route::resource('/backend/administration', AdministrationController::class);
         Route::resource('/backend/roles', RoleController::class);
         Route::resource('/backend/users', UserController::class);
 
@@ -146,7 +148,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 
-Route::get('card11/{id}', [CardController::class, 'show']);
+Route::get('card11', [CardController::class, 'index']);
 Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
 
 

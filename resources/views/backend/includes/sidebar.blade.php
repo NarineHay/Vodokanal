@@ -2,20 +2,26 @@
     <nav class="sidebar-nav user-sidebar-nav ps">
         <ul class="nav">
 
-            <li class="nav-item nav-dropdown {{ request()->routeIs('roles*') ? 'open' : '' }}">
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['roles*', 'administration*']) ? 'open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle " href="#"> Система </a>
 
                 <ul class="nav-dropdown-items ">
-                    <li class="nav-item">
-                        <a class="nav-link " href="">
-                            Доступы Администраторов
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
-                            Управление ролями
-                        </a>
-                    </li>
+                    @can('administration-list')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('administration*') ? 'active' : '' }}" href="{{ route('administration.index') }}">
+                                Список администраторов
+                            </a>
+                        </li>
+                    @endcan
+                    @can('role-list')
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
+                                Управление ролями
+                            </a>
+                        </li>
+                    @endcan
+
+
                     <li class="nav-item">
                         <a class="nav-link " href="">
                             Тариф
