@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers\Backend;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +19,6 @@ class CartController extends Controller
     }
     public function cart_acceptfoo($id)
     {
-     
         $cardAc = Card::find($id);
         $cardAc['status'] = $cardAc['status'] == 'active' ? 'deactive' : 'active';
         $cardAc->save();
@@ -31,13 +28,10 @@ class CartController extends Controller
     public function index1(Request $request)
     {
         $users=User::where('id','!=',Auth::id())->get();
-
-    //    dd($users);
         return view('backend.cart.createcard',compact('users'));
     }
     public function CreateCard(Request $request)
     {
-        
         $validArr = [
                      'user_id' => 'required',
                      "card_number.*"  => "required|min:6",
@@ -45,10 +39,8 @@ class CartController extends Controller
                      "model.*"  => "required",
                     ];
         if($validArr == null){
-
             redirect()->back()->withErrors($validArr);
         }else{
-
             $this->validate($request,$validArr);
             $input = $request->all();           
             foreach($request->object as $key => $value){
@@ -63,8 +55,6 @@ class CartController extends Controller
                 ]);
             }
         }
-
         return redirect()->back();
     }
-
 }
