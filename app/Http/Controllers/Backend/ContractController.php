@@ -21,7 +21,13 @@ class ContractController extends Controller
      }
 
      public function store_contract(Request $request){
-         
+
+            $this->validate($request,[
+                'number'=>'required|',
+                'date_start'=>'required|date_format:Y/m/d|after:yesterday',
+                'date_end'=>'date_format:Y/m/d|after:yesterday',
+            ]);
+
            $data = Contracts::create([
                 'user_id'=>$request->user_id,
                 'number'=>$request->number,
