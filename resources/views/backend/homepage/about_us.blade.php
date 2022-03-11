@@ -23,21 +23,21 @@
                 </div>
             @endif
              <h3>о нашей компании</h3>
-             @foreach ($about as $about_us)
-               <form action="{{route('backend.edit_about_as', $about_us->id)}}" method="get">
+           
+               <form action="{{route('backend.edit_about_as', $about->id)}}" method="get">
                 @csrf
                     <div class="large-field-group simple">
                         <label class="form-label" for="error-adajsd">заглавие</label>
-                        <input  type="text" name="title" id="error-adajsd" class="form-control" value="{{$about_us->title}}">
+                        <input  type="text" name="title" id="error-adajsd" class="form-control" value="{{$about->title}}">
                     </div>
                     <label class="form-label" for="error-adajsd">содержание</label>
                     <textarea id="mytextarea" name="content">
-                        {{$about_us->content}}
+                        {{$about->content}}
                     </textarea>
                    <br>
                    <button  class="btn btn-primary">редактировать</button>
                </form>
-               @endforeach
+             
             </div><!--card-body-->
         </div><!--card-->
     </div><!--col-->

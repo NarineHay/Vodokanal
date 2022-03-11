@@ -9,7 +9,7 @@ use App\Models\Our_company_details;
 class CompanyDetailsController extends Controller
 {
      public function index(){
-        $Our_company_details = Our_company_details::All();
+        $Our_company_details = Our_company_details::first();
           return view('backend.homepage.company_details',compact('Our_company_details'));
      }
 

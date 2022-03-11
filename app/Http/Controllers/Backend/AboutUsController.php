@@ -10,7 +10,7 @@ class AboutUsController extends Controller
 {
     public function index()
     {
-        $about = About_us::All();
+        $about = About_us::first();
         return view('backend.homepage.about_us',compact('about'));
     }
 

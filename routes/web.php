@@ -15,12 +15,16 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
+use App\Http\Controllers\Backend\AdministrationController;
 use App\Http\Controllers\Backend\CompanyDetailsController;
 use App\Http\Controllers\Backend\MainActivities1Controller;
 use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
 use App\Http\Controllers\Backend\TariffDetailsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
+
+use App\Http\Controllers\Backend\ContractController;
+
 use App\Http\Controllers\Backend\MainactivitiesController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\CartController;
@@ -55,7 +59,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('mycars', [DashboardController::class, 'indexcars'])->name('mycars');
             Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
             Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');
-           
+
         });
 
         // Route::group(['middleware' => ['backend']], function () {
@@ -64,6 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         //     });
         // });
+        Route::resource('/backend/administration', AdministrationController::class);
         Route::resource('/backend/roles', RoleController::class);
         Route::resource('/backend/users', UserController::class);
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
@@ -88,6 +93,17 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/add_new_payment_method', [PaymentMethodController::class, 'add_new_payment_method'])->name('add_new');
             Route::get('/company_details', [CompanyDetailsController::class, 'index'])->name('company_details');
             Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
+
+            Route::get('contract_page', [ContractController::class, 'index'])->name('contract_page');
+            Route::get('add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
+            Route::Post('store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
+            Route::get('show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
+            Route::get('edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
+            Route::post('/edit_now_contract/{id}', [ContractController::class, 'update'])->name('edit_now_contract');
+            Route::get('delate_file/{id}', [ContractController::class, 'delate_file'])->name('delate_file');
+            Route::get('delate_index_contract_page/{id}', [ContractController::class, 'index_contract_page'])->name('delate_index_contract_page');
+
+
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
             // Route::resource('roles', RoleController::class);
@@ -107,7 +123,9 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
     $request->fulfill();
     return redirect('/dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');
-Route::get('card11/{id}', [CardController::class, 'show']);
+
+Route::get('card11', [CardController::class, 'index']);
+
 Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
 
 

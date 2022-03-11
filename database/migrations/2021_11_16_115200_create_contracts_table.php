@@ -18,7 +18,8 @@ class CreateContractsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('number');
-            $table->date('date_and');
+            $table->date('date_start');
+            $table->date('date_end');
             $table->string('status');
             $table->timestamps();
         });

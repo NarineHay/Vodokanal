@@ -8,7 +8,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container-fluid">
-            <a class="navbar-brand" href="{{ route('index') }}"><img src="https://img.icons8.com/carbon-copy/100/000000/water.png" width="50"></a>
+            <a class="navbar-brand" href="{{ route('index') }}"><img src="{{asset('/assets/images/img_index/vodokanal.png')}}" width="50"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
