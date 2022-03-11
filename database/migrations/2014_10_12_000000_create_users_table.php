@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar_type')->default('gravatar');
             $table->string('avatar_location')->nullable();
-            $table->string('company_type');
+            $table->string('company_type')->nullable();
             $table->string('company_name')->nullable();
             $table->bigInteger('balance')->nullable();
             $table->string('remember_token')->nullable();

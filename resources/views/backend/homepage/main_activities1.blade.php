@@ -22,8 +22,7 @@
                 </div>
             @endif
              <h3>Основные виды деятельности предприятия первый</h3>
-            
-              
+
                 <form action="{{route('backend.edit_main_activities',$data->id)}}" method="get">
                     @csrf
                         <div class="large-field-group simple">
@@ -37,7 +36,7 @@
                     <br>
                     <button  class="btn btn-primary">редактировать</button>
                 </form>
-             
+
             </div><!--card-body-->
         </div><!--card-->
     </div><!--col-->
