@@ -1,19 +1,19 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-@foreach ($tarif as $tarifs)
+
 <style>
     .js--image-preview {
       height: 225px;
       width: 100%;
       position: relative;
       overflow: hidden;
-      background-image: url('/assets/images/img_index/{{$tarifs->img_path}}');
+      background-image: url('/assets/images/img_index/{{$tarif->img_path}}');
       background-color: white;
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
     }
     </style>
-@endforeach
+
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -25,8 +25,8 @@
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
                     <h3>Детали тарифа</h3>
-                    @foreach ($tarif as $tarifs)
-                        <form action="{{route('backend.edit_tariffss' , $tarifs->id)}}" method="Post" enctype="multipart/form-data">
+                   
+                        <form action="{{route('backend.edit_tariffss' , $tarif->id)}}" method="Post" enctype="multipart/form-data">
                             @csrf
                         
                             <label class="form-label" for="error-adajsd">видео</label>
@@ -43,24 +43,23 @@
                             
                             <div class="large-field-group simple">
                                 <label class="form-label" for="error-adajsd">заглавие</label>
-                                <input  type="text" name="name" id="error-adajsd" class="form-control" value="{{$tarifs->name}}">
+                                <input  type="text" name="name" id="error-adajsd" class="form-control" value="{{$tarif->name}}">
                             </div>
                             <br>
                             <div class="large-field-group simple">
                                 <label class="form-label" for="error-adajsd">кнопка ссылка</label>
                                 <textarea id="mytextarea" name="detailes">
-                                {!!$tarifs->detailes!!}
+                                {!!$tarif->detailes!!}
                                 </textarea>
                             </div>
                             <br>
                             <div class="large-field-group simple">
                                 <label class="form-label" for="error-adajsd">цена</label>
-                                <input  type="text" name="price" id="error-adajsd" class="form-control" value="{{$tarifs->price}}">
+                                <input  type="text" name="price" id="error-adajsd" class="form-control" value="{{$tarif->price}}">
                             </div>
                             <br>
                             <button  class="btn btn-primary">редактировать</button>
                         </form>
-                    @endforeach
                 </div>
                 <!--card-body-->
             </div>

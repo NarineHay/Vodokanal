@@ -11,13 +11,13 @@ class FeedbackController extends Controller
      public function sendFeedback(Request $request){
 
         $request->validate([
-            'email' => 'required |email',
-            'message' => 'required'
+            'email1' => 'required |email',
+            'message1' => 'required'
         ]);
          
         $insert = Feedback::create([
-            'email'=>$request->email,
-            'message'=>$request->message
+            'email'=>$request->email1,
+            'message'=>$request->message1
         ]);
         Mail::to($request->email)->send(new FeedbackMail);
         return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');

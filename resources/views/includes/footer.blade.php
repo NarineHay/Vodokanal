@@ -36,12 +36,12 @@
                         @csrf
                         <h2 >Обратная связь</h2>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="Эл. адрес:" value="{{ old('email') }}">
-                            <span style="color:red">@error('email'){{$message}}@enderror</span>
+                            <input type="email" name="email1" class="form-control @error('email1') is-invalid @enderror" placeholder="Эл. адрес:" value="{{ old('email') }}">
+                            <span style="color:red">@error('email1'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group my-2">
-                            <textarea  name="message" class="form-control @error('message') is-invalid @enderror" placeholder="Сообщение:" value="{{ old('message') }}"></textarea>
-                            <span style="color:red">@error('message'){{$message}}@enderror</span>
+                            <textarea  name="message1" class="form-control @error('message1') is-invalid @enderror" placeholder="Сообщение:" value="{{ old('message') }}"></textarea>
+                            <span style="color:red">@error('message1'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group mb-3">
                             <input type="submit" class="py-1 px-4 send-message" id="msm">
