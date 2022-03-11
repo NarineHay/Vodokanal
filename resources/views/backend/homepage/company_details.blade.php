@@ -11,20 +11,20 @@
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
                     <h3>Реквизиты компании</h3>
-                @foreach ($Our_company_details as $Our_company_detailss)
-                    <form action="{{route('backend.edit_company_details',$Our_company_detailss->id)}}" method="Post" enctype="multipart/form-data">
+                
+                    <form action="{{route('backend.edit_company_details',$Our_company_details->id)}}" method="Post" enctype="multipart/form-data">
                         @csrf
 
                         <div class="large-field-group simple">
                             <label class="form-label" for="error-adajsd">содержание</label>
                             <textarea id="mytextarea" name="content">
-                            {!!$Our_company_detailss->content !!}
+                            {!!$Our_company_details->content !!}
                             </textarea>
                         </div>
                         <br/>
                         <button class="btn btn-primary">редактировать</button>
                     </form>
-                @endforeach
+               
                     
                 </div>
                 <!--card-body-->

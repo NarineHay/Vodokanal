@@ -9,7 +9,7 @@ use App\Models\Main;
 class MainHomePageController extends Controller
 {
     public function index(){
-        $Main = Main::All();
+        $Main = Main::first();
         return  view('backend.homepage.main_home_page',compact('Main'));
     }
 

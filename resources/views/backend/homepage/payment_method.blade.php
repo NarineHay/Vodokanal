@@ -15,7 +15,6 @@
                         <a href="{{route('backend.create')}}" style="color:#fff"><button class="btn btn-primary">Добавлять</button></a>
                     </div>
                     @foreach ( $Payment_method as $Payment_methods )
-                    @if ($Payment_methods->status)
                     <form action="{{route('backend.edit_payment', $Payment_methods->id)}}" method="Post" enctype="multipart/form-data">
                         @csrf
 
@@ -38,7 +37,6 @@
                         <br/>
                         <button class="btn btn-primary">редактировать</button>
                     </form><br><hr>
-                    @endif
                     @endforeach
                 </div>
                 <!--card-body-->

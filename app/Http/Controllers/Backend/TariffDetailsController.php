@@ -9,7 +9,7 @@ use App\Models\Tarif;
 class TariffDetailsController extends Controller
 {
      public function index(){
-         $tarif = Tarif::All();
+         $tarif = Tarif::first();
          return view('backend.homepage.Tariff_details',compact('tarif'));
      }
 
