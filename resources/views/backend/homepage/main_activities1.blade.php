@@ -22,23 +22,21 @@
                 </div>
             @endif
              <h3>Основные виды деятельности предприятия первый</h3>
-            
-               @foreach ($data as $info)
-                <form action="{{route('backend.edit_main_activities',$info->id)}}" method="get">
+
+                <form action="{{route('backend.edit_main_activities',$data->id)}}" method="get">
                     @csrf
                         <div class="large-field-group simple">
                             <label class="form-label" for="error-adajsd">заглавие</label>
-                            <input  type="text" name="title" id="error-adajsd" class="form-control" value="{{$info->title}}">
+                            <input  type="text" name="title" id="error-adajsd" class="form-control" value="{{$data->title}}">
                         </div>
                         <label class="form-label" for="error-adajsd">содержание</label>
                         <textarea id="mytextarea" name="content">
-                          {!!$info->content!!}
+                          {!!$data->content!!}
                         </textarea>
                     <br>
                     <button  class="btn btn-primary">редактировать</button>
                 </form>
-               @endforeach
-             
+
             </div><!--card-body-->
         </div><!--card-->
     </div><!--col-->

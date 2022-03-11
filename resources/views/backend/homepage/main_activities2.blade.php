@@ -22,7 +22,7 @@
                 </div>
             @endif
              <h3> Основные виды деятельности предприятия второй</h3>
-            
+
                @foreach ($MainActivitie2 as $MainActivitie2)
                 <form action="{{route('backend.edit_main_activities2',$MainActivitie2->id)}}" method="get">
                     @csrf
@@ -32,13 +32,13 @@
                         </div>
                         <label class="form-label" for="error-adajsd">содержание</label>
                         <textarea id="mytextarea" name="content">
-                          {!!$MainActivitie2->content!!}
+                          {{$MainActivitie2->content}}
                         </textarea>
                     <br>
                     <button  class="btn btn-primary">редактировать</button>
                 </form>
                @endforeach
-             
+
             </div><!--card-body-->
         </div><!--card-->
     </div><!--col-->

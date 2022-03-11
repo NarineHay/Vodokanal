@@ -80,8 +80,10 @@
             $('.sidebar-lg-show').toggleClass('sidebar-show')
         })
         $('.nav-dropdown-toggle').on('click', function(){
+            $('.nav-dropdown').not($(this).parent()).removeClass('open')
             $(this).parent().toggleClass('open')
         })
+
 
 
         function initImageUpload(box) {
@@ -93,7 +95,7 @@
     let file = e.currentTarget.files[0];
     checkType(file);
   }
-  
+
   function previewImage(file){
     let thumb = box.querySelector('.js--image-preview'),
         reader = new FileReader();
@@ -115,7 +117,7 @@
       previewImage(file);
     }
   }
-  
+
 }
 
 // initialize box-scope
@@ -129,11 +131,11 @@ for (let i = 0; i < boxes.length; i++) {
 /// drop-effect
 function initDropEffect(box){
   let area, drop, areaWidth, areaHeight, maxDistance, dropWidth, dropHeight, x, y;
-  
+
   // get clickable area for drop effect
   area = box.querySelector('.js--image-preview');
   area.addEventListener('click', fireRipple);
-  
+
   function fireRipple(e){
     area = e.currentTarget
     // create drop
@@ -144,7 +146,7 @@ function initDropEffect(box){
     }
     // reset animate class
     drop.className = 'drop';
-    
+
     // calculate dimensions of area (longest side)
     areaWidth = getComputedStyle(this, null).getPropertyValue("width");
     areaHeight = getComputedStyle(this, null).getPropertyValue("height");
@@ -153,22 +155,22 @@ function initDropEffect(box){
     // set drop dimensions to fill area
     drop.style.width = maxDistance + 'px';
     drop.style.height = maxDistance + 'px';
-    
+
     // calculate dimensions of drop
     dropWidth = getComputedStyle(this, null).getPropertyValue("width");
     dropHeight = getComputedStyle(this, null).getPropertyValue("height");
-    
+
     // calculate relative coordinates of click
     // logic: click coordinates relative to page - parent's position relative to page - half of self height/width to make it controllable from the center
     x = e.pageX - this.offsetLeft - (parseInt(dropWidth, 10)/2);
     y = e.pageY - this.offsetTop - (parseInt(dropHeight, 10)/2) - 30;
-    
+
     // position drop and animate
     drop.style.top = y + 'px';
     drop.style.left = x + 'px';
     drop.className += ' animate';
     e.stopPropagation();
-    
+
   }
 }
     </script>
@@ -193,7 +195,7 @@ function initDropEffect(box){
         });
     </script>
     <script>
-      
+
     //  const btn1 = document.getElementById('btn1');
     //  const box1 = document.getElementById('box1');
     //  const btn2 = document.getElementById('btn2');
@@ -201,8 +203,8 @@ function initDropEffect(box){
 
         $('#btn1').on('click', function () {  });
         $('#btn2').on('click', function () {  });
-        
-        
+
+
 </script>
 
     </body>
