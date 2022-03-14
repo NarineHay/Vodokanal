@@ -104,10 +104,11 @@ body {
 
 .wrapper{
   display: flex;
+  width: 200px;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content:flex-start;
 }
 
 h1 {

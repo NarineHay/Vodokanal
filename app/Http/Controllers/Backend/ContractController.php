@@ -23,9 +23,11 @@ class ContractController extends Controller
      public function store_contract(Request $request){
 
             $this->validate($request,[
-                'number'=>'required|',
-                'date_start'=>'required|date_format:Y/m/d|after:yesterday',
-                'date_end'=>'date_format:Y/m/d|after:yesterday',
+                'number'=>'required',
+                'date_start'=>'required|date|date_format:Y-m-d|after:yesterday',
+                'date_end'=>'required|date|date_format:Y-m-d|after:date_start',
+                'file.*' => 'required|max:10000|mimes:application/pdf,pdf',
+                'user_id'=>'required'
             ]);
 
            $data = Contracts::create([
@@ -71,6 +73,10 @@ class ContractController extends Controller
      public function update(Request $request ,$id){
 
         $Contracts =Contracts::find($id);
+
+        $this->validate($request,[
+            'file.*' => 'required|max:10000|mimes:application/pdf,pdf'
+        ]);
 
         $Contracts->update([
             'user_id'=>$request->user_id,

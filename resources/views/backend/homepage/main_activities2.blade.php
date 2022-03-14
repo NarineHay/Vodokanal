@@ -18,7 +18,7 @@
         <div class="card" style="padding:25px">
             @if (session('message'))
                 <div class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}
                 </div>
             @endif
              <h3> Основные виды деятельности предприятия второй</h3>

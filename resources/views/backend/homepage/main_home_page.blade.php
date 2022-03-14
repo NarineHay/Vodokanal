@@ -1,19 +1,5 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
 
-<style>
-    .js--image-preview {
-      height: 225px;
-      width: 100%;
-      position: relative;
-      overflow: hidden;
-      background-image: url('/assets/images/img_index/{{$Main->img_path}}');
-      background-color: white;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    </style>
-
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -22,7 +8,7 @@
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
+                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
                     <h3>главная домашняя страница</h3>
                    
@@ -32,10 +18,12 @@
                             <label class="form-label" for="error-adajsd">изображение</label>
                             <div class="wrapper">
                                 <div class="box">
-                                    <div class="js--image-preview"></div>
+                                    <div class="js--image-preview"><img  src="/assets/images/img_index/{{$Main->img_path}}" style="width: 100%; height: 100%;"></img></div>
                                     <div class="upload-options">
                                         <label>
-                                            <input name="img_path" type="file" class="image-upload"/>
+                                            <span  style="font-size:20px">изменить изображение</span>
+                                            <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
+                                            <i class="fa fa-upload" aria-hidden="true" style="font-size:25px"></i>
                                         </label>
                                     </div>
                                 </div>
