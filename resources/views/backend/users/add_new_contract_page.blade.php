@@ -46,41 +46,53 @@
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
+                    <div class="text-right">
+                        <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+                   </div>
                     <h3>Новый контракт</h3><br>
+                    
                     <form action="{{route('backend.store_info_Contract')}}" method="Post" enctype="multipart/form-data">
 
                         <div class="form-group">
                           <label for="exampleInputEmail1">Имя пользователя</label>
                           <select  name="user_id" class="custom-select">
+                            <option value="">--выберите пользователя--</option>
                             @foreach ($user as $users )
                                 <option value="{{$users->id}}">{{$users->first_name}}</option>
                             @endforeach
                           </select>
+                          <span style="color:red">@error('user_id'){{$message}}@enderror</span>
                          
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Контактный номер</label>
-                          <input type="text" name="number" class="form-control" id="exampleInputPassword1">
+                          <input type="text" name="number" class="form-control" id="exampleInputPassword1" value="{{ old('number') }}">
+                          <span style="color:red">@error('number'){{$message}}@enderror</span>
+                          
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Дата начала</label>
-                            <input type="date" name="date_start" class="form-control" id="exampleInputPassword1">
+                            <input type="date" name="date_start" class="form-control" id="exampleInputPassword1" value="{{ old('date_start') }}">
+                            <span style="color:red">@error('date_start'){{$message}}@enderror</span>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Дата окончания</label>
-                            <input type="date" name="date_end" class="form-control" id="exampleInputPassword1">
+                            <input type="date" name="date_end" class="form-control" id="exampleInputPassword1" value="{{ old('date_end') }}">
+                            <span style="color:red">@error('date_end'){{$message}}@enderror</span>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Добавить файл контракта</label>
                             <p class="">
                                 <label for="attachment">
-                                    <a class="btn btn-primary text-light" role="button" aria-disabled="false">+ добавить файл</a>
+                                    <i class="fa fa-upload" aria-hidden="true" style="font-size:35px"></i>
+                                   
                                     
                                 </label>
-                                <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/>
+                                <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/><br>
+                                <span style="color:red">@error('file.*'){{$message}}@enderror</span>
                             </p>
                             <p id="files-area">
                                 <span id="filesList">
@@ -92,9 +104,6 @@
                         </div><br>
                         <button type="submit" class="btn btn-primary">Добавлять</button>
                       </form><br><br>
-                      <div class="text-center">
-                           <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-                      </div>
                      
                    </div>
                 <!--card-body-->

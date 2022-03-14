@@ -18,6 +18,7 @@ class PaymentMethodController extends Controller
 
         $data = Payment_method::find($id);
         $data->title=$request->title;
+        $data->content=$request->content;
         $data->link=$request->link;
         if($request->hasFile('img_path')) {
             $image = $request->file('img_path');
@@ -39,6 +40,7 @@ class PaymentMethodController extends Controller
 
         $data = new Payment_method;
         $data->title=$request->title;
+        $data->content=$request->content;
         $data->link=$request->link;
         if($request->hasFile('img_path')) {
             $image = $request->file('img_path');

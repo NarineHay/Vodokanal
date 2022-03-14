@@ -46,6 +46,9 @@
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
+					<div class="text-right">
+						<a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+				   </div>
                     <h3>Новый контракт</h3><br>
                     <form action="{{route('backend.edit_now_contract',$Contracts->id)}}" method="Post" enctype="multipart/form-data">
 
@@ -103,7 +106,8 @@
                                     <a class="btn btn-primary text-light" role="button" aria-disabled="false">+ добавить файл</a>
                                     
                                 </label>
-                                <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/>
+                                <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/><br>
+								<span style="color:red">@error('file.*'){{$message}}@enderror</span>
                             </p>
                             <p id="files-area">
                                 <span id="filesList">
@@ -113,9 +117,7 @@
                         </div><br>
                         <button type="submit" class="btn btn-primary">Добавлять</button>
                       </form><br><br>
-                      <div class="text-center">
-                           <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-                      </div>
+                     
                      
                    </div>
                 <!--card-body-->

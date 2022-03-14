@@ -1,0 +1,17 @@
+.large-field-group {
+    margin-bottom: 50px;
+  }
+  
+  .js--image-preview {
+    height: 225px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  
