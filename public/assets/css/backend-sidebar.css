@@ -19,8 +19,36 @@
 .background-with{
     background: #fff;
 }
+.ps{
+    overflow: unset !important;
+}
+.user-sidebar{
+    overflow: auto;
+}
+/* --------- scroll --------------------- */
+.user-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
 
+/* Track */
+.user-sidebar::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
 
+/* Handle */
+.user-sidebar::-webkit-scrollbar-thumb {
+  background: #057ef9;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.user-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #0b4076
+}
+table{
+    font-size: 12px;
+}
 
         #container{
             width:380px;

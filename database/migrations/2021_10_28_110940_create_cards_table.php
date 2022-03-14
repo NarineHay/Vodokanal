@@ -18,7 +18,7 @@ class CreateCardsTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('card_number');
-            $table->bigInteger('balance');
+            $table->bigInteger('balance')->default(0);
             $table->string('status')->default('active');
             $table->timestamps();
         });

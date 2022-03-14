@@ -10,7 +10,7 @@ class TariffDetailsController extends Controller
 {
      public function index(){
          $tarif = Tarif::first();
-         return view('backend.homepage.Tariff_details',compact('tarif'));
+         return view('backend.homepage.tariff_details',compact('tarif'));
      }
 
 
@@ -27,6 +27,6 @@ class TariffDetailsController extends Controller
             $data->img_path = $request->file('img_path')->getClientOriginalName();
         }
        $data->save();
-       return redirect()->back()->with('message','успех');;
+       return redirect()->back()->with('message','Вы успешно редактировали');;
      }
 }

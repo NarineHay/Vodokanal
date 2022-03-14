@@ -17,11 +17,11 @@ class AboutUsController extends Controller
     public function edit_about_us(Request $request,$id){
 
         $data = About_us::find($id);
-    
+
         $data->update([
             'title'=>$request->title,
             'content'=>$request->content
         ]);
-        return redirect()->back()->with('message','успех');
+        return redirect()->back()->with('message','Вы успешно редактировали');
     }
 }

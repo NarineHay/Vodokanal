@@ -22,24 +22,24 @@
                                 @error('user_id')
     								<div class="alert alert-danger">{{ $message }}</div>
 								@enderror
-                                <input class="form-control " value="номер карты" type="number"  name="object[0][card_number]">
+                                <input class="form-control " placeholder="номер карты" type="number"  name="object[0][card_number]">
                                 <p></p>
                                 @error('model')
     								<div class="alert alert-danger">{{ $message }}</div>
 								@enderror
-                                <input class="form-control "value="номер машины"  type="text" name="object[0][model]" >
+                                <input class="form-control " placeholder="номер машины"  type="text" name="object[0][model]" >
                                 <p></p>
                                 @error('car_numbers')
     								<div class="alert alert-danger">{{ $message }}</div>
 								@enderror
-                                <input class="form-control "value="модель машины" type="text" name="object[0][car_numbers]" >
+                                <input class="form-control " placeholder="модель машины" type="text" name="object[0][car_numbers]" >
                                 <p></p>
-                                <span class="removeVar">Удалить</span> 
+                                <span class="removeVar">Удалить</span>
                                 <p></p>
                                 <p><span id="addVar"> Добавить новый элемент </span> </p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
                             </p>
-                        </div>  
+                        </div>
                     </div>
                 </form><!--form-->
             </div><!--col-->

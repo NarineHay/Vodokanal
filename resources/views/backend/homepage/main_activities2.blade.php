@@ -26,15 +26,15 @@
                 <form action="{{route('backend.edit_main_activities2',$MainActivitie2->id)}}" method="get">
                     @csrf
                         <div class="large-field-group simple">
-                            <label class="form-label" for="error-adajsd">заглавие</label>
+                            <label class="form-label" for="error-adajsd">Заголовок</label>
                             <input  type="text" name="title" id="error-adajsd" class="form-control" value="{{$MainActivitie2->title}}">
                         </div>
-                        <label class="form-label" for="error-adajsd">содержание</label>
+                        <label class="form-label" for="error-adajsd">Содержание</label>
                         <textarea id="mytextarea" name="content">
                           {!!$MainActivitie2->content!!}
                         </textarea>
                     <br>
-                    <button  class="btn btn-primary">редактировать</button>
+                    <button  class="btn btn-primary">Редактировать</button>
                 </form>
 
             </div><!--card-body-->
@@ -46,7 +46,9 @@
 </div>
 <script>
     tinymce.init({
-      selector: '#mytextarea'
+      selector: '#mytextarea',
+      plugins: 'lists',
+      toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright alignjustify | numlist bullist | outdent indent',
     });
 </script>
 @endsection

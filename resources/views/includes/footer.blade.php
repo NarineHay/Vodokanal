@@ -44,11 +44,11 @@
                             <span style="color:red">@error('message1'){{$message}}@enderror</span>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="submit" class="py-1 px-4 send-message" id="msm">
+                            <input type="submit" class="py-1 px-4 send-message" id="msm" value="Отправить">
                         </div>
                     </form>
                 </div>
-                
+
             </div>
       </div>
     </div>

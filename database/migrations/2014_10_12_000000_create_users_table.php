@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar_location')->nullable();
             $table->string('company_type')->nullable();
             $table->string('company_name')->nullable();
-            $table->bigInteger('balance')->nullable();
+            $table->bigInteger('balance')->default(0);
             $table->string('remember_token')->nullable();
             $table->boolean('type')->default(0);
             $table->boolean('status')->default(0);
