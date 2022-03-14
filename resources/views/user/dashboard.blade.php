@@ -57,33 +57,39 @@
             </tr>
             @endforeach
         </table>
+        <div class="fff">
         @if(isset(Auth::user()->card)) 
         @foreach(Auth::user()->card as $num => $card)
-        <form action="/dashboard_blance" method="post">
+        <form class="form" action="/dashboard_blance" method="post">
             <input type="text" hidden value="{{$card->id}}" name="card_id" />
-            <div class="row justify-content-between">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-12 mb-2 p-3">
+            <div class="card">
+                <div class="col">
                     <div class="card p-3" style="border-radius: 20px;">
-                        <h6 class="text-success h4">Номер карты </h6><h5 class="h1">{{$card->card_number}}</h5>
+                        <span class="text-success h6">Номер карты </span><h5 class="h5">{{$card->card_number}}</h5>
                         <div>
-                            <p class="text-success h4">Текущий баланс {{$card->balance}} руб.</p>
+                            <p class="text-success h6">Текущий баланс <h5 class="h5">{{$card->balance}} руб.</h5></p>
+                            
                             <p class="text-success h4"></p>
-                        </div><p></p>
-                        @error('balance')
+                        </div>
+                        <!-- @error('balance')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                        @enderror
+                        @enderror -->
                         @if(intval($card['balance']) <= 300)
                         <span>
-                        <p class="text-danger h4">{{$card->balance}} руб. Пожалуйста пополните баланс карты</p>
+                        <p class="text-danger h5">{{$card->balance}} руб. Пожалуйста пополните баланс карты</p>
                         </span>
                         @endif
 
                         <div class="addSomeCl{{$num}}"></div>
                         <div class="removeCl{{$num}}">
-                            <a onClick="addSome('{{$num}}')"> Добавить баланс </a>
-                            
+                            <a class="aaaa" onClick="addSome('{{$num}}')"> Добавить баланс </a>
+                            @if (session('message'))
+                                <div class="alert alert-danger" role="alert">
+                               {{ session('message') }}
+                                </div>
+                            @endif
                         </div><p></p>
                        
                         <div>
@@ -96,14 +102,21 @@
         </form>
         @endforeach
          @endif
+         </div>
         <!--form-->
 
         <script>
             function addSome(numI) {
-                $(".addSomeCl" + numI).append('<input class="form-control "placeholder="Card number" type="number" name="balance">');
+                $(".addSomeCl" + numI).append('<input class="form-control "placeholder="Card number" type="number" onkeypress="return validateNumber(event)" name="balance">');
                 $(".removeCl" + numI).empty();
             }
+            function validateNumber(e) {
+            const pattern = /^[0-9]$/;
+
+            return pattern.test(e.key )
+        }
         </script>
+       
 
         @endsection
     </div>

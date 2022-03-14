@@ -48,7 +48,9 @@ class DashboardController extends Controller
     }
     public function indexcars()
     {
-        return view('user.mycars.index');
+        $Cars = Card::where('id',Auth::id())->get();
+        
+        return view('user.mycars.index',compact('Cars'));
     }
 
     public function CreateBlance(Request $request)
@@ -64,15 +66,21 @@ class DashboardController extends Controller
         $cardFind->update([
             'balance'=>$cardbalance,
 
-        ]);
 
-        $balance = Auth::user()->balance;
-        $balance -= $request->balance;
-        Auth::user()->update([
-          'balance'=>$balance,
-        ]);
+        ]);     
+        if(Auth::user()->balance<=$request->balance){
+            return redirect()->back()->with('message','Активирована ограничения на балансе');
+        }else{
+            $balance = Auth::user()->balance;
+            $balance -= $request->balance;
+            Auth::user()->update([
+              'balance'=>$balance,
+            ]);
+        }
+
 
         return redirect()->back();
     }
+    
 
 }

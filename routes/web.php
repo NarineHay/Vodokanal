@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['verified']], function () {
 
         Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
+           
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
@@ -65,6 +66,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/backend/administration', AdministrationController::class);
         Route::resource('/backend/roles', RoleController::class);
         Route::resource('/backend/users', UserController::class);
+
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('/backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('cart', [CartController::class, 'index'])->name('cart');

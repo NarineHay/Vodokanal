@@ -11,13 +11,22 @@
         <div class="ml">
             <div class="i_1 d-flex justify-content-between flex-wrap">
              </div>
-
-
-             <a href="/createcard1"><input type="submit" class="py-2 mx-auto" id="btn" style="background: #143B57; color: #fff;" value="create card"></a>
-
                 <table class="table shadow mb-5 bg-white rounded">
 
-
+                        <tr>
+                            <th>user</th>
+                            <th>information</th>
+                            <th></th>
+                            <th></th>
+                            <th>
+                            <a href="/createcard1">
+                                <input  type="submit" 
+                                        class="py-2 mx-auto"
+                                        id="btn" 
+                                        style="background: #143B57; color: #fff;" 
+                                        value="create card">
+                            </a>
+                            </th>
                         <tr>
                           <th  class="border border-1">#</th>
                           <th  class="border border-1">name</th>
@@ -54,11 +63,11 @@
                                     <h4 class="text-danger">deactive</h4>
                                     @endif
                                 </td>
-                               
+                              
                                 <td class=" border border-1 py-3" id="box1 ">
                                 <form action="{{route('backend.cart_accept',$card->id)}}" method="get">
                                     <!-- <input type="submit" class="form-control py-2 mx-auto {{ $card->status == '1' ? 'btn-danger' : 'btn-success' }}" id="{{ $card->status == '1' ? 'btn2' : 'btn1' }}"  value="{{ $card->status == '1' ? 'deactive' : 'active' }}"> -->
-                                    <input type="submit" class="form-control py-2 mx-auto bg-dark">
+                                    <input type="submit" value="изменить" class="form-control py-2 mx-auto bg-dark">
 
                                 </form>
                                 </td>
@@ -73,15 +82,6 @@
 
                 </table>
         </section>
-
-        <style>
-    .ml{
-        margin-left: 100px;
-        margin-top: 40px
-    }
-
-
-        </style>
 </body>
 
 @endsection
