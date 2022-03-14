@@ -21,7 +21,7 @@ class MainActivities2Controller extends Controller
             'title'=>$request->title,
             'content'=>$request->content
         ]);
-        return redirect()->back()->with('message','успех');
+        return redirect()->back()->with('message','Вы успешно редактировали');
 
     }
 }

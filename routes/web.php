@@ -62,48 +62,41 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');
 
         });
-
-        // Route::group(['middleware' => ['backend']], function () {
-        //     Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
-        //         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-        //     });
-        // });
+    // ----------------- backend routs -------------------------------------------------------------------
         Route::resource('/backend/administration', AdministrationController::class);
         Route::resource('/backend/roles', RoleController::class);
         Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
-            // Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('/backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('cart', [CartController::class, 'index'])->name('cart');
             Route::get('cart_accept/{id}', [CartController::class, 'cart_acceptfoo'])->name('cart_accept');
-            Route::get('/backend/support', [BackendSupportController::class, 'index'])->name('support');
-            Route::get('/main_home_page', [MainHomePageController::class, 'index'])->name('main_home_page');
-            Route::post('/edit_main_home', [MainHomePageController::class, 'edit_main_home'])->name('edit_main_home');
-            Route::get('/about_us', [AboutUsController::class, 'index'])->name('about_as');
-            Route::get('edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
-            Route::get('/main_activities', [MainActivities1Controller::class, 'index'])->name('main_activities');
-            Route::get('main_activities_edit/{id}', [MainActivities1Controller::class, 'edit_main_activities'])->name('edit_main_activities');
-            Route::get('/main_activities2', [MainActivities2Controller::class, 'index'])->name('main_activities2');
-            Route::get('main_activities2_edit/{id}', [MainActivities2Controller::class, 'edit_main_activities2'])->name('edit_main_activities2');
-            Route::get('/tariff_details', [TariffDetailsController::class, 'index'])->name('tariff_details');
+            Route::get('backend/support', [BackendSupportController::class, 'index'])->name('support');
+            Route::get('backend/main_home_page', [MainHomePageController::class, 'index'])->name('main_home_page');
+            Route::post('edit_main_home', [MainHomePageController::class, 'edit_main_home'])->name('edit_main_home');
+            Route::get('backend/about_us', [AboutUsController::class, 'index'])->name('about_as');
+            Route::get('backend/edit/{id}', [AboutUsController::class, 'edit_about_us'])->name('edit_about_as');
+            Route::get('backend/main_activities', [MainActivities1Controller::class, 'index'])->name('main_activities');
+            Route::get('backend/main_activities_edit/{id}', [MainActivities1Controller::class, 'edit_main_activities'])->name('edit_main_activities');
+            Route::get('backend/main_activities2', [MainActivities2Controller::class, 'index'])->name('main_activities2');
+            Route::get('backend/main_activities2_edit/{id}', [MainActivities2Controller::class, 'edit_main_activities2'])->name('edit_main_activities2');
+            Route::get('backend/tariff_details', [TariffDetailsController::class, 'index'])->name('tariff_details');
             Route::post('edit_tariff_details/{id}', [TariffDetailsController::class, 'edit_tarif'])->name('edit_tariffss');
-            Route::get('/payment_method', [PaymentMethodController::class, 'index'])->name('payment_method');
+            Route::get('backend/payment_method', [PaymentMethodController::class, 'index'])->name('payment_method');
             Route::post('edit_payment_method/{id}', [PaymentMethodController::class, 'payment_method_edit'])->name('edit_payment');
-            Route::get('/show_new_payment_method', [PaymentMethodController::class, 'create_new'])->name('create');
+            Route::get('backend/show_new_payment_method', [PaymentMethodController::class, 'create_new'])->name('create');
             Route::post('/add_new_payment_method', [PaymentMethodController::class, 'add_new_payment_method'])->name('add_new');
-            Route::get('/company_details', [CompanyDetailsController::class, 'index'])->name('company_details');
+            Route::get('backend/company_details', [CompanyDetailsController::class, 'index'])->name('company_details');
             Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
 
-            Route::get('contract_page', [ContractController::class, 'index'])->name('contract_page');
-            Route::get('add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
-            Route::Post('store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
-            Route::get('show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
-            Route::get('edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
+            Route::get('backend/contract_page', [ContractController::class, 'index'])->name('contract_page');
+            Route::get('backend/add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
+            Route::Post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
+            Route::get('backend/show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
+            Route::get('backend/edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
             Route::post('/edit_now_contract/{id}', [ContractController::class, 'update'])->name('edit_now_contract');
-            Route::get('delate_file/{id}', [ContractController::class, 'delate_file'])->name('delate_file');
-            Route::get('delate_index_contract_page/{id}', [ContractController::class, 'index_contract_page'])->name('delate_index_contract_page');
+            Route::get('backend//{id}', [ContractController::class, 'delate_file'])->name('delate_file');
+            Route::get('backend/delate_index_contract_page/{id}', [ContractController::class, 'index_contract_page'])->name('delate_index_contract_page');
 
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');

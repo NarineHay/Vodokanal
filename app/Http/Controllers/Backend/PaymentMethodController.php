@@ -26,7 +26,7 @@ class PaymentMethodController extends Controller
             $data->img_path = $request->file('img_path')->getClientOriginalName();
         }
        $data->save();
-       return redirect()->back()->with('message','успех');
+       return redirect()->back()->with('message','Вы успешно редактировали');
      }
 
 
@@ -36,7 +36,7 @@ class PaymentMethodController extends Controller
     }
 
     public function add_new_payment_method(Request $request){
-        
+
         $data = new Payment_method;
         $data->title=$request->title;
         $data->link=$request->link;
@@ -47,8 +47,8 @@ class PaymentMethodController extends Controller
             $data->img_path = $request->file('img_path')->getClientOriginalName();
         }
        $data->save();
-       return redirect()->back()->with('message','успех');
+       return redirect()->back()->with('message','Успешно добавлено');
     }
 
-     
+
 }

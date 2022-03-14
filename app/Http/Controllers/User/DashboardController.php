@@ -18,25 +18,19 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        // return view('user.dashboard');
         if (! auth()->user()->isAdmin()) {
-            // $phone_number=Phone_number::where('user_id', Auth::user()->id)->first();
-            // return redirect(route('user.dashboard'))->withFlashDanger('You are not authorized to view admin dashboard.');
             $cards=Auth::user();
-            // dd($cards);
             return view('user.dashboard',compact('cards'));
 
         }
         return view('backend.dashboard');
-        // dd(auth()->user()->isAdmin());
-        // dd(auth()->user()->roles);
     }
 
-    public function savenumber(Request $request)    
-    {    
+    public function savenumber(Request $request)
+    {
         $this->validate($request, [
         'phone_number'=> 'required',
-        ]); 
+        ]);
         $input = $request->all();
         $user = Auth::user()->id;
 
@@ -60,11 +54,11 @@ class DashboardController extends Controller
     }
 
     public function CreateBlance(Request $request)
-    {    
+    {
         $this->validate($request, [
         'balance'=> 'required',
         'card_id'=> 'required',
-        ]); 
+        ]);
 
         $cardbalance=Card::find($request->card_id)->balance;
         $cardFind = Card::find($request->card_id);
@@ -72,8 +66,9 @@ class DashboardController extends Controller
         $cardFind->update([
             'balance'=>$cardbalance,
 
+
         ]);     
-        if(Auth::user()->balance<=300){
+        if(Auth::user()->balance<=$request->balance){
             return redirect()->back()->with('message','Активирована ограничения на балансе');
         }else{
             $balance = Auth::user()->balance;
@@ -83,7 +78,8 @@ class DashboardController extends Controller
             ]);
         }
 
-        return redirect()->back(); 
+
+        return redirect()->back();
     }
     
 

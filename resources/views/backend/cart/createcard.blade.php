@@ -26,6 +26,7 @@
                         </select>
                         <div class="reg form-group my-3" style="width:100%">
                             <p>
+
                                
                                 <input class="form-control @error('[card_number]') is-invalid @enderror"  value="{{ old('[card_number]') }}" placeholder="номер карты" type="number"  name="object[0][card_number]">
                                 <p></p>
@@ -37,13 +38,14 @@
                                 <p></p>
                                 
                                 <input class="form-control "placeholder="модель машины" type="text" name="object[0][car_numbers]">
+
                                 <p></p>
-                                <span class="removeVar">Удалить</span> 
+                                <span class="removeVar">Удалить</span>
                                 <p></p>
                                 <p><span id="addVar"> Добавить новый элемент </span> </p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
                             </p>
-                        </div>  
+                        </div>
                     </div>
                 </form><!--form-->
             </div><!--col-->
