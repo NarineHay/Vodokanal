@@ -24,7 +24,7 @@ class MainHomePageController extends Controller
             $data->img_path = $request->file('img_path')->getClientOriginalName();
         }
        $data->save();
-       return redirect()->back()->with('message','успех');;
+       return redirect()->back()->with('message','Вы успешно редактировали баннер');;
 
     }
 }
