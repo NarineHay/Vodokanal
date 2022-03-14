@@ -34,15 +34,14 @@ class CartController extends Controller
     {
         $validArr = [
                      'user_id' => 'required',
-                     "card_number.*"  => "required|min:6",
+                     "card_number.*"  => "required|min:6|unique",
                      "car_numbers.*"  => "required",
                      "model.*"  => "required",
                     ];
-        if($validArr == null){
-            redirect()->back()->withErrors($validArr);
-        }else{
-            $this->validate($request,$validArr);
-            $input = $request->all();           
+                  
+           
+            $invalid=$this->validate($request,$validArr);
+            $input = $request->all(); 
             foreach($request->object as $key => $value){
                 $insert = Card::create([
                     'user_id'=>$request['user_id'],
@@ -53,8 +52,9 @@ class CartController extends Controller
                     'car_numbers'=>$value['car_numbers'],
                     'model'=>$value['model']
                 ]);
+           
             }
-        }
-        return redirect()->back();
+        
+        return redirect()->back()->with('message','ваши данные успешно добавлены');;
     }
 }

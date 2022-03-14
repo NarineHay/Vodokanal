@@ -27,8 +27,10 @@
     <link href="{{ asset('assets/css/nav.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/user-sidebar.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/backend-sidebar.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/card.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="assets/js/backend.js"></script>
 
     @yield('style')
     @stack('after-styles')
@@ -174,38 +176,7 @@ function initDropEffect(box){
   }
 }
     </script>
-    <script>
-        var varCount = 0;
-        $(function () {
-            $('#addVar').on('click', function(){
-                varCount++;
-                $node = '<p>'
-                  + '<input class="form-control "placeholder="номер карты" type="number" name="object['+varCount+'][card_number]" id="var1">'
-                  + '<br>'
-                  + '<input class="form-control "placeholder="модель машины" type="text" name="object['+varCount+'][model]" >'
-                  + '<br>'
-                  + '<input class="form-control "placeholder="номер машины" type="text" name="object['+varCount+'][car_numbers]" >'
-                  + '<br>'
-                  + '<span class = "removeVar"> Удалить </span> </p>';
-                $(this).parent().before($node);
-            });
-          $('form').on('click', '.removeVar', function(){
-            $(this).parent().remove();
-          });
-        });
-    </script>
-    <script>
-
-    //  const btn1 = document.getElementById('btn1');
-    //  const box1 = document.getElementById('box1');
-    //  const btn2 = document.getElementById('btn2');
-    //  const box2 = document.getElementById('box2');
-
-        $('#btn1').on('click', function () {  });
-        $('#btn2').on('click', function () {  });
-
-
-</script>
+   
 
     </body>
 </html>
