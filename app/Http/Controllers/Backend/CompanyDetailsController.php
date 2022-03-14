@@ -19,6 +19,6 @@ class CompanyDetailsController extends Controller
         $Our_company_details->update([
             'content'=>$request->content,
         ]);
-        return redirect()->back()->with('message','успех');
+        return redirect()->back()->with('message','Вы успешно редактировали');
      }
 }

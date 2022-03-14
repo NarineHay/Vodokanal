@@ -18,7 +18,9 @@
                     <form action="{{route('backend.edit_payment', $Payment_methods->id)}}" method="Post" enctype="multipart/form-data">
                         @csrf
 
+
                         <label class="form-label" for="error-adajsd">Добавить изображение</label>
+
                         <div class="wrapper">
                             <label>
                                     <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
@@ -27,7 +29,7 @@
                         </div><br>
 
                         <div class="large-field-group simple">
-                            <label class="form-label" for="error-adajsd">заглавие</label>
+                            <label class="form-label" for="error-adajsd">Заголовок</label>
                             <input type="text" name="title" id="error-adajsd" class="form-control" value="{{$Payment_methods->title}}" />
                         </div>
 
@@ -37,11 +39,11 @@
                         </div>
 
                         <div class="large-field-group simple">
-                            <label class="form-label" for="error-adajsd">связь</label>
+                            <label class="form-label" for="error-adajsd">Ссылка для кнопки</label>
                             <input type="text" name="link" id="error-adajsd" class="form-control" value="{{$Payment_methods->link}}" />
                         </div>
                         <br/>
-                        <button class="btn btn-primary">редактировать</button>
+                        <button class="btn btn-primary">Редактировать</button>
                     </form><br><hr>
                     @endforeach
                 </div>

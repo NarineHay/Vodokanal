@@ -16,7 +16,7 @@
                     <h3>Добавить новое Способы оплаты</h3>
                     <form action="{{route('backend.add_new')}}" method="Post" enctype="multipart/form-data">
                         @csrf
-                        <label class="form-label" for="error-adajsd">видео</label>
+                        <label class="form-label" for="error-adajsd">Значок</label>
                         <div class="wrapper">
                             <label>
                                 <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="large-field-group simple">
-                            <label class="form-label" for="error-adajsd">заглавие</label>
+                            <label class="form-label" for="error-adajsd">Заголовок</label>
                             <input type="text" name="title" id="error-adajsd" class="form-control"/>
                         </div>
 
@@ -38,7 +38,7 @@
 
                         <br>
                         <div class="large-field-group simple">
-                            <label class="form-label" for="error-adajsd">связь</label>
+                            <label class="form-label" for="error-adajsd">Ссылка для кнопки</label>
                             <input type="text" name="link" id="error-adajsd" class="form-control" />
                         </div>
                         <br/>

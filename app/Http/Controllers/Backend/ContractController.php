@@ -30,6 +30,7 @@ class ContractController extends Controller
                 'user_id'=>'required'
             ]);
 
+
            $data = Contracts::create([
                 'user_id'=>$request->user_id,
                 'number'=>$request->number,

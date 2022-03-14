@@ -39,41 +39,41 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle " href="#"> домашняя страница </a>
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['backend.main_home_page', 'backend.about_as', 'backend.main_activities', 'backend.main_activities2', 'backend.tariff_details', 'backend.payment_method', 'backend.create', 'backend.company_details']) ? 'open' : '' }}">
+                <a class="nav-link nav-dropdown-toggle " href="#"> Домашняя страница </a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.main_home_page')}}">
-                            главная домашняя страница
+                        <a class="nav-link {{ request()->routeIs('backend.main_home_page') ? 'active' : '' }}" href="{{route('backend.main_home_page')}}">
+                            Баннер
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('backend.about_as') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.about_as') ? 'active' : '' }}" href="{{ route('backend.about_as') }}">
                             О нашей компании
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('backend.main_activities')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.main_activities') ? 'active' : '' }}" href="{{ route('backend.main_activities')}}">
                             Основные виды деятельности предприятия первый
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('backend.main_activities2')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.main_activities2') ? 'active' : '' }}" href="{{ route('backend.main_activities2')}}">
                             Основные виды деятельности предприятия второй
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.tariff_details')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.tariff_details') ? 'active' : '' }}" href="{{route('backend.tariff_details')}}">
                             Детали тарифа
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.payment_method')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.payment_method') ? 'active' : '' }}" href="{{route('backend.payment_method')}}">
                             Способы оплаты
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.company_details')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.company_details') ? 'active' : '' }}" href="{{route('backend.company_details')}}">
                             Реквизиты компании
                         </a>
                     </li>

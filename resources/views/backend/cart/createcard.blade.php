@@ -3,7 +3,14 @@
 @section('content')
 <div class="col-md-10">
 <div class="container shadow bg-white p-3">
-<div class="container-fluid mt-4">
+<h3 class="vernagir">Kонфигурация для карт и машины</h3>
+@if (session('message'))
+  <div class="alert alert-success" role="alert">
+   {{ session('message') }}
+    </div>
+@endif
+<div class="container-fluid">
+    
     <div class="animated fadeIn">
         <div class="content-header"></div>
         <!--content-header-->
@@ -19,27 +26,26 @@
                         </select>
                         <div class="reg form-group my-3" style="width:100%">
                             <p>
-                                @error('user_id')
-    								<div class="alert alert-danger">{{ $message }}</div>
-								@enderror
-                                <input class="form-control " value="номер карты" type="number"  name="object[0][card_number]">
+
+                               
+                                <input class="form-control @error('[card_number]') is-invalid @enderror"  value="{{ old('[card_number]') }}" placeholder="номер карты" type="number"  name="object[0][card_number]">
                                 <p></p>
-                                @error('model')
-    								<div class="alert alert-danger">{{ $message }}</div>
-								@enderror
-                                <input class="form-control "value="номер машины"  type="text" name="object[0][model]" >
+                                @if($errors->has('[card_number]'))
+                                    <span class="error">{{ $errors->first('[card_number]') }}</span>
+                                @endif
+                               
+                                <input class="form-control "placeholder="номер машины"  type="text" name="object[0][model]">
                                 <p></p>
-                                @error('car_numbers')
-    								<div class="alert alert-danger">{{ $message }}</div>
-								@enderror
-                                <input class="form-control "value="модель машины" type="text" name="object[0][car_numbers]" >
+                                
+                                <input class="form-control "placeholder="модель машины" type="text" name="object[0][car_numbers]">
+
                                 <p></p>
-                                <span class="removeVar">Удалить</span> 
+                                <span class="removeVar">Удалить</span>
                                 <p></p>
                                 <p><span id="addVar"> Добавить новый элемент </span> </p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
                             </p>
-                        </div>  
+                        </div>
                     </div>
                 </form><!--form-->
             </div><!--col-->

@@ -1,4 +1,26 @@
 .ml{
     margin-left: 100px;
     margin-top: 40px
-  }
+}
+.aaaa{
+    cursor: pointer;
+}
+.fff{
+ 
+    display: flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+    justify-content: space-evenly;
+}
+.col{
+  width: 100%;
+ 
+  
+}
+.form{
+  height: 20em;
+}
+.card{
+  width: 350px;
+  margin-bottom: -20.5rem;
+}

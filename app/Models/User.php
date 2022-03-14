@@ -60,6 +60,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Card::class);
     }
+    public function car()
+    {
+        return $this->hasMany(Car::class);
+    }
 
     public function phone_number()
     {

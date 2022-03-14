@@ -18,8 +18,8 @@
                     <span class="li-title">Личные данные</span>
                     <div>
                         <i class="bi bi-telephone"></i>
-                        {{-- @dump($phone_number) --}}
-                        {{-- <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'pppppp'}}</span> --}}
+                       
+                     <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span> 
                     </div>
                     <div>
                         <span class="ml-2 ft-size-14">{{Auth::user()->email}}</span>
@@ -34,12 +34,12 @@
                     <span class="li-title">Машины</span>
 
                     <div>
-                        <span class=" ft-size-14">Камаз 1</span>
-                        <span class="ml-2 ft-size-14"> X111 XX 116</span>
+                      
+                       
                     </div>
                     <div>
-                        <span class=" ft-size-14">Камаз 1</span>
-                        <span class="ml-2 ft-size-14"> X111 XX 116</span>
+                        
+                       
                     </div>
                 </a>
             </li>
