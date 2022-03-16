@@ -5,11 +5,6 @@
 <div class="container shadow bg-white p-3">
 <h3 class="vernagir">Пополнение баланса</h3>
 
-@if (session('message'))
-  <div class="alert alert-success" role="alert">
-   {{ session('message') }}
-    </div>
-@endif
 <div class="container-fluid">
     
     <div class="animated fadeIn">
@@ -22,6 +17,11 @@
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
                     <span style="color:red">@error('user_id') Выберите пользователя @enderror</span>
+                    @if (session('message'))
+                      <div class="alert alert-success" role="alert">
+                       {{ session('message') }}
+                        </div>
+                    @endif
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                             <option disabled selected>Выберите пользователя</option>
                             @foreach($users as $user)
@@ -29,7 +29,7 @@
                             @endforeach
                         </select>
                         <div class="reg form-group my-3" style="width:100%">
-                        <div class=" user-info">
+                        <div class="user-info">
                        
                         </div>
                            
