@@ -20,12 +20,15 @@
                                 <div class="box">
                                     <div class="js--image-preview"><img  src="/assets/images/img_index/{{$Main->img_path}}" style="width: 100%; height: 100%;"></img></div>
                                     <div class="upload-options">
+                                        <span style="color:red">@error('img_path'){{$message}}@enderror</span>
                                         <label>
                                             <span  style="font-size:20px">изменить изображение</span>
                                             <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
                                             <i class="fa fa-upload" aria-hidden="true" style="font-size:25px"></i>
                                         </label>
+                                      
                                     </div>
+                                  
                                 </div>
                             </div>
                             <div class="large-field-group simple">

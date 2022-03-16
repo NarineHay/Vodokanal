@@ -37,6 +37,17 @@
                             Служба поддержки
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.feedback_index')}}">
+                         Обратная связь
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{route('backend.support_task_index')}}">
+                            Сообщение пользователя
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-item nav-dropdown {{ request()->routeIs(['backend.main_home_page', 'backend.about_as', 'backend.main_activities', 'backend.main_activities2', 'backend.tariff_details', 'backend.payment_method', 'backend.create', 'backend.company_details']) ? 'open' : '' }}">

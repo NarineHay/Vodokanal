@@ -14,6 +14,9 @@ class MainHomePageController extends Controller
     }
 
     public function edit_main_home(Request $request){
+        $this->validate($request,[
+            'img_path' => 'required|max:10000|mimes:png,jpg',
+        ]);
 
         $data = Main::first();
         $data->url=$request->url;

@@ -17,15 +17,22 @@
                     @foreach ( $Payment_method as $Payment_methods )
                     <form action="{{route('backend.edit_payment', $Payment_methods->id)}}" method="Post" enctype="multipart/form-data">
                         @csrf
-
-
                         <label class="form-label" for="error-adajsd">Добавить изображение</label>
 
                         <div class="wrapper">
-                            <label>
-                                    <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
-                                    <i class="fa fa-upload" aria-hidden="true" style="font-size:30px"></i>
-                            </label>
+                            <div class="box">
+                                <div class="js--image-preview"><img  src="/assets/images/img_index/{{$Payment_methods->img_path}}" style="width: 100%; height: 100%; background-color:black ;"></img></div>
+                                <div class="upload-options">
+                                    <span style="color:red">@error('img_path'){{$message}}@enderror</span>
+                                    <label>
+                                        <span  style="font-size:20px">изменить изображение</span>
+                                        <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
+                                        <i class="fa fa-upload" aria-hidden="true" style="font-size:25px"></i>
+                                    </label>
+                                  
+                                </div>
+                              
+                            </div>
                         </div><br>
 
                         <div class="large-field-group simple">
