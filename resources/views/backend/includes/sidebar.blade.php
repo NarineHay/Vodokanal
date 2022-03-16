@@ -140,16 +140,17 @@
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link " href="">
-                            Инфо по терминалам
+                            Инфо по терминалам 
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
-                            Система безопасности
+                        <a class="nav-link "  href="{{ route('backend.safeti') }}">
+                          Система безопасности
                         </a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                    <a class="nav-link "  href="{{ route('backend.map') }}">
                             Карта
                          </a>
                     </li>

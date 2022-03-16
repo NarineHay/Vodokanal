@@ -28,16 +28,16 @@
                             <p>
 
                                
-                                <input class="form-control @error('[card_number]') is-invalid @enderror"  value="{{ old('[card_number]') }}" placeholder="номер карты" type="number"  name="object[0][card_number]">
+                                <input class="form-control @error('[card_number]') is-invalid @enderror"  value="{{ old('[card_number]') }}" placeholder="Номер карты" type="number"  name="object[0][card_number]">
                                 <p></p>
                                 @if($errors->has('[card_number]'))
                                     <span class="error">{{ $errors->first('[card_number]') }}</span>
                                 @endif
                                
-                                <input class="form-control "placeholder="номер машины"  type="text" name="object[0][model]">
+                                <input class="form-control "placeholder="Номер машины"  type="text" name="object[0][model]">
                                 <p></p>
                                 
-                                <input class="form-control "placeholder="модель машины" type="text" name="object[0][car_numbers]">
+                                <input class="form-control "placeholder="Модель машины" type="text" name="object[0][car_numbers]">
 
                                 <p></p>
                                 <span class="removeVar">Удалить</span>

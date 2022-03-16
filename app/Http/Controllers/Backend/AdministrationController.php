@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Safety_system;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -144,4 +145,15 @@ class AdministrationController extends Controller
         return redirect()->route('administration.index')
                         ->with('success','Администратор успешно удален');
     }
+    public function safeti_sustem()
+    {   
+        $sustems = Safety_system::all();
+        return view('backend.sustem.safeti',compact('sustems'));
+    }
+    public function map_page()
+    {   
+       
+        return view('backend.sustem.map');
+    }
+
 }

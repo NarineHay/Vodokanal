@@ -120,6 +120,9 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::post('adduserbalance', [CartController::class, 'addblance_user_balance'])->name('adduserbalance');
             Route::get('checkbalance', [CartController::class, 'checkbalance'])->name('checkbalance');
+
+            Route::get('safeti', [AdministrationController::class, 'safeti_sustem'])->name('safeti');
+            Route::get('map', [AdministrationController::class, 'map_page'])->name('map');
             // Route::resource('roles', RoleController::class);
             // Route::resource('/backend/roles', RoleController::class)->only([
             //     'index', 'show'

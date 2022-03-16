@@ -1,4 +1,6 @@
-@extends('backend.layouts.app') @section('title' ) @section('content')
+@extends('backend.layouts.app')
+@section('title' ) 
+@section('content')
 <style>
 /* table {
   width: 50%;
