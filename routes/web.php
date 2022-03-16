@@ -102,12 +102,12 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('/feedback_index', [FeeddbackController::class, 'index'])->name('feedback_index');
             Route::get('show_feedback/{id}', [FeeddbackController::class, 'show'])->name('show_feedback');
-            Route::post('/send_mail_feedbeack', [FeeddbackController::class, 'send_mail'])->name('send_mail_feedbeack');
+            Route::post('send_mail_feedbeack/{id}', [FeeddbackController::class, 'send_mail'])->name('send_mail_feedbeack');
             Route::get('feedback_delate/{id}', [FeeddbackController::class, 'delete'])->name('feedback_delate');
 
             Route::get('/support_task_index', [SupportTaskController::class, 'index'])->name('support_task_index');
             Route::get('support_task_show/{id}', [SupportTaskController::class, 'show'])->name('support_task_show');
-            Route::post('send_mail_user_message', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
+            Route::post('send_mail_user_message/{id}', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
             Route::get('feedback_delate/{id}', [SupportTaskController::class, 'delete'])->name('feedback_delate');
            
 
