@@ -84,7 +84,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ContractFile::class ,'contract_id');
     }
-    
+
     public function history_of_balance_replenishment()
     {
         return $this->hasMany(History_of_balance_replenishment::class);

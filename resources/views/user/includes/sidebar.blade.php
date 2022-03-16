@@ -5,9 +5,9 @@
                 <div class="account-name">
                     <th >{{Auth::user()->first_name}}</th>
                     <th >{{Auth::user()->last_name}}</th>
-                    @if(Auth::user()->status==1)
+                    @if(Auth::user()->balance >= 301)
                         <h6 class="active-color2">активный статус</h6>
-                        @elseif(Auth::user()->status==0)
+                        @elseif(Auth::user()->balance <= 300)
                         <h6 class="active-color1">Пассивный статус</h6>
                     @endif
                 </div>

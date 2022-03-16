@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('backend/contract_page', [ContractController::class, 'index'])->name('contract_page');
             Route::get('backend/add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
-            Route::Post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
+            Route::post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
             Route::get('backend/show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
             Route::get('backend/edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
             Route::post('/edit_now_contract/{id}', [ContractController::class, 'update'])->name('edit_now_contract');
@@ -109,7 +109,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('support_task_show/{id}', [SupportTaskController::class, 'show'])->name('support_task_show');
             Route::post('send_mail_user_message/{id}', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
             Route::get('feedback_delate/{id}', [SupportTaskController::class, 'delete'])->name('feedback_delate');
-           
+
 
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
@@ -120,6 +120,9 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::post('adduserbalance', [CartController::class, 'addblance_user_balance'])->name('adduserbalance');
             Route::get('checkbalance', [CartController::class, 'checkbalance'])->name('checkbalance');
+
+            Route::get('safeti', [AdministrationController::class, 'safeti_sustem'])->name('safeti');
+            Route::get('map', [AdministrationController::class, 'map_page'])->name('map');
             // Route::resource('roles', RoleController::class);
             // Route::resource('/backend/roles', RoleController::class)->only([
             //     'index', 'show'

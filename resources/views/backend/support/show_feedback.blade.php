@@ -14,8 +14,10 @@
                     <div class="feedback">
                         <h3>Показать отзыв</h3>
                         <a href="{{route('backend.feedback_index')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+
                     </div><br>
                   
+
                         <div class="form-group">
                           <label for="exampleInputPassword1">Эл. адрес</label>
                           <h6>{{$Feedback->email}}</h6>
@@ -26,6 +28,7 @@
                              <h6>{{$Feedback->message}}</h6>
                         </div>
                         <hr>
+
                         <h5>Отправить сообщение</h5><br>
                     
                      
@@ -35,9 +38,10 @@
                             <form action="{{route('backend.send_mail_feedbeack',$Feedback->id)}}" method="post">
                               @csrf
                               
+
                               <label for="message" class="message">Сообщение</label>
                               <textarea name="message" cols="30" rows="7" required maxlength="500"></textarea>
-                          
+
                               <p class="button-container">
                                 <input class="button" type="submit" value="Отправлять">
                               </p>

@@ -21,6 +21,7 @@ class DashboardController extends Controller
     {
         if (! auth()->user()->isAdmin()) {
             $cards=Auth::user();
+           
             return view('user.dashboard',compact('cards'));
 
         }
@@ -66,8 +67,6 @@ class DashboardController extends Controller
         $cardbalance += $request->balance;
         $cardFind->update([
             'balance'=>$cardbalance,
-
-
         ]);     
         if(Auth::user()->balance<=$request->balance){
             return redirect()->back()->with('message','Активирована ограничения на балансе');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Safety_system;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
@@ -52,21 +53,22 @@ class AdministrationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd( $request->roles);
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'password' => 'required | confirmed | min:8',
+            'role' => 'required'
         ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->role);
 
-        return redirect()->route('administrtion.index')
+        return redirect()->route('administration.index')
                         ->with('success','Администратор успешно создан');
     }
     /**
@@ -105,6 +107,7 @@ class AdministrationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd( $request->input('roles'));
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -142,4 +145,15 @@ class AdministrationController extends Controller
         return redirect()->route('administration.index')
                         ->with('success','Администратор успешно удален');
     }
+    public function safeti_sustem()
+    {   
+        $sustems = Safety_system::all();
+        return view('backend.sustem.safeti',compact('sustems'));
+    }
+    public function map_page()
+    {   
+       
+        return view('backend.sustem.map');
+    }
+
 }

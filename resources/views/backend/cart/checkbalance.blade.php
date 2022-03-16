@@ -20,7 +20,7 @@
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
-                            <option disabled selected>выберите пользователя</option>
+                            <option disabled selected>Выберите пользователя</option>
                      @foreach($users as $user)
                      <option data-tokens="ketchup mustard" class="option"  value="{{$user->id}}">{{$user->first_name}},{{$user->email}}</option>
                        @endforeach
@@ -29,7 +29,7 @@
                         <div class=" user-info"></div>
                            
                            
-                            <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="проверено">
+                            <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="Проверено">
                         </div>
                     </div>
                 </form><!--form-->
