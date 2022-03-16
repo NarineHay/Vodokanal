@@ -70,13 +70,17 @@ class CartController extends Controller
         
         $id=$request->sel_val;
         $contracts=Contracts::where('user_id', $id)->first();
+        
         $content='';
         if($contracts){
             $cont_files=ContractFile::where('contract_id', $contracts->id)->get();
+            $balance=$contracts->user->balance;
             $content .= " 
            
             Номер договора :
             $contracts->number<p></p>
+            Баланс : 
+            $balance руб.<p></p>
             Срок договора до :
             $contracts->date_start<p></p>
             Срок договора после :
@@ -87,9 +91,10 @@ class CartController extends Controller
                         <div>Договор : <a class="resume" href="'.$value->file_path.'/'.$value->file_name.'">'.$value->file_name.'</a></div><p></p>
                 ';
             }
+            
         }
         else{
-            $content="no info";
+            $content="Информация о пользователя отсутствует";
         }
         echo $content;
     }
@@ -108,7 +113,7 @@ class CartController extends Controller
         
        
         
-        return redirect()->back();
+        return redirect()->back()->with('message','Данные успешно добавлены');
     }
     public function checkbalance()
     {
@@ -122,9 +127,12 @@ class CartController extends Controller
         $content='';
         if($contracts){
             $cont_files=ContractFile::where('contract_id', $contracts->id)->get();
+            $balance=$contracts->user->balance;
             $content .= " 
             Номер договора:
             $contracts->number
+            Баланс : 
+            $balance руб.<p></p>
             Срок договора do:
             $contracts->date_start
             Срок договора posle:
@@ -140,6 +148,7 @@ class CartController extends Controller
             $content="Информация о пользователя отсутствует";
         }
         echo $content;
+       
     }
 
 }

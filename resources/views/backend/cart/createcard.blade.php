@@ -16,7 +16,7 @@
         <!--content-header-->
         <div class="row">
             <div class="col pl-5">
-                <form action="/createcard" method="post">
+                <form action="{{ route('backend.createcard')}}" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
