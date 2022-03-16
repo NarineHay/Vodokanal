@@ -78,9 +78,13 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function contracts()
     {
-        return $this->hasMany(Contracts::class);
+        return $this->hasMany(Contracts::class,'user_id');
     }
-
+    public function ContractFile()
+    {
+        return $this->hasMany(ContractFile::class ,'contract_id');
+    }
+    
     public function history_of_balance_replenishment()
     {
         return $this->hasMany(History_of_balance_replenishment::class);

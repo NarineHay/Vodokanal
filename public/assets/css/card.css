@@ -15,3 +15,36 @@
     margin-left: 40px;
     margin-top: 25px;
 }
+.user-info{
+    display: flex;
+    flex-direction: column;
+}
+.number_cont{
+    width: 100%;
+    background-color: brown;
+    text-align: end;
+}
+.name_cont{
+    width: 100%;
+    background-color: rgb(148, 187, 9);
+}
+.data_name{
+    display: flex;
+    width: 100%;
+    background-color: brown;
+}
+.start{
+    width: 100%;
+    text-align: end;
+    background-color: rgb(14, 151, 48);
+}
+.end{
+    width: 100%;
+    text-align: end;
+    background-color: rgb(17, 39, 138);
+}
+.resume{
+   
+    text-align: start;
+   
+}

@@ -50,7 +50,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['verified']], function () {
 
         Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
-           
+            Route::get('balance_repl', [DashboardController::class, 'show_balance'])->name('balance_repl');
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
@@ -101,6 +101,12 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
+            Route::get('addblance', [CartController::class, 'addblance_u'])->name('addblance');
+            Route::post('select_user', [CartController::class, 'SelectUser'])->name('select_user');
+            Route::post('show_user_info', [CartController::class, 'ShowUserInfos'])->name('show_user_info');
+
+            Route::post('adduserbalance', [CartController::class, 'addblance_user_balance'])->name('adduserbalance');
+            Route::get('checkbalance', [CartController::class, 'checkbalance'])->name('checkbalance');
             // Route::resource('roles', RoleController::class);
             // Route::resource('/backend/roles', RoleController::class)->only([
             //     'index', 'show'
