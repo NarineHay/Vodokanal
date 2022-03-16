@@ -53,7 +53,6 @@ class AdministrationController extends Controller
      */
     public function store(Request $request)
     {
-        // dd( $request->roles);
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -91,11 +90,13 @@ class AdministrationController extends Controller
      */
     public function edit($id)
     {
+
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
+        $user_role=$user->roles->pluck('name','name')->first();
 
-        return view('backend.administration.edit',compact('user','roles','userRole'));
+        return view('backend.administration.edit',compact('user','roles','userRole', 'user_role'));
     }
 
     /**
@@ -107,13 +108,12 @@ class AdministrationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd( $request->input('roles'));
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'min:8|same:confirm-password',
-            'roles' => 'required'
+            'password' => 'required | confirmed | min:8',
+            'role' => 'required'
         ]);
 
         $input = $request->all();
@@ -127,7 +127,7 @@ class AdministrationController extends Controller
         $user->update($input);
         DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->role);
 
         return redirect()->route('administration.index')
                         ->with('success','Администратор успешно обновлен');
@@ -146,13 +146,13 @@ class AdministrationController extends Controller
                         ->with('success','Администратор успешно удален');
     }
     public function safeti_sustem()
-    {   
+    {
         $sustems = Safety_system::all();
         return view('backend.sustem.safeti',compact('sustems'));
     }
     public function map_page()
-    {   
-       
+    {
+
         return view('backend.sustem.map');
     }
 
