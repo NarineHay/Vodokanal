@@ -15,10 +15,10 @@ class AdministrationController extends Controller
 
     function __construct()
     {
-         $this->middleware('permission:administration-list|administration-create|administration-edit|administration-delete', ['only' => ['index','store']]);
-         $this->middleware('permission:administration-create', ['only' => ['create','store']]);
-         $this->middleware('permission:administration-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:administration-delete', ['only' => ['destroy']]);
+        //  $this->middleware('permission:administration-list|administration-create|administration-edit|administration-delete', ['only' => ['index','store']]);
+        //  $this->middleware('permission:administration-create', ['only' => ['create','store']]);
+        //  $this->middleware('permission:administration-edit', ['only' => ['edit','update']]);
+        //  $this->middleware('permission:administration-delete', ['only' => ['destroy']]);
     }
 
     /**

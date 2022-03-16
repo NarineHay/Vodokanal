@@ -37,7 +37,7 @@ table tr td:first-child::before {
                               </tr>
                             </thead>
                             <tbody>
-                           
+
                               @foreach ($Contracts as $Contractss)
                                   <tr>
                                   <td></td>
@@ -51,14 +51,14 @@ table tr td:first-child::before {
                                   </td>
                                 </tr>
                               @endforeach
-    
-                           
-                           
+
+
+
                             </tbody>
                           </table>
                    </div>
 
-                
+
                 <!--card-body-->
             </div>
             <!--card-->

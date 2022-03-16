@@ -1193,7 +1193,7 @@ progress {
   .col-md-10 {
     flex: 0 0 auto;
     width: 83.33333333%;
-    
+
   }
 
   .col-md-11 {
@@ -4516,7 +4516,7 @@ textarea.form-control-lg {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
- 
+
 }
 .card > hr {
   margin-right: 0;

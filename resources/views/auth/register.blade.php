@@ -24,7 +24,7 @@
                     @enderror
                 </div>
                 <div class="" style="width:48%">
-                    <input type="text" class="form-control py-2 @error('last_name') is-invalid @enderror" id="secondname" placeholder="Отчество" name="last_name" value="{{ old('last_name') }}">
+                    <input type="text" class="form-control py-2 @error('last_name') is-invalid @enderror" id="secondname" placeholder="Фамилия" name="last_name" value="{{ old('last_name') }}">
                     @error('last_name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
