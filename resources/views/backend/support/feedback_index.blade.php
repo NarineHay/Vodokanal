@@ -1,18 +1,6 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
 <link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet">
-<style>
 
-table tr {
-  counter-increment: row-num;
-}
-table tr td:first-child::before {
-    content: counter(row-num);
-}
-table td{
-    white-space: pre-wrap;
-}
-
-</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -53,9 +41,9 @@ table td{
                                 <td>{{$Feedbacks->message}}</td>
                                 <td>
                                     @if($Feedbacks->status==false)
-                                        <i style="color:red" class="fa fa-bell" aria-hidden="true"></i>
+                                        <i style="color:red; font-size:20px" class="fa fa-envelope" aria-hidden="true"></i>
                                     @else
-                                        <i style="color:green" class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;
+                                        <i style="color:green; font-size:20px" class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;&nbsp;
                                     @endif
 
                                     <a href="{{route('backend.show_feedback',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;

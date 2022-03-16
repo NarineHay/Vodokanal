@@ -23,6 +23,7 @@ use App\Http\Controllers\Backend\MainHomePageController;
 use App\Http\Controllers\Backend\TariffDetailsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\FeeddbackController;
+use App\Http\Controllers\Backend\TerminalController;
 
 use App\Http\Controllers\Backend\ContractController;
 use App\Http\Controllers\Backend\SupportTaskController;
@@ -109,6 +110,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('support_task_show/{id}', [SupportTaskController::class, 'show'])->name('support_task_show');
             Route::post('send_mail_user_message/{id}', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
             Route::get('feedback_delate/{id}', [SupportTaskController::class, 'delete'])->name('feedback_delate');
+            Route::get('/info_terminal', [TerminalController::class, 'index'])->name('info_terminal');
+            Route::get('/add_new_terminal', [TerminalController::class, 'show_new_terminal'])->name('add_new_terminal');
+            Route::post('/store_new_terminal', [TerminalController::class, 'store'])->name('store_new_terminal');
 
 
 

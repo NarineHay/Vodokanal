@@ -31,7 +31,7 @@
 
                         <h5>Отправить сообщение</h5><br>
                     
-                     
+                         
                         <div class="container_feedback card message-container ">
                             <h5 class="message-title">Отправить сообщение</h5>
                           

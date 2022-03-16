@@ -32,6 +32,6 @@ class TariffDetailsController extends Controller
             $data->img_path = $request->file('img_path')->getClientOriginalName();
         }
        $data->save();
-       return redirect()->back()->with('message','Вы успешно редактировали');;
+       return redirect()->back()->with('message','Вы успешно редактировали');
      }
 }

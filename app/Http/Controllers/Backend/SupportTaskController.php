@@ -32,7 +32,7 @@ class SupportTaskController extends Controller
         ];
         Mail::to($Contracts->email)->send(new UserTaskMail($details));
        
-        return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');
+        return redirect()->back()->with('message', 'Ваше сообщение было успешно отправлено');
 
      }
 

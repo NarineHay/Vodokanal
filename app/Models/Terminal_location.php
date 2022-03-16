@@ -13,6 +13,8 @@ class Terminal_location extends Model
         'name',
         'address',
         'number',
+        'lat',
+        'lng',
         'status'
 
     ];
