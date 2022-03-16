@@ -10,11 +10,12 @@
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
-                    <div class="text-right">
-                        <a href="{{route('backend.support_task_index')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-                   </div>
-                    <h3>Показать сообщение пользователя</h3><br>
-                    
+  
+                    <div class="feedback">
+                      <h3>Показать сообщение пользователя</h3>
+                      <a href="{{route('backend.feedback_index')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+                  </div><br>
+                
                         
                         <div class="form-group">
                           <label for="exampleInputPassword1">Имя пользователя</label>
@@ -37,13 +38,11 @@
                         <h3>Отправить сообщение</h3><br>
                     
                      
-                        <div class="container card message-container ">
+                        <div class="container_feedback card message-container ">
                             <h1 class="message-title">Пользователь Отправить сообщение</h1>
                           
-                            <form action="{{route('backend.send_mail_user_message')}}" method="post">
+                            <form action="{{route('backend.send_mail_user_message',$Contracts->id)}}" method="post">
                           
-                              <label for="subject" class="subject">Почта</label>
-                              <input type="text" name="mail" value="{{$Contracts['user']->email}}" maxlength="45">
                           
                               <label for="message" class="message">Сообщение</label>
                               <textarea name="message" cols="30" rows="7" required maxlength="500"></textarea>

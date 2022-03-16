@@ -24,12 +24,13 @@ class SupportTaskController extends Controller
          return view('backend.support.show_user_message',compact('Contracts'));
      }
 
-     public function sendmail(Request $request){
+     public function sendmail(Request $request ,$id){
 
+        $Contracts = Support_task::with('user')->find($id);
         $details = [
             'message' => $request->message,
         ];
-        Mail::to($request->mail)->send(new UserTaskMail($details));
+        Mail::to($Contracts->email)->send(new UserTaskMail($details));
        
         return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');
 

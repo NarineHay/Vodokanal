@@ -1,4 +1,20 @@
 <header class="nav_bar_color">
+    <style>
+        .navbar-expand-lg .navbar-collapse{
+            justify-content: end;
+        }
+        .navbar-expand-lg .navbar-nav{
+            justify-content: end !important;
+        }
+        .nav_link_link{
+            border-right:2px solid black;
+            margin: 0 0 0 0
+        }
+        .navbar-nav .nav-link{
+            padding-right: 23px;
+            padding-left: 10px;
+        }
+    </style>
     <div class="container">
         <nav class="navbar  navbar-expand-lg ">
             <div class="container-fluid">
@@ -9,14 +25,16 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav d-flex justify-content-around w-100 text-white">
                     <li class="nav-item">
-                        <a href="{{route('contact')}}" style="color:black !important" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }}">Тарифы</a>
+                       <img style="color:black !important" class="nav-link text-white nav_link_link {{ request()->is('users*') ? 'active' : '' }}" src="{{asset('/assets/images/img_index/Vector.png')}}">
                     </li>
-                    <li class="nav-item">
+                    
+                    {{-- <li class="nav-item">
                         <a href="{{route('contact')}}" style="color:black !important" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }}">О нас</a>
-                    </li>
+                    </li> --}}
 
                 </ul>
                 <ul class="navbar-nav d-flex justify-content-center reg" >
+                   
                     @auth
                         @if (Request::is(['backend*','dashboard']))
                             <li class="nav-item ">
@@ -24,6 +42,7 @@
                             </li>
                         @else
                             <li class="nav-item dropdown">
+                              
                                 <a class="fio nav-link dropdown-toggle text-white" style="color:black !important" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Ф И О
                                 </a>
@@ -32,7 +51,7 @@
 
                                         <a class="dropdown-item" href="{{ route('backend.dashboard') }}" >Профиль </a>
 
-                                    </li>
+                                    </li>   
                                     <li>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                                     onclick="event.preventDefault();

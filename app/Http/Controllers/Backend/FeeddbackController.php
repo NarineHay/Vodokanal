@@ -27,15 +27,16 @@ class FeeddbackController extends Controller
 
   }
 
-  public function send_mail(Request $request, $id){
 
-        $feedback=Feedback::find($id);
-      
+  public function send_mail(Request $request ,$id){
+    
+          $Feedback = Feedback::find($id);
           $details = [
             'message' => $request->message,
         ];
+        
+        Mail::to($Feedback->email)->send(new Supportfeedbackmail($details));
 
-        Mail::to($feedback->email)->send(new Supportfeedbackmail($details));
         return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');
 
 

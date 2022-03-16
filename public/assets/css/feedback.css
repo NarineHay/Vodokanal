@@ -197,3 +197,10 @@ table tr td:first-child::before {
 table td{
     white-space: pre-wrap;
 }
+.feedback{
+  display: flex;
+  justify-content: space-between;
+}
+.container_feedback{
+  display: flex;
+}
