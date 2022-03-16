@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrganizationType;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
@@ -32,7 +33,9 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name','name')->all();
-        return view('backend.users.create',compact('roles'));
+        $organization_type=$this->organization_type();
+
+        return view('backend.users.create',compact('roles', 'organization_type'));
     }
 
     /**
@@ -46,8 +49,9 @@ class UserController extends Controller
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
+            'company_type' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
+            'password' => 'required | confirmed | min:8',
             // 'roles' => 'required'
         ]);
 
@@ -55,10 +59,10 @@ class UserController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        // $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+                        ->with('success','Пользователь успешно создан');
     }
 
     /**
@@ -84,8 +88,9 @@ class UserController extends Controller
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
+        $organization_type=$this->organization_type();
 
-        return view('backend.users.edit',compact('user','roles','userRole'));
+        return view('backend.users.edit',compact('user','roles','userRole', 'organization_type'));
     }
 
     /**
@@ -98,10 +103,11 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'company_type' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'password' => 'required | confirmed | min:8'
         ]);
 
         $input = $request->all();
@@ -113,12 +119,12 @@ class UserController extends Controller
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        // DB::table('model_has_roles')->where('model_id',$id)->delete();
 
-        $user->assignRole($request->input('roles'));
+        // $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Пользователь успешно обновлен');
     }
 
     /**
@@ -131,6 +137,10 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Пользователь успешно удален');
+    }
+
+    public function organization_type(){
+        return OrganizationType::all();
     }
 }

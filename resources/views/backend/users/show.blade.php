@@ -29,16 +29,46 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Имя:</strong>
-                            {{ $user->name }}
+                            {{ $user->first_name }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Эл. адрес:</strong>
-                            {{ $user->email }}
+                            <strong>Фамилия:</strong>
+                            {{ $user->last_name }}
                         </div>
                     </div>
-                    
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Отчество:</strong>
+                            {{ $user->surname }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Тип организации:</strong>
+                            {{ $user->company_type }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Названия организации:</strong>
+                            {{ $user->company_name }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Названия организации:</strong>
+                            {{ $user->company_name }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Статус:</strong>
+                            <span class="{{ $user->status ==1 ? 'text-success' : 'text-danger' }}">{{ $user->status ==1 ? 'Активный' : 'Пассивный' }}</span>
+                        </div>
+                    </div>
+
                 </div>
 
             </div><!--col-->
