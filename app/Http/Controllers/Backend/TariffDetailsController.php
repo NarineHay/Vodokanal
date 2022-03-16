@@ -15,6 +15,11 @@ class TariffDetailsController extends Controller
 
 
      public function edit_tarif(Request $request ,$id){
+
+        $this->validate($request,[
+            'img_path' => 'required|max:10000|mimes:mp4,gif,jpg,png',
+        ]);
+
         $data = Tarif::first();
         $data->name=$request->name;
         $data->detailes=$request->detailes;

@@ -20,6 +20,7 @@
                                 <div class="box">
                                     <div class="js--image-preview"><video autoplay loop muted playsinline id="myVideo" controls="true" class="img-fluid" src="/assets/images/img_index/{{$tarif->img_path}}"  data-aos="fade-up-right" data-aos-duration="2000" style="width: 450px; height: 100%;"></video></div>
                                     <div class="upload-options">
+                                        <span style="color:red">@error('img_path'){{$message}}@enderror</span>
                                         <label>
                                             <span  style="font-size:20px">изменить видео</span>
                                             <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>

@@ -22,8 +22,10 @@ use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
 use App\Http\Controllers\Backend\TariffDetailsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
+use App\Http\Controllers\Backend\FeeddbackController;
 
 use App\Http\Controllers\Backend\ContractController;
+use App\Http\Controllers\Backend\SupportTaskController;
 
 use App\Http\Controllers\Backend\MainactivitiesController;
 use App\Http\Controllers\Backend\UserController;
@@ -98,6 +100,17 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('backend//{id}', [ContractController::class, 'delate_file'])->name('delate_file');
             Route::get('backend/delate_index_contract_page/{id}', [ContractController::class, 'index_contract_page'])->name('delate_index_contract_page');
 
+            Route::get('/feedback_index', [FeeddbackController::class, 'index'])->name('feedback_index');
+            Route::get('show_feedback/{id}', [FeeddbackController::class, 'show'])->name('show_feedback');
+            Route::post('/send_mail_feedbeack', [FeeddbackController::class, 'send_mail'])->name('send_mail_feedbeack');
+            Route::get('feedback_delate/{id}', [FeeddbackController::class, 'delete'])->name('feedback_delate');
+
+            Route::get('/support_task_index', [SupportTaskController::class, 'index'])->name('support_task_index');
+            Route::get('support_task_show/{id}', [SupportTaskController::class, 'show'])->name('support_task_show');
+            Route::post('send_mail_user_message', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
+            Route::get('feedback_delate/{id}', [SupportTaskController::class, 'delete'])->name('feedback_delate');
+           
+
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
@@ -128,6 +141,4 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 Route::get('card11', [CardController::class, 'index']);
 
 Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
-
-
 
