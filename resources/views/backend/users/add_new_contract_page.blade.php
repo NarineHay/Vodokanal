@@ -1,41 +1,6 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-<style>
-  #files-area{
-	width: 30%;
-	margin: 0 auto;
-}
-.file-block{
-	border-radius: 10px;
-	background-color: rgba(144, 163, 203, 0.2);
-	margin: 5px;
-	color: initial;
-	display: inline-flex;
-	& > span.name{
-		padding-right: 10px;
-		width: max-content;
-		display: inline-flex;
-	}
-}
-.file-delete{
-	display: flex;
-	width: 24px;
-	color: initial;
-	background-color: #6eb4ff00;
-	font-size: large;
-	justify-content: center;
-	margin-right: 3px;
-	cursor: pointer;
-	&:hover{
-		background-color: rgba(144, 163, 203, 0.2);
-		border-radius: 10px;
-	}
-	& > span{
-		transform: rotate(45deg);
-	}
-}
+<link href="{{ asset('assets/css/new_contract.css') }}" rel="stylesheet">
 
-
-</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -46,10 +11,10 @@
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
-                    <div class="text-right">
+                    <div class="feedback">
+                        <h3>Новый контракт</h3>
                         <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-                   </div>
-                    <h3>Новый контракт</h3><br>
+                    </div><br>
                     
                     <form action="{{route('backend.store_info_Contract')}}" method="Post" enctype="multipart/form-data">
 
@@ -89,7 +54,6 @@
                                 <label for="attachment">
                                     <i class="fa fa-upload" aria-hidden="true" style="font-size:35px"></i>
                                    
-                                    
                                 </label>
                                 <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/><br>
                                 <span style="color:red">@error('file.*'){{$message}}@enderror</span>
@@ -122,7 +86,7 @@ $("#attachment").on('change', function(e){
 	for(var i = 0; i < this.files.length; i++){
 		let fileBloc = $('<span/>', {class: 'file-block'}),
 			 fileName = $('<span/>', {class: 'name', text: this.files.item(i).name});
-		fileBloc.append('<span class="file-delete"><span>+</span></span>')
+		fileBloc.append('<span class="file-delete"><span>x</span></span>')
 			.append(fileName);
 		$("#filesList > #files-names").append(fileBloc);
 	};

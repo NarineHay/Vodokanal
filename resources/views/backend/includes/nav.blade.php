@@ -36,7 +36,7 @@
                 <ul class="navbar-nav d-flex justify-content-center reg" >
                    
                     @auth
-                        @if (Request::is(['backend*','dashboard']))
+                        @if (Request::is([]))
                             <li class="nav-item ">
                                 <a href="#"  style="color:black !important" class="fio nav-link text-white {{ request()->is(['user.dashboard', 'user.support']) ? 'active' : '' }}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">ФИО</a>
                             </li>

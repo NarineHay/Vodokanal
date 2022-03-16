@@ -43,9 +43,9 @@
                                 <td>{{$Contractss->message}}</td>
                                 <td>
                                     @if($Contractss->status==0)
-                                        <i style="color:red" class="fa fa-bell" aria-hidden="true"></i>
+                                    <i style="color:red; font-size:20px" class="fa fa-envelope" aria-hidden="true"></i>
                                     @elseif($Contractss->status==1)
-                                        <i style="color:green" class="fa fa-bell" aria-hidden="true"></i>&nbsp;&nbsp;
+                                    <i style="color:green; font-size:20px" class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;&nbsp;
                                     @endif
 
                                     <a href="{{route('backend.support_task_show',$Contractss->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;

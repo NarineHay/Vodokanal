@@ -139,7 +139,7 @@
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link " href="{{route('backend.info_terminal')}}">
                             Инфо по терминалам 
                         </a>
                     </li>

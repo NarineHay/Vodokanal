@@ -16,7 +16,7 @@ class PaymentMethodController extends Controller
 
      public function payment_method_edit(Request $request ,$id){
         $this->validate($request,[
-            'img_path' => 'required|max:10000|mimes:jpg,png',
+            'img_path' => 'max:10000|mimes:jpg,png',
         ]);
 
         $data = Payment_method::find($id);

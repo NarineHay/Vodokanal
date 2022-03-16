@@ -12,10 +12,10 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                <strong>Welcome adminnnnnnnnnnnnnnnnnnnnnnnnnn</strong>
+                <strong>Добро пожаловать, админ</strong>
             </div><!--card-header-->
             <div class="card-body">
-                Welcome to the Dashboard
+              Добро пожаловать в панель инструментов
             </div><!--card-body-->
         </div><!--card-->
     </div><!--col-->

@@ -13,7 +13,7 @@
   
                     <div class="feedback">
                       <h3>Показать сообщение пользователя</h3>
-                      <a href="{{route('backend.feedback_index')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+                      <a href="{{route('backend.support_task_index')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
                   </div><br>
                 
                         
@@ -35,11 +35,11 @@
 
                         <hr>
 
-                        <h3>Отправить сообщение</h3><br>
+                        <h5>Отправить сообщение</h5><br>
                     
                      
                         <div class="container_feedback card message-container ">
-                            <h1 class="message-title">Пользователь Отправить сообщение</h1>
+                            <h5 class="message-title">Пользователь Отправить сообщение</h5>
                           
                             <form action="{{route('backend.send_mail_user_message',$Contracts->id)}}" method="post">
                           
