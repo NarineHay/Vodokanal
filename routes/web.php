@@ -93,7 +93,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('backend/contract_page', [ContractController::class, 'index'])->name('contract_page');
             Route::get('backend/add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
-            Route::Post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
+            Route::post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
             Route::get('backend/show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
             Route::get('backend/edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
             Route::post('/edit_now_contract/{id}', [ContractController::class, 'update'])->name('edit_now_contract');
@@ -102,14 +102,14 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('/feedback_index', [FeeddbackController::class, 'index'])->name('feedback_index');
             Route::get('show_feedback/{id}', [FeeddbackController::class, 'show'])->name('show_feedback');
-            Route::post('/send_mail_feedbeack', [FeeddbackController::class, 'send_mail'])->name('send_mail_feedbeack');
+            Route::post('send_mail_feedbeack/{id}', [FeeddbackController::class, 'send_mail'])->name('send_mail_feedbeack');
             Route::get('feedback_delate/{id}', [FeeddbackController::class, 'delete'])->name('feedback_delate');
 
             Route::get('/support_task_index', [SupportTaskController::class, 'index'])->name('support_task_index');
             Route::get('support_task_show/{id}', [SupportTaskController::class, 'show'])->name('support_task_show');
             Route::post('send_mail_user_message', [SupportTaskController::class, 'sendmail'])->name('send_mail_user_message');
             Route::get('feedback_delate/{id}', [SupportTaskController::class, 'delete'])->name('feedback_delate');
-           
+
 
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
