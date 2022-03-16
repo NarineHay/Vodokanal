@@ -21,4 +21,8 @@ class ContractFile extends Model
     {
         return $this->belongsTo(Contracts::class ,'contract_id');
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -26,7 +26,7 @@ class Card extends Model
 
     public function car()
     {
-        return $this->hasOne(Car::class)->where('status', 1);
+        return $this->hasMany(Car::class)->where('status', 1);
     }
 
     public function history_of_card_replenishment()

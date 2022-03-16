@@ -112,12 +112,12 @@
                          </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link "  href="{{ route('backend.addblance') }}">
                             Пополнение баланса
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link " href="{{ route('backend.checkbalance') }}">
                             Проверка баланса
                         </a>
                     </li>

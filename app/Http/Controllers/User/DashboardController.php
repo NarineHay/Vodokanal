@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\balance;
 use App\Models\User;
 use App\Models\Card;
+use App\Models\Car;
 use Illuminate\Support\Facades\Validator;
 /**
  * Class DashboardController.
@@ -48,7 +49,7 @@ class DashboardController extends Controller
     }
     public function indexcars()
     {
-        $Cars = Card::where('id',Auth::id())->get();
+        $Cars = Car::all();
         
         return view('user.mycars.index',compact('Cars'));
     }

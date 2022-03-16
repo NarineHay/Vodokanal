@@ -1,0 +1,53 @@
+@extends('backend.layouts.app')
+@section('title' )
+@section('content')
+<div class="col-md-10">
+<div class="container shadow bg-white p-3">
+<h3 class="vernagir">пополнение баланса</h3>
+
+@if (session('message'))
+  <div class="alert alert-success" role="alert">
+   {{ session('message') }}
+    </div>
+@endif
+<div class="container-fluid">
+    
+    <div class="animated fadeIn">
+        <div class="content-header"></div>
+        <!--content-header-->
+        <div class="row">
+            <div class="col pl-5">
+                <form action="{{ route('backend.adduserbalance')}}" method="post">
+                    @csrf
+                    <div class="reg form-group my-3" style="width:100%">
+                        <select class="selectpicker form-control"  data-live-search="true" name="user_id">
+                            <option disabled selected>выберите пользователя</option>
+                            @foreach($users as $user)
+                            <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}},{{$user->email}} user balance:{{$user->balance}}</option>
+                            @endforeach
+                        </select>
+                        <div class="reg form-group my-3" style="width:100%">
+                        <div class=" user-info">
+                       
+                        </div>
+                           
+                            <input class="form-control shadow bg-white" placeholder="сумма"  onkeypress="return validateNumber(event)" type="number" name="balance" ><p></p>
+                            @if($errors->has('balance'))
+                                    <span class="error">{{ $errors->first('balance') }}</span>
+                            @endif
+                            <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="Отправить">
+                        </div>
+                    </div>
+                </form><!--form-->
+            </div><!--col-->
+        </div><!--row-->
+    </div>
+    <!--animated-->
+</div>
+</div>
+</div>
+@endsection
+@section('pagescript')
+    <script src="{{asset('assets/js/backend.js')}}"></script>
+@endsection
+
