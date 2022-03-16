@@ -18,7 +18,7 @@ class FeeddbackController extends Controller
 
 
   public  function show(Request $request , $id){
-     
+
      $Feedback = Feedback::find($id);
      $Feedback->update([
       'status'=>true
@@ -27,18 +27,20 @@ class FeeddbackController extends Controller
 
   }
 
-  public function send_mail(Request $request){
+  public function send_mail(Request $request, $id){
 
+        $feedback=Feedback::find($id);
+      
           $details = [
             'message' => $request->message,
         ];
-        
-        Mail::to($request->mail)->send(new Supportfeedbackmail($details));
+
+        Mail::to($feedback->email)->send(new Supportfeedbackmail($details));
         return redirect()->back()->with('status', 'Ваше письмо успешно отправлено');
 
-        
 
-      
+
+
   }
 
   public function delete($id){
@@ -47,5 +49,5 @@ class FeeddbackController extends Controller
     return redirect()->back()->with('delate', 'Удалено успешно');
   }
 
-  
+
 }

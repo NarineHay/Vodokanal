@@ -114,10 +114,10 @@
                             {{-- {!! Form::text('email', null, array('placeholder' => 'Эл. адрес','class' => 'form-control @error("email") is-invalid @enderror')) !!} --}}
                             <input type="email" class="form-control w-100 py-2 @error('email') is-invalid @enderror" value="{{ old('email') }}" autocomplete="email" id="email" aria-describedby="email"  placeholder="Эл. адрес" name="email">
                             @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">

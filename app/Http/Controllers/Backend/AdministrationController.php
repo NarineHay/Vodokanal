@@ -52,21 +52,22 @@ class AdministrationController extends Controller
      */
     public function store(Request $request)
     {
+        // dd( $request->roles);
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
+            'password' => 'required | confirmed | min:8',
+            'role' => 'required'
         ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $user->assignRole($request->input('roles'));
+        $user->assignRole($request->role);
 
-        return redirect()->route('administrtion.index')
+        return redirect()->route('administration.index')
                         ->with('success','Администратор успешно создан');
     }
     /**
@@ -105,6 +106,7 @@ class AdministrationController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dd( $request->input('roles'));
         $this->validate($request, [
             'first_name' => 'required',
             'last_name' => 'required',
