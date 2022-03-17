@@ -14,9 +14,10 @@ class CartController extends Controller
 {
     public function index()
     {
-        $users=User::where('id','!=',Auth::id())->get();
+        // $users=User::where('id','!=',Auth::id())->get();
         $cards = Card::where('id','!=',Auth::id())->get();
-
+        $cars=Car::all();
+        // dd($cars);
         return view('backend.cart.index',compact('cards'));
     }
     public function cart_acceptfoo($id)
@@ -35,7 +36,7 @@ class CartController extends Controller
     }
     public function CreateCard(Request $request)
     {
-        $request->validate([
+            $request->validate([
                 "object"    => "required|array",
                 "object.*.card_number"  => "required|min:6|unique:cards",
                 "object.*.model"  => "required",
@@ -49,8 +50,8 @@ class CartController extends Controller
                 "object.*.car_numbers.required" => "Поле обязательно для заполнения."
 
             ]);
-
-
+            
+            
         // $invalid=$this->validate($request,$validArr);
         $input = $request->all();
         foreach($request->object as $key => $value){
@@ -92,9 +93,9 @@ class CartController extends Controller
             $contracts->number<p></p>
             Баланс :
             $balance руб.<p></p>
-            Срок договора до :
+            Срок договора от :
             $contracts->date_start<p></p>
-            Срок договора после :
+            Срок договора до :
             $contracts->date_end<p></p>
             ";
             foreach ($cont_files as $key => $value) {

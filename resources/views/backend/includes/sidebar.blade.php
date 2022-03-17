@@ -91,7 +91,7 @@
                     </li>
                     <li class="nav-item">
 
-                        <a class="nav-link {{ request()->routeIs('backend.createcard1') ? 'active' : '' }}"  href="{{ route('backend.createcard1') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.createcard_user') ? 'active' : '' }}"  href="{{ route('backend.createcard_user') }}">
                         Добавить карту
                         </a>
                     </li>
@@ -134,7 +134,7 @@
 
                     <li class="nav-item">
                     <a class="nav-link "  href="{{ route('backend.map') }}">
-                            Карта
+                            Карты
                          </a>
                     </li>
                 </ul>
