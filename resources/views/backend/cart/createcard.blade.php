@@ -42,7 +42,7 @@
                                 <p></p>
                                 <span class="removeVar">Удалить</span>
                                 <p></p>
-                                <p><span id="addVar"> Добавить новый элемент </span> </p>
+                                <p><span id="addVar">Добавить новый элемент</span></p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
                             </p>
                         </div>
@@ -57,5 +57,8 @@
 </div>
 
 {{-- @include('frontend.includes.footer') --}}
+@endsection
+@section('pagescript')
+    <script src="{{asset('assets/js/backend.js')}}"></script>
 @endsection
 
