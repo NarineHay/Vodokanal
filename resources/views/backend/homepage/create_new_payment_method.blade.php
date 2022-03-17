@@ -19,6 +19,7 @@
                         <label class="form-label" for="error-adajsd">Значок</label>
                         <div class="wrapper">
                             <label>
+                                <span style="color:red;font-size: 9px;">@error('img_path'){{$message}}@enderror</span>
                                 <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>
                                 <i class="fa fa-upload" aria-hidden="true" style="font-size:30px"></i>
                             </label>

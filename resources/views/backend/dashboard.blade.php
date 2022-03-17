@@ -12,7 +12,7 @@
     <div class="col">
         <div class="card">
             <div class="card-header">
-                <strong>Добро пожаловать, админ</strong>
+                <strong>Добро пожаловать,{{{ Auth::user()->first_name }}}</strong>
             </div><!--card-header-->
             <div class="card-body">
               Добро пожаловать в панель инструментов

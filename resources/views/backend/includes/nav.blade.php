@@ -44,7 +44,7 @@
                             <li class="nav-item dropdown">
                               
                                 <a class="fio nav-link dropdown-toggle text-white" style="color:black !important" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Ф И О
+                                    {{{ Auth::user()->first_name }}}
                                 </a>
                                 <ul class="dropdown-menu dropdown-nav-ul" aria-labelledby="navbarDropdownMenuLink">
                                     <li>

@@ -19,12 +19,15 @@
                     <span class="li-title">Личные данные</span>
                     <div>
                         <i class="bi bi-telephone"></i>
-                       
-                     <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span> 
+
+                     <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span>
                     </div>
+
                     <div class="d-flex justify-content-between">
                         <h5>@</h5>
                         <span class="ml-2 ft-size-10">{{Auth::user()->email}}</span>
+
+                    
                     </div>
                 </a>
             </li>
@@ -35,14 +38,6 @@
                     <i class="nav-icon bi bi-truck"></i>
                     <span class="li-title">Машины</span>
 
-                    <div>
-                      
-                       
-                    </div>
-                    <div>
-                        
-                       
-                    </div>
                 </a>
             </li>
             <li><hr width="70%" class="ml-3"></li>
@@ -68,6 +63,10 @@
                                           document.getElementById('logout-form').submit();">
                              {{ __('Выйти') }}
                 </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
 
             </li>
         </ul>

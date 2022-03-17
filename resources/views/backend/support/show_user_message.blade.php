@@ -17,19 +17,19 @@
                   </div><br>
                 
                         
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Имя пользователя</label>
-                          <h4>{{$Contracts['user']->first_name}}</h4>
+                        <div class="form-group_m">
+                          <label for="exampleInputPassword1">Имя пользователя</label>:
+                          <p>{{$Contracts['user']->first_name}}</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Заголовок</label>
-                             <h4>{{$Contracts->theme}}</h4>
+                        <div class="form-group_m">
+                            <label for="exampleInputPassword1">Заголовок</label>:
+                             <p>{{$Contracts->theme}}<p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Сообщение</label>
-                             <h4>{{$Contracts->message}}</h4>
+                        <div class="form-group_m">
+                            <label for="exampleInputPassword1">Сообщение</label>:
+                             <p>{{$Contracts->message}}</p>
                         </div>
 
 
@@ -48,7 +48,7 @@
                               <textarea name="message" cols="30" rows="7" required maxlength="500"></textarea>
                           
                               <p class="button-container">
-                                <input class="button" type="submit" value="Отправлять">
+                                <button type="button" class="btn btn-secondary"><i class="fa fa-paper-plane" aria-hidden="true"></i>Отправлять</button>
                               </p>
                             </form>
                           </div>

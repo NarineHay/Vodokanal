@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Mail\UserTaskMail;
 use Illuminate\Support\Facades\Mail;
 
-class SupportTaskController extends Controller
+class SupportTaskController extends Controller   
 {
      public function index(){
         $Contracts = Support_task::with('user')->get();
