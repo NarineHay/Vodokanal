@@ -49,7 +49,6 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/contact', [HomeController::class, 'index'])->name('contact');
 Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
 Route::group(['middleware' => 'auth'], function () {
-    // Route::resource('roles', RoleController::class);
     Route::group(['middleware' => ['verified']], function () {
 
         Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
@@ -71,7 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::resource('/backend/users', UserController::class);
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
-            Route::get('/backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
             Route::get('cart', [CartController::class, 'index'])->name('cart');
             Route::get('cart_accept/{id}', [CartController::class, 'cart_acceptfoo'])->name('cart_accept');
             Route::get('backend/support', [BackendSupportController::class, 'index'])->name('support');
@@ -127,16 +126,11 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('safeti', [AdministrationController::class, 'safeti_sustem'])->name('safeti');
             Route::get('map', [AdministrationController::class, 'map_page'])->name('map');
-            // Route::resource('roles', RoleController::class);
-            // Route::resource('/backend/roles', RoleController::class)->only([
-            //     'index', 'show'
-            // ]);*
-            // Route::resource('users', UserController::class);
+
         });
     });
 });
-// Route::group(['middleware' => 'guest'], function () {
-// });
+
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware(['auth'])->name('verification.notice');

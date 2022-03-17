@@ -29,7 +29,13 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Имя:</strong>
-                            {{ $user->name }}
+                            {{ $user->first_name }}
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Фамилия:</strong>
+                            {{ $user->last_name }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">

@@ -2,7 +2,7 @@
     <nav class="sidebar-nav user-sidebar-nav ps">
         <ul class="nav">
 
-            <li class="nav-item nav-dropdown {{ request()->routeIs(['roles*', 'administration*']) ? 'open' : '' }}">
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['roles*', 'administration*', 'backend.support*', 'backend.*feedback*']) ? 'open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle " href="#"> Система </a>
 
                 <ul class="nav-dropdown-items ">
@@ -21,31 +21,19 @@
                         </li>
                     @endcan
 
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="">
-                            Тариф
-                        </a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link " href="">
                             Отчеты и статистика
                          </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link {{ request()->routeIs('backend.support*') ? 'active' : '' }}" href="{{route('backend.support_task_index')}}">
                             Служба поддержки
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.feedback_index')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.*feedback*') ? 'active' : '' }}" href="{{route('backend.feedback_index')}}">
                          Обратная связь
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.support_task_index')}}">
-                            Сообщение пользователя
                         </a>
                     </li>
                 </ul>
@@ -92,18 +80,18 @@
 
             </li>
 
-            <li class="nav-item nav-dropdown {{ request()->routeIs('users*') ? 'open' : '' }}" >
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['users*', 'backend.*contract*', 'backend.createcard1*', '*balance*']) ? 'open' : '' }}" >
                 <a class="nav-link nav-dropdown-toggle " href="#"> Пользователи </a>
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.contract_page')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.*contract*') ? 'active' : '' }}" href="{{route('backend.contract_page')}}">
                             Договор
                         </a>
                     </li>
                     <li class="nav-item">
 
-                        <a class="nav-link"  href="{{ route('backend.createcard1') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.createcard1') ? 'active' : '' }}"  href="{{ route('backend.createcard1') }}">
                         Добавить карту
                         </a>
                     </li>
@@ -118,17 +106,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="">
-                            Регистрация автомибилей
-                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link "  href="{{ route('backend.addblance') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.addblance') ? 'active' : '' }}"  href="{{ route('backend.addblance') }}">
                             Пополнение баланса
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="{{ route('backend.checkbalance') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.checkbalance') ? 'active' : '' }}" href="{{ route('backend.checkbalance') }}">
                             Проверка баланса
                         </a>
                     </li>
@@ -140,7 +123,7 @@
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
                         <a class="nav-link " href="{{route('backend.info_terminal')}}">
-                            Инфо по терминалам 
+                            Инфо по терминалам
                         </a>
                     </li>
                     <li class="nav-item">
