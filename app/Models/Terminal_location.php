@@ -20,6 +20,6 @@ class Terminal_location extends Model
     ];
     public function safety_system()
     {
-        return $this->hasOne(Safety_system::class);
+        return $this->hasMany(Safety_system::class);
     }
 }
