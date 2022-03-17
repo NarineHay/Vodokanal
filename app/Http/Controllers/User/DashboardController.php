@@ -57,25 +57,28 @@ class DashboardController extends Controller
 
     public function CreateBlance(Request $request)
     {
+        $num = $request['num'];
+        $bal = 'balance' . $num;
+        $erMessage = 'er' . $num;
+        
         $this->validate($request, [
-        'balance'=> 'required',
+        $bal=> 'required',
         'card_id'=> 'required',
         ]);
 
-        $cardbalance=Card::find($request->card_id)->balance;
+           
+        if(intval(Auth::user()->balance)<=intval($request[$bal])){
+            return redirect()->back()->withErrors([$erMessage=>'переоценен баланс']);
+        }else{
+            $cardbalance=Card::find($request->card_id)->balance;
         $cardFind = Card::find($request->card_id);
-        $cardbalance += $request->balance;
+        $cardbalance += $request[$bal];
         $cardFind->update([
             'balance'=>$cardbalance,
         ]);     
-        if(Auth::user()->balance<=$request->balance){
-            return redirect()->back()->with('message','Активирована ограничения на балансе');
-        }else{
-            $balance = Auth::user()->balance;
-            $balance -= $request->balance;
-            Auth::user()->update([
-              'balance'=>$balance,
-            ]);
+            $a = Auth::user();
+            $a['balance'] = intval($a['balance']) - intval($request[$bal]);
+            $a->save();
         }
 
 

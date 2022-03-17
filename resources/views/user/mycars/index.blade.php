@@ -24,10 +24,10 @@
                         @foreach($Cars as $car)
                         <tr>
                           <td class=" border border-1 py-3">
-                              <h2>{{$car->model}}</h2>
+                              <h4>{{$car->model}}</h4>
                           </td>
                           <td class=" border border-1 py-3">
-                              <h2>{{$car->car_numbers}}</h2>
+                              <h4>{{$car->car_numbers}}</h4>
                           </td>
                           <td class=" border border-1 py-3">
                           

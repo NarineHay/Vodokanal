@@ -8,7 +8,8 @@
                     @if(Auth::user()->balance >= 301)
                         <h6 class="active-color2">активный статус</h6>
                         @elseif(Auth::user()->balance <= 300)
-                        <h6 class="active-color1">Пассивный статус</h6>
+                        <h6 class="active-color1">Пассивный статус  </h6>
+                        <h6 class="active-color1">пополните баланс</h6>
                     @endif
                 </div>
             </li>
@@ -21,8 +22,9 @@
                        
                      <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span> 
                     </div>
-                    <div>
-                        <span class="ml-2 ft-size-14">{{Auth::user()->email}}</span>
+                    <div class="d-flex justify-content-between">
+                        <h5>@</h5>
+                        <span class="ml-2 ft-size-10">{{Auth::user()->email}}</span>
                     </div>
                 </a>
             </li>

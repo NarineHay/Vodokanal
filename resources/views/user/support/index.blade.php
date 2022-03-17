@@ -5,7 +5,7 @@
     <link href="{{ asset('assets/css/user-support.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<div class="col-md-10">
+<div class="supp col">
             <h3 style="color:#143B57;" class=" fw-bold">Служба поддержки</h3>
              <h6 class="mb-4">Пожалуйста сообщите нам если есть проблемы</h6>
 <div class="container shadow bg-white p-3">

@@ -32,7 +32,7 @@
                         @enderror
                     </td>
                     <td class="border border-1 py-3">
-                        <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143b57; color: #fff;" value="dabavit" />
+                        <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143b57; color: #fff;" value="добавить" />
                     </td>
                 </tr>
             </form>
@@ -62,6 +62,7 @@
         @foreach(Auth::user()->card as $num => $card)
         <form class="form" action="/dashboard_blance" method="post">
             <input type="text" hidden value="{{$card->id}}" name="card_id" />
+            <input type="text" hidden name="num" value="{{$num}}">
             <div class="card">
                 <div class="col">
                     <div class="card p-3" style="border-radius: 20px;">
@@ -85,12 +86,15 @@
                         <div class="addSomeCl{{$num}}"></div>
                         <div class="removeCl{{$num}}">
                             <a class="aaaa" onClick="addSome('{{$num}}')"> Добавить баланс </a>
-                            @if (session('message'))
-                                <div class="alert alert-danger" role="alert">
-                               {{ session('message') }}
-                                </div>
-                            @endif
-                        </div><p></p>
+                            <?php $er = 'er' . $num ?>
+                        </div>
+                        <p></p>
+                        @error($er)
+                        <div class="text-danger">
+                            {{$message}}
+                        </div>                       
+                        @enderror
+                           <p></p>
                        
                         <div>
                             <input type="submit" class="alignRight" style="background: #143b57; color: #fff;" value="Отправить" />
@@ -105,19 +109,12 @@
          </div>
         <!--form-->
 
-        <script>
-            function addSome(numI) {
-                $(".addSomeCl" + numI).append('<input class="form-control "placeholder="Card number" type="number" onkeypress="return validateNumber(event)" name="balance">');
-                $(".removeCl" + numI).empty();
-            }
-            function validateNumber(e) {
-            const pattern = /^[0-9]$/;
-
-            return pattern.test(e.key )
-        }
-        </script>
+        
        
 
         @endsection
     </div>
 </section>
+@section('pagescript')
+    <script src="{{asset('assets/js/backend.js')}}"></script>
+@endsection

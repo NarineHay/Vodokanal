@@ -5,7 +5,7 @@
     <link href="{{ asset('assets/css/user-support.css') }}" rel="stylesheet">
 @endsection
 @section('content')
-<div class="container-fluid mt-4">
+<div class="med">
     <div class="animated fadeIn">
         <div class="content-header"></div>
         <!--content-header-->
