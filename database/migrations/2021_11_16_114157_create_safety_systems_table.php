@@ -15,9 +15,9 @@ class CreateSafetySystemsTable extends Migration
     {
         Schema::create('safety_systems', function (Blueprint $table) {
             $table->id()->from(1000);;
-            $table->bigInteger('telminal_id');
+            $table->bigInteger('telminal_id')->references('id')->on('terminal_locations')->onDelete('cascade')->onUpdate('cascade');;
             $table->string('name');
-            $table->string('content');
+            $table->string('content');    
             $table->string('status');
             $table->timestamps();
         });
