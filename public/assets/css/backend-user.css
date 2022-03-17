@@ -1,3 +1,10 @@
+.invalid-feedback{
+    display: block !important
+}
+.form-select.is-invalid, .was-validated .form-select:invalid {
+border-color: #dc3545;
+}
+
 [type="radio"]:checked,
 [type="radio"]:not(:checked) {
     position: absolute;

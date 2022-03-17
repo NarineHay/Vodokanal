@@ -10,7 +10,7 @@
     </div>
 @endif
 <div class="container-fluid">
-    
+
     <div class="animated fadeIn">
         <div class="content-header"></div>
         <!--content-header-->
@@ -19,32 +19,41 @@
                 <form action="{{ route('backend.createcard')}}" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
-                        <select class="selectpicker form-control"  data-live-search="true" name="user_id">
-                     @foreach($users as $user)
-                        <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}},{{$user->email}}</option>
-                       @endforeach
+                        <select class="selectpicker form-control mb-3"  data-live-search="true" name="user_id">
+                            @foreach($users as $user)
+                                <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}},{{$user->email}}</option>
+                            @endforeach
                         </select>
-                        <div class="reg form-group my-3" style="width:100%">
-                            <p>
-
-                               
-                                <input class="form-control @error('[card_number]') is-invalid @enderror"  value="{{ old('[card_number]') }}" placeholder="Номер карты" type="number"  name="object[0][card_number]">
-                                <p></p>
-                                @if($errors->has('[card_number]'))
-                                    <span class="error">{{ $errors->first('[card_number]') }}</span>
-                                @endif
-                               
-                                <input class="form-control "placeholder="Номер машины"  type="text" name="object[0][model]">
-                                <p></p>
-                                
-                                <input class="form-control "placeholder="Модель машины" type="text" name="object[0][car_numbers]">
-
-                                <p></p>
+                        <div class="reg " style="width:100%">
+                            <div class="form-group">
+                                <input class="form-control @error('object.*.card_number') is-invalid @enderror"  value="{{ old('object[0][card_number]') }}" placeholder="Номер карты" type="number"  name="object[0][card_number]">
+                                @error('object.*.card_number')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control @error('object.*.model') is-invalid @enderror" placeholder="Модель машины"  type="text" name="object[0][model]">
+                                @error('object.*.model')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control @error('object.*.car_numbers') is-invalid @enderror" placeholder="Номер машины" type="text" name="object[0][car_numbers]">
+                                @error('object.*.car_numbers')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                                 <span class="removeVar">Удалить</span>
                                 <p></p>
                                 <p><span id="addVar"> Добавить новый элемент </span> </p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
-                            </p>
+
                         </div>
                     </div>
                 </form><!--form-->

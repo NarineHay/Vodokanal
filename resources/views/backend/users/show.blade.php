@@ -58,8 +58,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>Названия организации:</strong>
-                            {{ $user->company_name }}
+                            <strong>Эл. адрес:</strong>
+                            {{ $user->email }}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">

@@ -33,9 +33,6 @@
                   </div>
                 @endif
 
-
-
-                {{-- {!! Form::open(array('route' => 'administration.store','method'=>'POST')) !!} --}}
                 <form method="POST" action="{{ route('administration.store') }}">
                     @csrf
                 <div class="row">
@@ -48,7 +45,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::text('first_name', null, array('placeholder' => 'Имя','class' => 'form-control')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -60,7 +56,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::text('last_name', null, array('placeholder' => 'Фамилия','class' => 'form-control')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -72,7 +67,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::text('email', null, array('placeholder' => 'Эл. адрес','class' => 'form-control')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -84,7 +78,6 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::password('password', array('placeholder' => 'Пароль','class' => 'form-control')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -96,32 +89,22 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::password('confirm-password', array('placeholder' => 'Подтвердить Пароль','class' => 'form-control')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group" multiple>
                             <strong>Роль:</strong>
-                            {{-- <div class="w-50 d-felx flex-column justify-content-start">
-                                <input type="radio" multiple class="form-control w-50 py-2" id="status1"  name="role[]" value="111">
-                                <label for="status1">111</label>
-                            </div>
-                            <div class="w-50 d-felx flex-column justify-content-start">
-                                <input type="radio" multiple selected class="form-control w-50 py-2" id="status2"  name="role[]" value="222">
-                                <label for="status2">222</label>
-                            </div> --}}
                             @foreach ($roles as $key => $role)
                                 <div class="w-50 d-felx flex-column justify-content-start">
                                     <input type="radio"  class="form-control w-50 py-2" id="status{{$key}}[]"  name="role[]" value="{{$role}}">
                                     <label for="status{{$key}}[]">{{$role}}</label>
                                 </div>
                             @endforeach
-                            @error('roles')
+                            @error('role')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
-                            {{-- {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!} --}}
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
@@ -129,8 +112,6 @@
                     </div>
                 </div>
             </form>
-                {{-- {!! Form::close() !!} --}}
-
 
             </div><!--col-->
         </div><!--row-->

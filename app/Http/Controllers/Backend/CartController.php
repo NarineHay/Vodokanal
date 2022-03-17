@@ -35,14 +35,24 @@ class CartController extends Controller
     }
     public function CreateCard(Request $request)
     {
-        $validArr = [
-                     'user_id' => 'required',
-                     "card_number.*"  => "required|min:6|unique",
-                     "car_numbers.*"  => "required",
-                     "model.*"  => "required",
-        ];
-        $invalid=$this->validate($request,$validArr);
-        $input = $request->all(); 
+        $data = $request->validate([
+                "object"    => "required|array",
+                "object.*.card_number"  => "required|min:6|unique:cards",
+                "object.*.model"  => "required",
+                "object.*.car_numbers"  => "required",
+            ],
+            [
+                "object.*.card_number.unique" => "Этот номер карты уже существует",
+                "object.*.card_number.min" => "Поле должен содержать не менее :min символов.",
+                "object.*.card_number.required" => "Поле обязательно для заполнения.",
+                "object.*.model.required" => "Поле обязательно для заполнения.",
+                "object.*.car_numbers.required" => "Поле обязательно для заполнения."
+
+            ]);
+
+
+        // $invalid=$this->validate($request,$validArr);
+        $input = $request->all();
         foreach($request->object as $key => $value){
             $insert = Card::create([
                 'user_id'=>$request['user_id'],
@@ -66,20 +76,21 @@ class CartController extends Controller
         return view('backend.cart.addbalance',compact('users'));
     }
     public function SelectUser(Request $request)
-    {  
-        
+    {
         $id=$request->sel_val;
+        $request->session()->put('select_user', $id);
+
         $contracts=Contracts::where('user_id', $id)->first();
-        
+
         $content='';
         if($contracts){
             $cont_files=ContractFile::where('contract_id', $contracts->id)->get();
             $balance=$contracts->user->balance;
-            $content .= " 
-           
+            $content .= "
+
             Номер договора :
             $contracts->number<p></p>
-            Баланс : 
+            Баланс :
             $balance руб.<p></p>
             Срок договора до :
             $contracts->date_start<p></p>
@@ -91,12 +102,13 @@ class CartController extends Controller
                         <div>Договор : <a class="resume" href="'.$value->file_path.'/'.$value->file_name.'">'.$value->file_name.'</a></div><p></p>
                 ';
             }
-            
+
         }
         else{
             $content="Информация о пользователя отсутствует";
         }
         echo $content;
+
     }
     public function addblance_user_balance(Request $request)
     {
@@ -110,9 +122,9 @@ class CartController extends Controller
         $formbalance->update([
             'balance'=>$userbalance,
         ]);
-        
-       
-        
+
+
+
         return redirect()->back()->with('message','Данные успешно добавлены');
     }
     public function checkbalance()
@@ -128,10 +140,10 @@ class CartController extends Controller
         if($contracts){
             $cont_files=ContractFile::where('contract_id', $contracts->id)->get();
             $balance=$contracts->user->balance;
-            $content .= " 
+            $content .= "
             Номер договора:
             $contracts->number
-            Баланс : 
+            Баланс :
             $balance руб.<p></p>
             Срок договора do:
             $contracts->date_start
@@ -148,7 +160,7 @@ class CartController extends Controller
             $content="Информация о пользователя отсутствует";
         }
         echo $content;
-       
+
     }
 
 }

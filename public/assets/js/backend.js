@@ -22,14 +22,22 @@ $(function () {
 
 
 $(function () {
+    let selected_val=$("select option:selected" ).val()
+    if(selected_val != ''){
+        sel_user(selected_val)
+    }
 
-  $('.selectpicker').on('change', function(){
-    let sel_val=$(this).val()
-    console.log(sel_val)
+    $('.selectpicker').on('change', function(){
+            let sel_val=$(this).val()
+            sel_user(sel_val)
+    })
+
+    function sel_user(user_id){
+        let sel_val=user_id
             $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-                    }
+                headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
             });
             $.ajax({
                     type: 'post',
@@ -39,7 +47,7 @@ $(function () {
                         $(".user-info").html(result)
                     }
             })
-  })
+    }
 });
 
 function addSome(numI) {
