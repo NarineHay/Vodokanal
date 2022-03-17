@@ -10,10 +10,11 @@
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
-                    <h3>Способы оплаты</h3>
-                    <div class="flex_method">
-                        <a href="{{route('backend.create')}}" style="color:#fff"><button class="btn btn-primary">Добавлять</button></a>
-                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h3>Способы оплаты</h3>
+                        <a href="{{route('backend.create')}}"><button  type="submit" class="btn btn-primary">Добавлять</button></a>
+                    </div><br>
+                  
                     @foreach ( $Payment_method as $Payment_methods )
                     <form action="{{route('backend.edit_payment', $Payment_methods->id)}}" method="Post" enctype="multipart/form-data">
                         @csrf
