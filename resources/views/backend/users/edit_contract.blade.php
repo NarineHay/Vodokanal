@@ -1,41 +1,6 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-<style>
-  #files-area{
-	width: 30%;
-	margin: 0 auto;
-}
-.file-block{
-	border-radius: 10px;
-	background-color: rgba(144, 163, 203, 0.2);
-	margin: 5px;
-	color: initial;
-	display: inline-flex;
-	& > span.name{
-		padding-right: 10px;
-		width: max-content;
-		display: inline-flex;
-	}
-}
-.file-delete{
-	display: flex;
-	width: 24px;
-	color: initial;
-	background-color: #6eb4ff00;
-	font-size: large;
-	justify-content: center;
-	margin-right: 3px;
-	cursor: pointer;
-	&:hover{
-		background-color: rgba(144, 163, 203, 0.2);
-		border-radius: 10px;
-	}
-	& > span{
-		transform: rotate(45deg);
-	}
-}
+<link rel="stylesheet" href="{{asset('assets/css/edit_contract.css')}}">
 
-
-</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -44,38 +9,36 @@
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
+                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
-					<div class="text-right">
-						<a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-				   </div>
-                    <h3>Новый контракт</h3><br>
+					@if (session('delete'))
+                    <div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delete') }}</div>
+                    @endif
+					<div class="feedback">
+                        <h3>Изменить контракт</h3>
+                        <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+                    </div><br>
                     <form action="{{route('backend.edit_now_contract',$Contracts->id)}}" method="Post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							
-						  <label for="exampleInputPassword1">Контактный номер</label>
-						  <select  name="user_id" class="custom-select">
-                            @foreach ($user as $users )
-                                <option value="{{$users->id}}">{{$users->first_name}}</option>
-                            @endforeach
-                          </select>
-
+							<label for="exampleInputPassword1">Контактное лицо</label>   
+							<p>{{$Contracts['user']->first_name}}</p>
 						</div>
 
                         <div class="form-group">
                           <label for="exampleInputPassword1">Контактный номер</label>
-                          <input type="text" name="number" style="font-size:20px" value="{{$Contracts->number}}"class="form-control" id="exampleInputPassword1">
+                          <input type="text" name="number"  value="{{$Contracts->number}}"class="form-control" id="exampleInputPassword1">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Дата начала</label>
-                            <input type="date" name="date_start" style="font-size:20px" value="{{$Contracts->date_start}}" class="form-control" id="exampleInputPassword1">
+                            <input type="date" name="date_start"  value="{{$Contracts->date_start}}" class="form-control" id="exampleInputPassword1">
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputPassword1">Дата окончания</label>
-                            <input type="date" name="date_end" style="font-size:20px" value="{{$Contracts->date_end}}" class="form-control" id="exampleInputPassword1">
+                            <input type="date" name="date_end" value="{{$Contracts->date_end}}" class="form-control" id="exampleInputPassword1">
                         </div>
 
                         <div class="form-group">

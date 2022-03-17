@@ -1,40 +1,6 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-<style>
-  #files-area{
-	width: 30%;
-	margin: 0 auto;
-}
-.file-block{
-	border-radius: 10px;
-	background-color: rgba(144, 163, 203, 0.2);
-	margin: 5px;
-	color: initial;
-	display: inline-flex;
-	& > span.name{
-		padding-right: 10px;
-		width: max-content;
-		display: inline-flex;
-	}
-}
-.file-delete{
-	display: flex;
-	width: 24px;
-	color: initial;
-	background-color: #6eb4ff00;
-	font-size: large;
-	justify-content: center;
-	margin-right: 3px;
-	cursor: pointer;
-	&:hover{
-		background-color: rgba(144, 163, 203, 0.2);
-		border-radius: 10px;
-	}
-	& > span{
-		transform: rotate(45deg);
-	}
-}
+<link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet">
 
-</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -43,47 +9,42 @@
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
+                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
-                    <h3>Показать контракт</h3><br>
-                    
-                        <div class="form-group">
-                           <label for="exampleInputEmail1">Имя пользователя</label>
-                         <h2>
+					<div class="d-flex justify-content-between">
+                        <h3>Показать контракт</h3>
+                        <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Добавлять</button></a>
+                    </div><br>
+                        <div class="form-group_m">
+                           <label for="exampleInputEmail1">Имя пользователя</label>:
+                         <p>
                                <option>{{$Contracts['User']->first_name}}</option>
-                         </h2>
+						 </p>
                          
                         </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Контактный номер</label>
-                          <h2>{{$Contracts->number}}</h2>
+                        <div class="form-group_m">
+                          <label for="exampleInputPassword1">Контактный номер</label>:
+                          <p>{{$Contracts->number}}</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Дата начала</label>
-                             <h2>{{$Contracts->date_start}}</h2>
+                        <div class="form-group_m">
+                            <label for="exampleInputPassword1">Дата начала</label>:
+                             <p>{{$Contracts->date_start}}</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Дата окончания</label>
-                            <h2>{{$Contracts->date_end}}</h2>
+                        <div class="form-group_m">
+                            <label for="exampleInputPassword1">Дата окончания</label>:
+                            <p>{{$Contracts->date_end}}</p>
                         </div>
 
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Добавить файл контракта</label>
+                        <div class="form-group_m">
+                            <label for="exampleInputPassword1">Добавить файл контракта</label>:
                            @foreach ($Contracts['ContractFile'] as $data)
-                               <a href="/assets/contractfile/{{$data->file_name}}"><h2>{{$data->file_name}}</h2></a>
+                               <a href="/assets/contractfile/{{$data->file_name}}"><p>{{$data->file_name}}</p></a>
                            @endforeach
-                             
-                           
                         </div><br>
-
                         <a href="{{route('backend.edit_contract',$Contracts->id)}}"><button type="submit" class="btn btn-primary">Редактировать</button></a>
                       </form><br><br>
-                      <div class="text-center">
-                           <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
-                      </div>
-                     
                    </div>
                 <!--card-body-->
             </div>

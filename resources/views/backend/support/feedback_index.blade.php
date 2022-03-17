@@ -1,6 +1,5 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
 <link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet">
-
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -12,7 +11,7 @@
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
                     @if (session('delate'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delate') }}</div>
+                    <div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delate') }}</div>
                     @endif
                     <h3>Обратная связь Сообщение</h3><br>
 
