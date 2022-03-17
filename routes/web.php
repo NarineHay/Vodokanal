@@ -117,7 +117,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard1', [CartController::class, 'index1'])->name('createcard1');
-            Route::get('addblance', [CartController::class, 'addblance_u'])->name('addblance');
+            Route::get('addbalance', [CartController::class, 'addbalance_u'])->name('addbalance');
             Route::post('select_user', [CartController::class, 'SelectUser'])->name('select_user');
             Route::post('show_user_info', [CartController::class, 'ShowUserInfos'])->name('show_user_info');
 
