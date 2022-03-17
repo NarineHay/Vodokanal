@@ -67,7 +67,7 @@ class CartController extends Controller
 
         return redirect()->back()->with('message','Ваши данные успешно добавлены');
     }
-    public function addblance_u()
+    public function addbalance_u()
     {
         $users=User::where('id','!=',Auth::id())->get();
         $contracts=Contracts::all();
