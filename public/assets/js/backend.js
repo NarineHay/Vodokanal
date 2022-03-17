@@ -32,6 +32,7 @@ $(function () {
             sel_user(sel_val)
     })
 
+    
     function sel_user(user_id){
         let sel_val=user_id
             $.ajaxSetup({
