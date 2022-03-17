@@ -22,7 +22,10 @@ table tr td:first-child::before {
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
+                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
+                    @endif
+                    @if (session('delete'))
+                    <div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delete') }}</div>
                     @endif
                     <div class="d-flex justify-content-between">
                       <h3>Договор</h3>
@@ -51,6 +54,7 @@ table tr td:first-child::before {
                                   <td>{{$Contractss->date_end}}</td>
                                   <td>
                                       <a href="{{route('backend.show_contract_index',$Contractss->id)}}"><i style="font-size: 20px;" class="fa fa-eye" aria-hidden="true"></i></a>
+                                      <a href="{{route('backend.edit_contract',$Contractss->id)}}"><i style="font-size: 20px;" class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
                                       <a href="{{route('backend.delate_index_contract_page',$Contractss->id)}}"><i  style="font-size: 20px;" class="fa fa-trash-o" aria-hidden="true"></i></a>
                                   </td>
                                 </tr>

@@ -12,9 +12,9 @@
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
                     @if (session('delate'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delate') }}</div>
+                    <div class="alert alert-danger"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('delate') }}</div>
                     @endif
-                    <h3>Обратная связь Сообщение</h3><br>
+                    <h3>Сообщение пользователя</h3><br>
 
                     <div class="table-responsive">
 

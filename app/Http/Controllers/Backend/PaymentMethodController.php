@@ -40,7 +40,10 @@ class PaymentMethodController extends Controller
     }
 
     public function add_new_payment_method(Request $request){
-
+        $this->validate($request,[
+            'img_path' => 'max:10000|mimes:jpg,png',
+        ]);
+        
         $data = new Payment_method;
         $data->title=$request->title;
         $data->content=$request->content;

@@ -20,11 +20,11 @@
                         @csrf
                         <label class="form-label" for="error-adajsd">Добавить изображение</label>
 
-                        <div class="wrapper">
-                            <div class="box">
-                                <div class="js--image-preview"><img  src="/assets/images/img_index/{{$Payment_methods->img_path}}" style="width: 100%; height: 100%; background-color:black ;"></img></div>
+                        <div class="wrapper_new">
+                            <div class="box_for_logo">
+                                <div class="js--image-preview_new"><img  src="/assets/images/img_index/{{$Payment_methods->img_path}}" style="background-color:black ;"></img></div>
                                 <div class="upload-options">
-                                    <span style="color:red">@error('img_path'){{$message}}@enderror</span>
+                                    <span style="color:red;font-size: 9px;">@error('img_path'){{$message}}@enderror</span>
                                     <label>
                                         <span  style="font-size:20px">изменить изображение</span>
                                         <input name="img_path" type="file" class="image-upload"style="visibility: hidden; position: absolute";/><br>

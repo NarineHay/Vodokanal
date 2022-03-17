@@ -106,7 +106,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('backend.addblance') ? 'active' : '' }}"  href="{{ route('backend.addblance') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.addbalance') ? 'active' : '' }}"  href="{{ route('backend.addbalance') }}">
                             Пополнение баланса
                         </a>
                     </li>

@@ -7,16 +7,19 @@ use Illuminate\Http\Request;
 use App\Models\Contracts;
 use App\Models\user;
 use App\Models\ContractFile;
+use Auth;
 
 class ContractController extends Controller
 {
      public function index(){
         $Contracts =Contracts::with('user')->get();
+    
          return view('backend.users.Contract_index',compact('Contracts'));
      }
 
      public function add_contract(Request $request){
-         $user = User::All();
+         
+         $user = User::where('id','!=',Auth::id())->get();
          return view('backend.users.add_new_contract_page' ,compact('user'));
      }
 
@@ -55,7 +58,7 @@ class ContractController extends Controller
 
         }
 
-        return redirect()->back()->with('message','успех');
+        return redirect()->back()->with('message','Вы успешно редактировали');
      }
 
 
@@ -66,10 +69,8 @@ class ContractController extends Controller
 
      public function edit_contract($id){
         $Contracts =Contracts::with('ContractFile')->find($id);
-        $user = User::All();
-         return view('backend.users.edit_contract',compact('Contracts','user'));
+         return view('backend.users.edit_contract',compact('Contracts'));
      }
-
 
      public function update(Request $request ,$id){
 
@@ -80,7 +81,6 @@ class ContractController extends Controller
         ]);
 
         $Contracts->update([
-            'user_id'=>$request->user_id,
             'number'=>$request->number,
             'date_start'=>$request->date_start,
             'date_end'=>$request->date_end
@@ -103,20 +103,26 @@ class ContractController extends Controller
 
         }
 
-        return redirect()->back()->with('message','успех');
+        return redirect()->back()->with('message','Вы успешно редактировали');
 
      }
 
 
      public function delate_file($id){
 
-        $delete = ContractFile::where('id',$id)->delete();
-        return redirect()->back();
+        $delete = ContractFile::findOrFail($id);
+        $image_path = public_path('/assets/contractfile/' . $delete->file_name);
+       
+        if(file_exists($image_path)){
+            unlink($image_path);
+        }
+        $delete->delete();
+        return redirect()->back()->with('delete','Вы успешно удалили');
      }
 
 
      public function index_contract_page($id){
         $delete = Contracts::where('id',$id)->delete();
-        return redirect()->back();
+        return redirect()->back()->with('delete','Вы успешно удалили');
      }
 }

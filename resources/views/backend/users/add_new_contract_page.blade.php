@@ -9,7 +9,7 @@
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
-                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
+                    <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
                     <div class="feedback">
                         <h3>Новый контракт</h3>
