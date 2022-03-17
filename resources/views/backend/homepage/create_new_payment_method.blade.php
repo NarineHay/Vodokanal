@@ -1,19 +1,19 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
         <!--content-header-->
-        <div class="row">
+        <div class="row"> 
             <div class="col">
                 <div class="card" style="padding: 25px;">
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close"></a> {{ session('message') }}</div>
                     @endif
-                    <div class="text-right">
-                         <a href="{{route('backend.payment_method')}}" style="color:#fff"><button class="btn btn-primary">назад</button></a>
-                    </div>
-                    <h3>Добавить новое Способы оплаты</h3>
+                    <div class="d-flex justify-content-between">
+                        <h3>Добавить новое Способы оплаты</h3>
+                        <a href="{{route('backend.payment_method')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
+                    </div><br>
+                  
                     <form action="{{route('backend.add_new')}}" method="Post" enctype="multipart/form-data">
                         @csrf
                         <label class="form-label" for="error-adajsd">Значок</label>

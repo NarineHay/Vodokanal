@@ -24,9 +24,11 @@ table tr td:first-child::before {
                     @if (session('message'))
                     <div class="alert alert-success"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> {{ session('message') }}</div>
                     @endif
-                    <h3>Договор</h3>
-                        <a href="{{route('backend.add_new_Contract')}}" style="color:#fff"><button class="btn btn-primary">Добавить новый контракт</button></a><br><br>
-
+                    <div class="d-flex justify-content-between">
+                      <h3>Договор</h3>
+                      <a href="{{route('backend.add_new_Contract')}}" style="color:#fff"><button class="btn btn-primary">Добавить новый контракт</button></a>
+                    </div>
+                    <p></p>
                         <table class="table table-bordered">
                             <thead>
                               <tr>

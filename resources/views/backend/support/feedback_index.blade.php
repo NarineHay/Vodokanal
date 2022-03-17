@@ -47,7 +47,7 @@
                                     @endif
 
                                     <a href="{{route('backend.show_feedback',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;
-                                    <a href="{{route('backend.feedback_delate',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-trash" aria-hidden="true"></i></a>
+                                    <a href="{{route('backend.feedback_delate_feed',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-trash" aria-hidden="true"></i></a>
                                 </td>
                               </tr>
                               @endforeach
