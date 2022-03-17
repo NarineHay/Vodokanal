@@ -35,7 +35,7 @@ class CartController extends Controller
     }
     public function CreateCard(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
                 "object"    => "required|array",
                 "object.*.card_number"  => "required|min:6|unique:cards",
                 "object.*.model"  => "required",

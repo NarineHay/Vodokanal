@@ -36,7 +36,6 @@
                         </select>
                         <div class="reg form-group my-3" style="width:100%">
                         <div class="user-info">
-
                         </div>
 
                         <span style="color:red">@error('balance')Произошло ошибка со суммой @enderror</span>
