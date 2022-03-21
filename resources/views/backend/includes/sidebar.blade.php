@@ -96,7 +96,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="{{ route('backend.cart') }}">
+                        <a class="nav-link"  href="{{ route('backend.card') }}">
                         Карта
                         </a>
                     </li>

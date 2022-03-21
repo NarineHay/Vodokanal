@@ -34,12 +34,9 @@ class SupportController extends Controller
             
         ]);
         
-        return view('user.support.supportaproved');
+        return redirect()->back()->with('message','Ваше сообщение успешно отправлено');
     }
-    public function show_aproved_smm()
-    {
-        return view('user.support.supportaproved');
-    }
+    
     
     
  

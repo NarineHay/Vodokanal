@@ -21,25 +21,23 @@
                        {{ session('message') }}
                         </div>
                     @endif --}}
+
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                             <option disabled selected value="">Выберите пользователя</option>
                             @foreach($users as $user)
-                            @if (session()->get('select_user') == $user->id)
-                            <option data-tokens="ketchup mustard" selected class="option" value="{{$user->id}}">{{$user->first_name}} - {{$user->email}} </option>
-
-                            @else
-                            <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}} - {{$user->email}} </option>
-
-                            @endif
+                                @if (session()->get('select_user') == $user->id)
+                                    <option data-tokens="ketchup mustard" selected class="option" value="{{$user->id}}">{{$user->first_name}} - {{$user->email}} </option>
+                                @else
+                                    <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}} - {{$user->email}} </option>
+                                @endif
                             @endforeach
                         </select>
                         <span style="color:red">@error('user_id') Выберите пользователя @enderror</span>
 
                         <div class="reg form-group my-3" style="width:100%">
-                        <div class="user-info">
-                        </div>
+                        <div class="user-info"></div>
 
-                            <input class="form-control shadow bg-white" placeholder="сумма"  onkeypress="return validateNumber(event)" type="number" name="balance" ><p></p>
+                        <input class="form-control shadow bg-white" placeholder="сумма"  onkeypress="return validateNumber(event)" type="number" name="balance" ><p></p>
                             <span style="color:red">@error('balance')Произошло ошибка со суммой @enderror</span>
                             <p></p>
                             <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="Отправить">

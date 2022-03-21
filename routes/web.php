@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
 
         Route::group(['namespace' => 'Backend', 'as' => 'backend.'], function () {
             Route::get('backend/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-            Route::get('cart', [CartController::class, 'index'])->name('cart');
+            Route::get('card', [CartController::class, 'index'])->name('card');
             Route::get('cart_accept/{id}', [CartController::class, 'cart_acceptfoo'])->name('cart_accept');
             Route::get('backend/support', [BackendSupportController::class, 'index'])->name('support');
             Route::get('backend/main_home_page', [MainHomePageController::class, 'index'])->name('main_home_page');
@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
 
             Route::get('backend/contract_page', [ContractController::class, 'index'])->name('contract_page');
-            Route::get('backend/add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
+            Route::get('backend/add_new_contract', [ContractController::class, 'add_contract'])->name('add_new_contract');
             Route::post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
             Route::get('backend/show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
             Route::get('backend/edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
@@ -141,5 +141,5 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
 Route::get('card11', [CardController::class, 'index']);
 
-Route::post('supportaproved', [SupportController::class, 'show_aproved_smm']);
+
 
