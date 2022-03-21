@@ -20,7 +20,11 @@
                     @csrf
                     
                     <div class="reg form-group my-3" style="width:100%">
-                   
+                        @if (session('message'))
+                         <div class="alert alert-success" role="alert">
+                          {{ session('message') }}
+                           </div>
+                        @endif
                         <input type="text" class="form-control py-2 @error('theme') is-invalid @enderror" name="theme" placeholder="Тема" style="background: #EFEFEF;">
                         @error('theme')
                         <span class="invalid-feedback" role="alert">

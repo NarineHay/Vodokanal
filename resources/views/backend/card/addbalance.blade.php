@@ -22,6 +22,7 @@
                        {{ session('message') }}
                         </div>
                     @endif
+                   
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                             <option disabled selected value="">Выберите пользователя</option>
                             @foreach($users as $user)
@@ -39,6 +40,7 @@
                         </div>
 
                         <span style="color:red">@error('balance')Произошло ошибка со суммой @enderror</span>
+                        <p></p>
                             <input class="form-control shadow bg-white" placeholder="сумма"  onkeypress="return validateNumber(event)" type="number" name="balance" ><p></p>
                             <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="Отправить">
                         </div>
