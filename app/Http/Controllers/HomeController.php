@@ -21,6 +21,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+       
     }
 
     /**
@@ -45,6 +46,7 @@ class HomeController extends Controller
         'Tarif',
         'Payment_method',
         'Our_company_details'
+        
     ));
     }
 }
