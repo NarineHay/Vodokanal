@@ -18,7 +18,7 @@ class CartController extends Controller
         $cards = Card::where('id','!=',Auth::id())->get();
         $cars=Car::all();
         // dd($cars);
-        return view('backend.cart.index',compact('cards'));
+        return view('backend.card.index',compact('cards'));
     }
     public function cart_acceptfoo($id)
     {
@@ -32,7 +32,7 @@ class CartController extends Controller
     {
         $users=User::where('id','!=',Auth::id())->get();
 
-        return view('backend.cart.createcard',compact('users'));
+        return view('backend.card.createcard',compact('users'));
     }
     public function CreateCard(Request $request)
     {
@@ -74,7 +74,7 @@ class CartController extends Controller
         $contracts=Contracts::all();
         $ContractFiles=ContractFile::all();
 
-        return view('backend.cart.addbalance',compact('users'));
+        return view('backend.card.addbalance',compact('users'));
     }
     public function SelectUser(Request $request)
     {
@@ -131,7 +131,7 @@ class CartController extends Controller
     public function checkbalance()
     {
         $users=User::where('id','!=',Auth::id())->get();
-        return view('backend.cart.checkbalance',compact('users'));
+        return view('backend.card.checkbalance',compact('users'));
     }
     public function ShowUserInfos(Request $request)
     {
