@@ -92,7 +92,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('edit_company_details/{id}', [CompanyDetailsController::class, 'edit_company_details'])->name('edit_company_details');
 
             Route::get('backend/contract_page', [ContractController::class, 'index'])->name('contract_page');
-            Route::get('backend/add_new_Contract', [ContractController::class, 'add_contract'])->name('add_new_Contract');
+            Route::get('backend/add_new_contract', [ContractController::class, 'add_contract'])->name('add_new_contract');
             Route::post('backend/store_info_Contract', [ContractController::class, 'store_contract'])->name('store_info_Contract');
             Route::get('backend/show_contract/{id}', [ContractController::class, 'show_contract'])->name('show_contract_index');
             Route::get('backend/edit_contract/{id}', [ContractController::class, 'edit_contract'])->name('edit_contract');
