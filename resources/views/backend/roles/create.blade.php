@@ -16,10 +16,10 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Create New Role</h2>
+                            <h2>Создать новую роль</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Назад</a>
                         </div>
                     </div>
                 </div>

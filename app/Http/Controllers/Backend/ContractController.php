@@ -13,13 +13,13 @@ class ContractController extends Controller
 {
      public function index(){
         $Contracts =Contracts::with('user')->get();
-    
+
          return view('backend.users.Contract_index',compact('Contracts'));
      }
 
      public function add_contract(Request $request){
-         
-         $user = User::where('id','!=',Auth::id())->get();
+
+        $user=User::whereDoesntHave('roles')->get();
          return view('backend.users.add_new_contract_page' ,compact('user'));
      }
 
@@ -42,7 +42,7 @@ class ContractController extends Controller
             ]);
 
         if($request->hasFile('file')) {
-        
+
             foreach ($request->file('file') as $imagefile){
 
                 $name = $imagefile->getClientOriginalName();
@@ -53,12 +53,12 @@ class ContractController extends Controller
                     'file_name'=>$name,
                     'file_path'=>'/assets/contractfile'
                 ]);
-                    
+
             }
 
         }
 
-        return redirect()->back()->with('message','Вы успешно редактировали');
+        return redirect()->back()->with('message','Договор добавлен');
      }
 
 
@@ -87,7 +87,7 @@ class ContractController extends Controller
         ]);
 
         if($request->hasFile('file')) {
-        
+
             foreach ($request->file('file') as $imagefile){
 
                 $name = $imagefile->getClientOriginalName();
@@ -98,7 +98,7 @@ class ContractController extends Controller
                     'file_name'=>$name,
                     'file_path'=>'/assets/contractfile'
                 ]);
-                    
+
             }
 
         }
@@ -112,7 +112,7 @@ class ContractController extends Controller
 
         $delete = ContractFile::findOrFail($id);
         $image_path = public_path('/assets/contractfile/' . $delete->file_name);
-       
+
         if(file_exists($image_path)){
             unlink($image_path);
         }

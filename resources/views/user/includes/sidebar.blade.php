@@ -20,14 +20,14 @@
                     <div>
                         <i class="bi bi-telephone"></i>
 
-                     <span class="ml-2 ft-size-14">{{ Auth::user()->phone_number ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span>
+                     <span class="ml-2 ft-size-14">{{ count(Auth::user()->phone_number) > 0 ? Auth::user()->phone_number[0]['phone_number'] : 'номер отсутствует'}}</span>
                     </div>
 
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex ">
                         <h5>@</h5>
                         <span class="ml-2 ft-size-10">{{Auth::user()->email}}</span>
 
-                    
+
                     </div>
                 </a>
             </li>

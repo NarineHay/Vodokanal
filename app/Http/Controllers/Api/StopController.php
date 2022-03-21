@@ -8,6 +8,7 @@ use App\Http\Requests\StopRequest;
 use App\Http\Resources\CompletedResource;
 use App\Http\Resources\StopResource;
 use App\Models\Card;
+use App\Models\CardJob;
 use App\Models\Job;
 use App\Models\JobStatus;
 use App\Models\Tarif;
@@ -35,20 +36,16 @@ class StopController extends BaseController
      */
     public function store(StopRequest $request, $id)
     {
-        {
+
             date_default_timezone_set( 'Europe/Moscow' );
             $mytime = Carbon::now();
             if( $request->validated()){
 
                 $update_job_status='';
                 $update_job = '';
-                $update_user = '';
-                $tarif_amount = '';
-                $tarif_price = '';
-                $amount = '';
-                $price = '';
+                $volume_price = '';
                 $total_card_balance = '';
-                $job = Job::find($id);
+                $job = CardJob::find($id);
                 $card = Card::where('id', $job->card_id)->first();
 
                 if( $job ){
@@ -57,42 +54,45 @@ class StopController extends BaseController
                     $tarif = Tarif::find($job->tarif_id);
 
                     if($job_status->status == 'in_process'){
-                        $tarif_amount = $tarif->parametr;
-                        $tarif_price = $tarif->price;
-                        $amount = $request->amount;
-                        if($amount <= $tarif_amount){
-                            $price = $amount * $tarif_price / $tarif_amount;
-                            $total_card_balance = $card->balance + ( $tarif_price - $price );
+
+                        $volume = ceil($request->volume);
+
+                        if( $job_status->volume == 0){
+                           $volume_price = $volume * $tarif->price;
+
+                           $job_status->volume = $volume;
+                           $job_status->price = $volume_price;
+
+                           $job->volume = $volume;
                         }
                         else{
-                            return $this->sendError('Quantity higher tariff quantity.');
+                            $volume_price = $job_status->price;
                         }
-                        $job_status->amount = $amount;
-                        $job_status->price = $price;
+
+                        $total_card_balance = $card->balance - $volume_price;
+
                         $job_status->status = 'stop';
                         $update_job_status = $job_status->update();
 
-                        $job->amount = $amount;
-                        $job->price = $price;
+                        $job->price = $volume_price;
                         $job->status = 'stop';
                         $job->date_end = $mytime->toDateTimeString();
                         $update_job = $job->update();
 
+                        $job->balance = $total_card_balance;
                         $update_card = $card->update(['balance' => $total_card_balance]);
 
                     }
                     else{
-                        return $this->sendError('Proccess alredy completed.');
+                        return $this->sendError('Процесс уже завершен.');
                     }
                     if($update_job_status && $update_job && $update_card){
-                        return $this->sendResponse(new StopResource($job), 'Job successfully stoped');
+                        return $this->sendResponse(new StopResource($job), 'Произведен отпуск воды.');
                     }
                 }
                 else{
                     return $this->sendError('Job not found.');
                 }
-
-            }
         }
 
     }

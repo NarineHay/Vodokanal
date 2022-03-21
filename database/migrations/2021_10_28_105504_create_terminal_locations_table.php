@@ -21,7 +21,7 @@ class CreateTerminalLocationsTable extends Migration
             $table->string('number');
             $table->string('lat');
             $table->string('lng');
-            $table->boolean('status');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

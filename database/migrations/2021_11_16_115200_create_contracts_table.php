@@ -20,7 +20,7 @@ class CreateContractsTable extends Migration
             $table->string('number');
             $table->date('date_start');
             $table->date('date_end');
-            $table->string('status');
+            $table->string('status')->default('true');
             $table->timestamps();
         });
     }

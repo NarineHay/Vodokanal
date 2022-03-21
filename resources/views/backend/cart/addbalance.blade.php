@@ -16,12 +16,11 @@
                 <form action="{{ route('backend.adduserbalance')}}" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
-                    <span style="color:red">@error('user_id') Выберите пользователя @enderror</span>
-                    @if (session('message'))
+                    {{-- @if (session('message'))
                       <div class="alert alert-success" role="alert">
                        {{ session('message') }}
                         </div>
-                    @endif
+                    @endif --}}
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                             <option disabled selected value="">Выберите пользователя</option>
                             @foreach($users as $user)
@@ -34,12 +33,15 @@
                             @endif
                             @endforeach
                         </select>
+                        <span style="color:red">@error('user_id') Выберите пользователя @enderror</span>
+
                         <div class="reg form-group my-3" style="width:100%">
                         <div class="user-info">
                         </div>
 
-                        <span style="color:red">@error('balance')Произошло ошибка со суммой @enderror</span>
                             <input class="form-control shadow bg-white" placeholder="сумма"  onkeypress="return validateNumber(event)" type="number" name="balance" ><p></p>
+                            <span style="color:red">@error('balance')Произошло ошибка со суммой @enderror</span>
+                            <p></p>
                             <input type="submit" class="alignRight" style="background: #143B57; color: #fff;" value="Отправить">
                         </div>
                     </div>

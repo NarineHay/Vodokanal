@@ -7,54 +7,61 @@ $(function () {
         varCount++;
         $node = '<p>'
           + '<input class="form-control @error("object.*.card_number") is-invalid @enderror" placeholder="номер карты" type="number"  name="object['+varCount+'][card_number]" id="var1">'
+          + '<span class="invalid-feedback object" role="alert" data-name="object.'+varCount+'.card_number"></span>'
           + '<br>'
           + '<input class="form-control @error("object.*.model") is-invalid @enderror" placeholder="модель машины" type="text"  name="object['+varCount+'][model]" >'
+          + '<span class="invalid-feedback object" role="alert" data-name="object.'+varCount+'.model"></span>'
           + '<br>'
           + '<input class="form-control @error("object.*.car_numbers") is-invalid @enderror" placeholder="номер машины" type="text"  name="object['+varCount+'][car_numbers]" >'
+          + '<span class="invalid-feedback object" role="alert" data-name="object.'+varCount+'.car_numbers"></span>'
           + '<br>'
           + '<span class = "removeVar"> Удалить </span> </p>';
         $(this).parent().before($node);
     });
-  $('form').on('click', '.removeVar', function(){
-    $(this).parent().remove();
-  });
+    $('form').on('click', '.removeVar', function(){
+        $(this).parent().remove();
+    });
 });
 
 $('#send-form').on('submit',function(e){
-  console.log($('#aaa').attr('name'));
-  console.log(new FormData(this));
-  e.preventDefault()
-  $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
-    }
-});
-$.ajax({
-    type: 'post',
-    url: "/createcard",
-    data:new FormData(this),
-    contentType:false,
-    cache:false,
-    processData:false,
-    
-    success: function(result){
-        console.log(result);
-    },
-    error: function(data) {
-      console.log('error');
-      let bb  = data["responseJSON"]["errors"];
-      console.log( data["responseJSON"]);
-      // bb.forEach(element => {
-      //   console.log(bb['object.0.card_number']);
-      //   element['object.0.card_number'].html('inch vor mi ban')
-      // });
-      // for (let index = 0; index < bb.length; index++) {
-        console.log(bb['object.0.card_number']);
-        $('.object.0.card_number').html(111);
-        
-      // }
-  },
-})
+
+  e.preventDefault();
+  $(".object").html('')
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $.ajax({
+        method:"POST",
+        url: "/createcard",
+        data:new FormData(this),
+        contentType:false,
+        cache:false,
+        processData:false,
+
+        success: function(result){
+            $("html, body").animate({ scrollTop: 0 }, 400);
+
+            $('#result').html(result)
+        },
+        error: function(data) {
+
+            var errors = data.responseJSON.errors;
+            $.each(errors, function (index, value) {
+
+                if (value.length != 0 )
+                {
+                    $('.invalid-feedback').css('display','block')
+                    $(".object[data-name='"+index+"']").html( value);
+
+                }
+
+            });
+
+        },
+    })
 })
 
 $(function () {
@@ -68,7 +75,7 @@ $(function () {
             sel_user(sel_val)
     })
 
-    
+
     function sel_user(user_id){
         let sel_val=user_id
             $.ajaxSetup({

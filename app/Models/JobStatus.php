@@ -15,7 +15,7 @@ class JobStatus extends Model
         'card_id',
         'price',
         'status',
-        'amount',
+        'volume',
         'type'
     ];
 

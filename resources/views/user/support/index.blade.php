@@ -18,9 +18,9 @@
             <div class="col pl-5">
                 <form action="/support" method="post">
                     @csrf
-                    
+
                     <div class="reg form-group my-3" style="width:100%">
-                   
+
                         <input type="text" class="form-control py-2 @error('theme') is-invalid @enderror" name="theme" placeholder="Тема" style="background: #EFEFEF;">
                         @error('theme')
                         <span class="invalid-feedback" role="alert">
@@ -38,7 +38,7 @@
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="form-group my-3">
-                            <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143B57; color: #fff;">
+                            <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143B57; color: #fff;" value="Отправить">
                         </div>
                     </div>
                 </form>

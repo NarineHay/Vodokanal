@@ -58,7 +58,7 @@
             @endforeach
         </table>
         <div class="fff">
-        @if(isset(Auth::user()->card)) 
+        @if(isset(Auth::user()->card))
         @foreach(Auth::user()->card as $num => $card)
         <form class="form" action="/dashboard_blance" method="post">
             <input type="text" hidden value="{{$card->id}}" name="card_id" />
@@ -69,7 +69,7 @@
                         <span class="text-success h6">Номер карты </span><h5 class="h5">{{$card->card_number}}</h5>
                         <div>
                             <p class="text-success h6">Текущий баланс <h5 class="h5">{{$card->balance}} руб.</h5></p>
-                            
+
                             <p class="text-success h4"></p>
                         </div>
                         <!-- @error('balance')
@@ -92,25 +92,25 @@
                         @error($er)
                         <div class="text-danger">
                             {{$message}}
-                        </div>                       
+                        </div>
                         @enderror
                            <p></p>
-                       
+
                         <div>
                             <input type="submit" class="alignRight" style="background: #143b57; color: #fff;" value="Отправить" />
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </form>
         @endforeach
          @endif
          </div>
         <!--form-->
 
-        
-       
+
+
 
         @endsection
     </div>

@@ -20,7 +20,7 @@
                          <p>
                                <option>{{$Contracts['User']->first_name}}</option>
 						 </p>
-                         
+
                         </div>
                         <div class="form-group_m">
                           <label for="exampleInputPassword1">Контактный номер</label>:

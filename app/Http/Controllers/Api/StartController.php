@@ -3,15 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 // use App\Http\Controllers\Controller;
-use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\Api\BaseController as BaseController;
 use App\Http\Requests\StartRequest;
 use App\Http\Requests\StopRequest;
 use App\Http\Resources\CardResource;
 use App\Http\Resources\StartResource;
 use App\Http\Resources\StopResource;
+use App\Models\Auth\User as AuthUser;
 use App\Models\Card;
-use App\Models\Job;
+use App\Models\CardJob;
 use App\Models\JobStatus;
+use App\Models\MinimumAmountOnTheCard;
 use App\Models\Tarif;
 use App\Models\User;
 use Carbon\Doctrine\CarbonType;
@@ -29,7 +31,7 @@ class StartController extends BaseController
      */
     public function index()
     {
-        return StartResource::collection(Job::all());
+        // return StartResource::collection(CardJob::all());
     }
 
     /**
@@ -45,42 +47,38 @@ class StartController extends BaseController
 
         date_default_timezone_set( 'Europe/Moscow' );
         $mytime = Carbon::now();
-        $tarif = Tarif::find($request->tarif_id);
-        $user = User::find($request->user_id);
-        $card = Card::find($request->card_id);
+        $tarif = Tarif::findOrFail($request->tarif_id);
+        $card = Card::findOrFail($request->card_id);
+        $minimum_price=MinimumAmountOnTheCard::where('status', true)->first()->value;
 
+        $volume = intval($request->volume);
         $price = $tarif->price;
-        $total_card_balance = $card->balance-$price;
-        if(is_null($tarif) || is_null($user) ||is_null($card)){
-            return $this->sendError('Error.');
-        }
-        else{
-            if($card->balance < $tarif->price){
-                return $this->sendError('Insufficient funds on the card.');
+        $price_selected_volume = $price * $volume;
+        // $total_card_balance = $card->balance - $price_selected_volume;
+
+            if($card->balance < $minimum_price || $card->balance < $price_selected_volume){
+                return $this->sendError('Недостаточно средств на карте.');
             }
             if($request->validated()){
                 $job_request = $request->all();
                 $job_status_request = $request->all();
-
+                $job_request['user_id'] = $card->user_id;
                 $job_request['status'] = 'start';
                 $job_request['date_start'] = $mytime->toDateTimeString();
-                $job_request['type'] = $tarif->type;
-                $job = Job::create($job_request);
+
+                $job = CardJob::create($job_request);
 
                 $job_status_request['job_id'] = $job->id;
+                $job_status_request['user_id'] = $card->user_id;
                 $job_status_request['status'] = 'in_process';
-                $job_status_request['price'] = $tarif->price;
-                $job_status_request['type'] = $tarif->type;
+                $job_status_request['price'] = $price_selected_volume;
 
                 $job_status = JobStatus::create($job_status_request);
 
-                $card->balance = $total_card_balance;
-                $card->update();
+                // $card->balance = $total_card_balance;
+                // $card->update();
             }
             return $this->sendResponse(new StartResource($job), 'Proccess');
-
-        }
-
 
 
     }

@@ -18,7 +18,7 @@
                             <h2> Показать роль</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn" href="{{ route('roles.index') }}"> Назад</a>
+                            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Назад</a>
                         </div>
                     </div>
                 </div>

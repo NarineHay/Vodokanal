@@ -5,14 +5,14 @@
 @section('content')
 <body>
     <header>
-        
+
     </header>
 <section>
          <div class="ml">
             <div class="i_1 d-flex justify-content-between flex-wrap"></div>
-            <h4 class="fw-bold">Личные данные</h4>
+            <h4 class="fw-bold">Машины </h4>
                       <table class="table shadow mb-5 bg-white rounded">
-                     
+
                         <tr>
                             <th  class="border border-1">Mодель</th>
                             <th  class="border border-1">Номер машины</th>
@@ -30,23 +30,23 @@
                               <h4>{{$car->car_numbers}}</h4>
                           </td>
                           <td class=" border border-1 py-3">
-                          
+
                           </td>
                           <td class=" border border-1 py-3">
-                          
+
                           </td>
                           <td class=" border border-1 py-3">
-                          
+
                           </td>
                         </tr>
                         @endforeach
-                     
+
                       </table>
- 
-                      
+
+
         </div>
 
-       
+
 
 </section>
 </body>
