@@ -24,7 +24,6 @@ $(function () {
 });
 
 $('#send-form').on('submit',function(e){
-
   e.preventDefault();
   $(".object").html('')
 
