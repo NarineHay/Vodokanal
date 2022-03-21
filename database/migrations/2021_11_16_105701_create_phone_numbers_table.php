@@ -20,7 +20,7 @@ class CreatePhoneNumbersTable extends Migration
             $table->string('phone_number');
             $table->string('status')->default(1);
             $table->string('token')->default(null);
-            $table->string('count')->from(1);
+            $table->string('count')->default(null);
             $table->timestamps();
         });
     }

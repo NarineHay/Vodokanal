@@ -16,7 +16,8 @@
         <!--content-header-->
         <div class="row">
             <div class="col pl-5">
-                <form action="{{ route('backend.createcard')}}" method="post">
+                <div id="result"></div>
+                <form id="send-form" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
                         <select class="selectpicker form-control mb-3"  data-live-search="true" name="user_id">
@@ -27,30 +28,22 @@
                         <div class="reg " style="width:100%">
                             <div class="form-group">
                                 <input class="form-control @error('object.*.card_number') is-invalid @enderror"  value="{{ old('object[0][card_number]') }}" placeholder="Номер карты" type="number"  name="object[0][card_number]">
-                                @error('object.*.card_number')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <span class="invalid-feedback object" role="alert" data-name='object.0.card_number'>
+                                </span>
                             </div>
                             <div class="form-group">
                                 <input class="form-control @error('object.*.model') is-invalid @enderror" placeholder="Модель машины"  type="text" name="object[0][model]">
-                                @error('object.*.model')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <span class="invalid-feedback object" role="alert" data-name='object.0.model'>
+                                </span>
                             </div>
+
                             <div class="form-group">
                                 <input class="form-control @error('object.*.car_numbers') is-invalid @enderror" placeholder="Номер машины" type="text" name="object[0][car_numbers]">
-                                @error('object.*.car_numbers')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <span class="invalid-feedback object" role="alert" data-name='object.0.car_numbers'>
+                                </span>
                             </div>
                                 <span class="removeVar">Удалить</span>
-                                <p></p>
+                                <p id='dd'></p>
                                 <p><span id="addVar">Добавить новый элемент</span></p>
                                 <input type="submit" class="alignRight" id="addVar" style="background: #143B57; color: #fff;" value="Отправить">
 

@@ -6,13 +6,13 @@
                 <a class="nav-link nav-dropdown-toggle " href="#"> Система </a>
 
                 <ul class="nav-dropdown-items ">
-                    @can('administration-list')
+                    {{-- @can('administration-list') --}}
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('administration*') ? 'active' : '' }}" href="{{ route('administration.index') }}">
                                 Список администраторов
                             </a>
                         </li>
-                    @endcan
+                    {{-- @endcan --}}
                     @can('role-list')
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
@@ -80,12 +80,12 @@
 
             </li>
 
-            <li class="nav-item nav-dropdown {{ request()->routeIs(['users*', 'backend.*contract*', 'backend.createcard1*', '*balance*']) ? 'open' : '' }}" >
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['users*', 'backend.*contract*', 'backend.*Contract*', 'backend.createcard1*', '*balance*']) ? 'open' : '' }}" >
                 <a class="nav-link nav-dropdown-toggle " href="#"> Пользователи </a>
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('backend.*contract*') ? 'active' : '' }}" href="{{route('backend.contract_page')}}">
+                        <a class="nav-link {{ request()->routeIs(['backend.*contract*', 'backend.*Contract*']) ? 'active' : '' }}" href="{{route('backend.contract_page')}}">
                             Договор
                         </a>
                     </li>
@@ -117,23 +117,23 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item nav-dropdown">
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['backend.*terminal*', 'backend.map']) ? 'open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle " href="#"> Терминалы </a>
 
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('backend.info_terminal')}}">
+                        <a class="nav-link {{ request()->routeIs('backend.info_terminal') ? 'active' : '' }}" href="{{route('backend.info_terminal')}}">
                             Инфо по терминалам
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link "  href="{{ route('backend.safeti') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.safeti') ? 'active' : '' }}"  href="{{ route('backend.safeti') }}">
                           Система безопасности
                         </a>
                     </li>
 
                     <li class="nav-item">
-                    <a class="nav-link "  href="{{ route('backend.map') }}">
+                    <a class="nav-link {{ request()->routeIs('backend.map') ? 'active' : '' }}"  href="{{ route('backend.map') }}">
                             Карты
                          </a>
                     </li>

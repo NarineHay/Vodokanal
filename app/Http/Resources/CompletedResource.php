@@ -16,6 +16,9 @@ class CompletedResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'volume' => $this->volume,
+            'price_volume' => $this->price,
+            'balance' => $this->balance
         ];
     }
 }

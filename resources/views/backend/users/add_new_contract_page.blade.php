@@ -15,7 +15,7 @@
                         <h3>Новый контракт</h3>
                         <a href="{{route('backend.contract_page')}}"><button  type="submit" class="btn btn-primary">Назад</button></a>
                     </div><br>
-                    
+
                     <form action="{{route('backend.store_info_Contract')}}" method="Post" enctype="multipart/form-data">
 
                         <div class="form-group">
@@ -23,17 +23,17 @@
                           <select  name="user_id" class="custom-select">
                             <option value="">--выберите пользователя--</option>
                             @foreach ($user as $users )
-                                <option value="{{$users->id}}">{{$users->first_name}}</option>
+                                <option value="{{$users->id}}">{{$users->first_name}} - {{$users->email}}</option>
                             @endforeach
                           </select>
                           <span style="color:red">@error('user_id'){{$message}}@enderror</span>
-                         
+
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Контактный номер</label>
                           <input type="text" name="number" class="form-control" id="exampleInputPassword1" value="{{ old('number') }}">
                           <span style="color:red">@error('number'){{$message}}@enderror</span>
-                          
+
                         </div>
 
                         <div class="form-group">
@@ -53,7 +53,7 @@
                             <p class="">
                                 <label for="attachment">
                                     <i class="fa fa-upload" aria-hidden="true" style="font-size:35px"></i>
-                                   
+
                                 </label>
                                 <input type="file" name="file[]"  id="attachment" style="visibility: hidden; position: absolute;" multiple/><br>
                                 <span style="color:red">@error('file.*'){{$message}}@enderror</span>
@@ -64,11 +64,11 @@
                                 </span>
                             </p>
 
-                            
+
                         </div><br>
                         <button type="submit" class="btn btn-primary">Добавлять</button>
                       </form><br><br>
-                     
+
                    </div>
                 <!--card-body-->
             </div>

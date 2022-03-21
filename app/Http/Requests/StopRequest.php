@@ -24,7 +24,7 @@ class StopRequest extends FormRequest
     public function rules()
     {
         return [
-            'amount' => 'required | numeric',
+            'volume' => 'required | numeric',
         ];
     }
 }

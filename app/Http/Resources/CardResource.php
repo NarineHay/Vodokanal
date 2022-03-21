@@ -21,6 +21,8 @@ class CardResource extends JsonResource
             'card_number' => $this->card_number,
             'balance' => $this->balance,
             'status' => $this->status,
+            'car_model' => $this->model,
+            'car_number' => $this->car_number,
             'tarif' => TarifResource::collection(Tarif::all())
         ];
     }

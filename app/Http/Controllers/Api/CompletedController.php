@@ -6,6 +6,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Http\Requests\CompletedRequest;
 use App\Http\Resources\CompletedResource;
+use App\Models\Card;
+use App\Models\CardJob;
 use App\Models\Job;
 use App\Models\JobStatus;
 use App\Models\Tarif;
@@ -34,33 +36,37 @@ class CompletedController extends BaseController
     {
         date_default_timezone_set( 'Europe/Moscow' );
         $mytime = Carbon::now();
-        $job = Job::find($id);
+        $job = CardJob::find($id);
         if( $job ){
             $update_job_status = '';
             $update_job = '';
+            $total_card_balance = '';
 
             $job_status = JobStatus::where('job_id', $id)->first();
+            $job = CardJob::find($id);
             $tarif = Tarif::find($job->tarif_id);
+            $card = Card::where('id', $job->card_id)->first();
 
             if($job_status->status == 'in_process'){
+                $total_card_balance = $card->balance - $job_status->price;
 
-                $job_status->amount = $tarif->parametr;
-                $job_status->price = $tarif->price;
                 $job_status->status = 'completede';
                 $update_job_status = $job_status->update();
-
-                $job->amount = $tarif->parametr;
-                $job->price = $tarif->price;
+                $job->price = $job_status->price;
                 $job->status = 'completede';
                 $job->date_end = $mytime->toDateTimeString();
                 $update_job = $job->update();
 
+                $job->balance = $total_card_balance;
+                $update_card = $card->update(['balance' => $total_card_balance]);
+
+
             }
             else{
-                return $this->sendError('Proccess alredy completed.');
+                return $this->sendError('Процесс уже завершен.');
             }
-            if($update_job_status && $update_job){
-                return $this->sendResponse(new CompletedResource($job), 'Job successfully completed');
+            if($update_job_status && $update_job && $update_card){
+                return $this->sendResponse(new CompletedResource($job), 'Произведен отпуск воды.');
             }
         }
         else{

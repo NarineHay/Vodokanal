@@ -16,7 +16,7 @@ class CardJob extends Model
         'price',
         'date_start',
         'date_end',
-        'amount',
+        'volume',
         'type'
     ];
     public function user()

@@ -16,10 +16,10 @@
                 <div class="row pl-4">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-left">
-                            <h2>Edit Role</h2>
+                            <h2>Изменить роль</h2>
                         </div>
                         <div class="pull-right">
-                            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Back</a>
+                            <a class="btn btn-primary" href="{{ route('roles.index') }}"> Назад</a>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-main">Submit</button>
+                        <button type="submit" class="btn btn-main">Изменить</button>
                     </div>
                 </div>
                 {!! Form::close() !!}

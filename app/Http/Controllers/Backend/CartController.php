@@ -30,7 +30,8 @@ class CartController extends Controller
     }
     public function index1(Request $request)
     {
-        $users=User::where('id','!=',Auth::id())->get();
+        // $users=User::where('id','!=',Auth::id())->get();
+        $users=User::whereDoesntHave('roles')->get();
 
         return view('backend.cart.createcard',compact('users'));
     }
@@ -50,9 +51,8 @@ class CartController extends Controller
                 "object.*.car_numbers.required" => "Поле обязательно для заполнения."
 
             ]);
-            
-            
-        // $invalid=$this->validate($request,$validArr);
+
+
         $input = $request->all();
         foreach($request->object as $key => $value){
             $insert = Card::create([
@@ -66,11 +66,12 @@ class CartController extends Controller
             ]);
         }
 
-        return redirect()->back()->with('message','Ваши данные успешно добавлены');
+        echo '<div class="text-success text-center">Ваши данные успешно добавлены</div>';
     }
     public function addbalance_u()
     {
-        $users=User::where('id','!=',Auth::id())->get();
+        // $users=User::where('id','!=',Auth::id())->get();
+        $users=User::whereDoesntHave('roles')->get();
         $contracts=Contracts::all();
         $ContractFiles=ContractFile::all();
 
@@ -84,7 +85,7 @@ class CartController extends Controller
         $contracts=Contracts::where('user_id', $id)->first();
 
         $content='';
-        if($contracts){
+        if($contracts ){
             $cont_files=ContractFile::where('contract_id', $contracts->id)->get();
             $balance=$contracts->user->balance;
             $content .= "
@@ -130,7 +131,8 @@ class CartController extends Controller
     }
     public function checkbalance()
     {
-        $users=User::where('id','!=',Auth::id())->get();
+        // $users=User::where('id','!=',Auth::id())->get();
+        $users=User::whereDoesntHave('roles')->get();
         return view('backend.cart.checkbalance',compact('users'));
     }
     public function ShowUserInfos(Request $request)

@@ -25,7 +25,7 @@ class CreateCardJobsTable extends Migration
             $table->string('status');
             $table->string('date_start')->timestamps();
             $table->string('date_end')->timestamps()->nullable();
-            $table->string('amount')->nullable();
+            $table->integer('volume')->nullable();
             $table->string('type');
             $table->timestamps();
         });

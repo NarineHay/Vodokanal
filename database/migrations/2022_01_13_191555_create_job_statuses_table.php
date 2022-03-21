@@ -14,9 +14,9 @@ class CreateJobStatusesTable extends Migration
     public function up()
     {
         Schema::create('job_statuses', function (Blueprint $table) {
-            $table->id()->from(100000);
+            $table->bigIncrements('id')->from(100000);
             $table->bigInteger('job_id')->unsigned();
-            $table->foreign('job_id')->references('id')->on('jobs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('job_id')->references('id')->on('card_jobs')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('tarif_id')->unsigned();
@@ -24,7 +24,7 @@ class CreateJobStatusesTable extends Migration
             $table->bigInteger('card_id')->unsigned();
             $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade')->onUpdate('cascade');
             $table->string('status');
-            $table->string('amount')->nullable();
+            $table->integer('volume')->nullable();
             $table->string('price');
             $table->string('type');
             $table->timestamps();

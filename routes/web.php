@@ -51,9 +51,9 @@ Route::post('/feedback', [FeedbackController::class, 'sendFeedback']);
 Route::group(['middleware' => 'auth'], function () {
     Route::group(['middleware' => ['verified']], function () {
 
-        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {//user.dashboard
-            Route::get('balance_repl', [DashboardController::class, 'show_balance'])->name('balance_repl');
+        Route::group(['namespace' => 'User', 'as' => 'user.'], function () {
             Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+            Route::get('balance_repl', [DashboardController::class, 'show_balance'])->name('balance_repl');
             Route::get('account', [AccountController::class, 'index'])->name('account');
             Route::get('support', [SupportController::class, 'index'])->name('support');
             Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');

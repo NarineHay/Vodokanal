@@ -4,9 +4,8 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class StartResource extends JsonResource
+class SelectedVolumeResource extends JsonResource
 {
-
     /**
      * Transform the resource into an array.
      *
@@ -17,8 +16,9 @@ class StartResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'volume' => $this->volume
-
+            'selected_volume' => $this->selected_volume,
+            'max_volume' => $this->max_volume,
+            'price_selected_volume' => $this->price_selected_volume
         ];
     }
 }
