@@ -10,6 +10,7 @@ use App\Models\Main;
 use App\Models\Tarif;
 use App\Models\Payment_method;
 use App\Models\Our_company_details;
+use App\Models\footer;
 
 class HomeController extends Controller
 {
@@ -31,6 +32,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $footer = footer::All();
         $Aboutus = About_us::All();
         $MainActivitie1 = MainActivitie1::All();
         $MainActivitie2 = MainActivitie2::All();
@@ -45,8 +47,11 @@ class HomeController extends Controller
         'Main',
         'Tarif',
         'Payment_method',
-        'Our_company_details'
+        'Our_company_details',
+        'footer'
         
     ));
     }
+
+    
 }
