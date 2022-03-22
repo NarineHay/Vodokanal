@@ -76,6 +76,12 @@
                             Реквизиты компании
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('backend.company_details') ? 'active' : '' }}" href="{{route('backend.contact_footer')}}">
+                            Контакты
+                        </a>
+                    </li>
                 </ul>
 
             </li>
@@ -134,7 +140,7 @@
 
                     <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('backend.map') ? 'active' : '' }}"  href="{{ route('backend.map') }}">
-                            Карты
+                            Карта
                          </a>
                     </li>
                 </ul>

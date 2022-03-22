@@ -24,6 +24,7 @@ use App\Http\Controllers\Backend\TariffDetailsController;
 use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\FeeddbackController;
 use App\Http\Controllers\Backend\TerminalController;
+use App\Http\Controllers\Backend\ContactController;
 
 use App\Http\Controllers\Backend\ContractController;
 use App\Http\Controllers\Backend\SupportTaskController;
@@ -112,18 +113,18 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/info_terminal', [TerminalController::class, 'index'])->name('info_terminal');
             Route::get('/add_new_terminal', [TerminalController::class, 'show_new_terminal'])->name('add_new_terminal');
             Route::post('/store_new_terminal', [TerminalController::class, 'store'])->name('store_new_terminal');
+            Route::get('/contact_footer', [ContactController::class, 'index'])->name('contact_footer');
+            Route::post('/update_footer', [ContactController::class, 'update'])->name('update_footer');
 
-
+            Route::get('/footer_index', [HomeController::class, 'index'])->name('footer_index');
 
             Route::post('createcard', [CartController::class, 'CreateCard'])->name('createcard');
             Route::get('createcard_user', [CartController::class, 'index1'])->name('createcard_user');
             Route::get('addbalance', [CartController::class, 'addbalance_u'])->name('addbalance');
             Route::post('select_user', [CartController::class, 'SelectUser'])->name('select_user');
             Route::post('show_user_info', [CartController::class, 'ShowUserInfos'])->name('show_user_info');
-
             Route::post('adduserbalance', [CartController::class, 'addblance_user_balance'])->name('adduserbalance');
             Route::get('checkbalance', [CartController::class, 'checkbalance'])->name('checkbalance');
-
             Route::get('safeti', [AdministrationController::class, 'safeti_sustem'])->name('safeti');
             Route::get('map', [AdministrationController::class, 'map_page'])->name('map');
 

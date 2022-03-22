@@ -8,26 +8,35 @@
             @endif
             <div class="d-flex flex-wrap justify-content-between foot_header">
                 <div class="foot w-50 ">
-                    <h2 class="py-3">Контакты</h2>
+                    <h2 class="py-3">Контакты</h2>   
                     <div class="w-75 d-flex flex-wrap justify-content-between">
+                        @foreach($footer as $footers)
                         <div>
                             <ul>
                                 <li>
                                     <i class="bi bi-telephone"></i>
-                                    <span>+X XXX XXX XX</span>
+                                    <span>+{{$footers->number}}</span>
                                 </li>
                                 <li>
                                     <i class="bi bi-telephone"></i>
-                                    <span>+X XXX XXX XX</span>
+                                    <span>+{{$footers->number2}}</span>
+                                </li>
+                                <li>
+                                    <i class="bi bi-telephone"></i>
+                                    <span>+{{$footers->number3}}</span>
                                 </li>
                             </ul>
                         </div>
-                        <div>
-                            <ul>
-                                <li>Address, 1 Street, 20 Building </li>
-                                <li>example@gmail.com</li>
-                            </ul>
-                        </div>
+                        @endforeach
+                        
+                        @foreach($footer as $footers)
+                            <div>
+                                <ul>
+                                    <li>Address, 1 Street, 20 Building </li>
+                                    <li>{{$footers->email}}</li>
+                                </ul>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 

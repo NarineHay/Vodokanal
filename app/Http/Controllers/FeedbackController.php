@@ -20,6 +20,8 @@ class FeedbackController extends Controller
             'message'=>$request->message1
         ]);
         Mail::to($request->email)->send(new FeedbackMail);
+
         return redirect()->back()->with('status-feedback', 'Ваше письмо успешно отправлено');
      }
+
 }

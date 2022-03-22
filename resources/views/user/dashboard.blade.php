@@ -57,7 +57,7 @@
             </tr>
             @endforeach
         </table>
-        <div class="fff">
+        <div class="big_block">
         @if(isset(Auth::user()->card))
         @foreach(Auth::user()->card as $num => $card)
         <form class="form" action="/dashboard_blance" method="post">
