@@ -1,9 +1,9 @@
 <footer>
     <div class="footer_first pt-4" id="section5">
         <div class="container">
-            @if (session('status'))
+            @if (session('status-feedback'))
                 <div class="alert alert-success text-center">
-                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> <i class="fa fa-check" aria-hidden="true">{{ session('status') }}</i>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close"></a> <i class="fa fa-check" aria-hidden="true">{{ session('status-feedback') }}</i>
                 </div>
             @endif
             <div class="d-flex flex-wrap justify-content-between foot_header">

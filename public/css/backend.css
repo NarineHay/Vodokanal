@@ -5,7 +5,7 @@ table.dataTable {
   max-width: none !important;
   border-collapse: separate !important;
   border-spacing: 0;
-  
+
 }
 table.dataTable td,
 table.dataTable th {
@@ -7538,16 +7538,16 @@ pre code {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
-  
+
 }
 .sec{
-  
+
   margin-left: 5%;
   margin-right: 5%;
   box-shadow: white;
 
   padding: 5%;
- 
+
 }
 .cont{
   text-align: left;
@@ -15302,7 +15302,7 @@ button.bg-dark:focus {
 
 .pl-5,
 .px-5 {
-  
+
 }
 
 .m-n1 {
@@ -24311,13 +24311,13 @@ body {
 }
 
 .table-responsive {
-  overflow-x: inherit;
+  /* overflow-x: inherit; */
 }
 
 .table-responsive td:not(.btn-td) {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
   max-width: 200px;
 }
 

@@ -22,7 +22,7 @@
                     <div class="reg form-group my-3" style="width:100%">
                         <select class="selectpicker form-control mb-3"  data-live-search="true" name="user_id">
                             @foreach($users as $user)
-                                <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}},{{$user->email}}</option>
+                                <option data-tokens="ketchup mustard" class="option" value="{{$user->id}}">{{$user->first_name}} - {{$user->email}}</option>
                             @endforeach
                         </select>
                         <div class="reg " style="width:100%">

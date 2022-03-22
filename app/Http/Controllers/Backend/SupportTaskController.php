@@ -9,7 +9,7 @@ use App\Models\User;
 use App\Mail\UserTaskMail;
 use Illuminate\Support\Facades\Mail;
 
-class SupportTaskController extends Controller   
+class SupportTaskController extends Controller
 {
      public function index(){
         $Contracts = Support_task::with('user')->get();
@@ -30,8 +30,8 @@ class SupportTaskController extends Controller
         $details = [
             'message' => $request->message,
         ];
-        Mail::to($Contracts->email)->send(new UserTaskMail($details));
-       
+        Mail::to($Contracts->user->email)->send(new UserTaskMail($details));
+
         return redirect()->back()->with('message', 'Ваше сообщение было успешно отправлено');
 
      }
@@ -43,5 +43,5 @@ class SupportTaskController extends Controller
 
      }
 
-     
+
 }

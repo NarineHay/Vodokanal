@@ -16,11 +16,11 @@ class CreateCardJobsTable extends Migration
         Schema::create('card_jobs', function (Blueprint $table) {
             $table->id()->from(100000);
             $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('tarif_id')->unsigned();
-            $table->foreign('tarif_id')->references('id')->on('tarifs');
+            $table->foreign('tarif_id')->references('id')->on('tarifs')->onDelete('cascade')->onUpdate('cascade');
             $table->bigInteger('card_id')->unsigned();
-            $table->foreign('card_id')->references('id')->on('cards');
+            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade')->onUpdate('cascade');
             $table->string('price')->nullable();
             $table->string('status');
             $table->string('date_start')->timestamps();

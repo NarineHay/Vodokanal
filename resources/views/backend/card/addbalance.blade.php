@@ -16,11 +16,11 @@
                 <form action="{{ route('backend.adduserbalance')}}" method="post">
                     @csrf
                     <div class="reg form-group my-3" style="width:100%">
-                    {{-- @if (session('message'))
+                    @if (session('message'))
                       <div class="alert alert-success" role="alert">
                        {{ session('message') }}
                         </div>
-                    @endif --}}
+                    @endif
 
                         <select class="selectpicker form-control"  data-live-search="true" name="user_id">
                             <option disabled selected value="">Выберите пользователя</option>

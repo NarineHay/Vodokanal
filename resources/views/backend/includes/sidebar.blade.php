@@ -86,7 +86,7 @@
 
             </li>
 
-            <li class="nav-item nav-dropdown {{ request()->routeIs(['users*', 'backend.*contract*', 'backend.*Contract*', 'backend.createcard1*', '*balance*']) ? 'open' : '' }}" >
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['users*', 'backend.*contract*', 'backend.*Contract*', '*card*', '*balance*']) ? 'open' : '' }}" >
                 <a class="nav-link nav-dropdown-toggle " href="#"> Пользователи </a>
 
                 <ul class="nav-dropdown-items">
@@ -102,7 +102,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link"  href="{{ route('backend.card') }}">
+                        <a class="nav-link {{ request()->routeIs('backend.card') ? 'active' : '' }}"  href="{{ route('backend.card') }}">
                         Карта
                         </a>
                     </li>
@@ -123,7 +123,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item nav-dropdown {{ request()->routeIs(['backend.*terminal*', 'backend.map']) ? 'open' : '' }}">
+            <li class="nav-item nav-dropdown {{ request()->routeIs(['backend.*terminal*', 'backend.map', 'backend.safeti']) ? 'open' : '' }}">
                 <a class="nav-link nav-dropdown-toggle " href="#"> Терминалы </a>
 
                 <ul class="nav-dropdown-items">

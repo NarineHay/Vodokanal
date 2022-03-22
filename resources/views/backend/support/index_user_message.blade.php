@@ -16,11 +16,10 @@
                     @endif
                     <h3>Сообщение пользователя</h3><br>
 
-                    <div class="table-responsive">
 
                         <!--Table-->
-                        <table class="table">
-                      
+                        <table class="table table-bordered">
+
                           <!--Table head-->
                           <thead>
                             <tr>
@@ -32,7 +31,7 @@
                             </tr>
                           </thead>
                           <!--Table head-->
-                      
+
                           <!--Table body-->
                           <tbody>
                             @foreach ($Contracts as $Contractss)
@@ -45,27 +44,26 @@
                                     @if($Contractss->status==0)
                                     <i style="color:red; font-size:20px" class="fa fa-envelope" aria-hidden="true"></i>
                                     @elseif($Contractss->status==1)
-                                    <i style="color:green; font-size:20px" class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;&nbsp;
+                                    <i style="color:green; font-size:20px" class="fa fa-envelope-open" aria-hidden="true"></i>
                                     @endif
 
-                                    <a href="{{route('backend.support_task_show',$Contractss->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                    <a href="{{route('backend.support_task_show',$Contractss->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>
                                     <a href="{{route('backend.feedback_delate',$Contractss->id)}}"><i style="font-size:20px" class="fa fa-trash" aria-hidden="true"></i></a>
                                 </td>
                               </tr>
                             @endforeach
-                             
-                            
-                            
+
+
+
                           </tbody>
                           <!--Table body-->
-                      
+
                         </table>
                         <!--Table-->
-                      
-                      </div>
+
                    </div>
 
-                
+
                 <!--card-body-->
             </div>
             <!--card-->

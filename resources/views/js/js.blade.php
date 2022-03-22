@@ -1,6 +1,6 @@
 <script>
     $(document).ready(function(){
-    
+
     @error('email1')
             $('html, body').animate({
                 scrollTop: $('#section5').offset().top
@@ -11,11 +11,11 @@
                 scrollTop: $('#section5').offset().top
             }, 'fast');
     @enderror
-    @if (session('status'))
+    @if (session('status-feedback'))
         $('html, body').animate({
                     scrollTop: $('#section5').offset().top
         }, 'slow');
-        
+
     @endif
     $('a[href^="#"]').on('click',function (e) {
         e.preventDefault();
@@ -26,9 +26,9 @@
         },100, 'swing', function () {
         });
     });
-    
+
     });
-    
+
 
     var varCount = 1;
         $(function () {
