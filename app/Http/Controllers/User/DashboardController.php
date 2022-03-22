@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
         if (! auth()->user()->isAdmin()) {
             $cards=Auth::user();
-           
+
             return view('user.dashboard',compact('cards'));
 
         }
@@ -50,8 +50,10 @@ class DashboardController extends Controller
     }
     public function indexcars()
     {
-        $Cars = Car::all();
+        $cards=Card::where('user_id',  Auth::user()->id)->pluck('id');
+        $Cars = Car::whereIn('card_id', $cards)->get();
         
+
         return view('user.mycars.index',compact('Cars'));
     }
 
@@ -60,13 +62,13 @@ class DashboardController extends Controller
         $num = $request['num'];
         $bal = 'balance' . $num;
         $erMessage = 'er' . $num;
-        
+
         $this->validate($request, [
         $bal=> 'required',
         'card_id'=> 'required',
         ]);
 
-           
+
         if(intval(Auth::user()->balance)<=intval($request[$bal])){
             return redirect()->back()->withErrors([$erMessage=>'переоценен баланс']);
         }else{
@@ -75,7 +77,7 @@ class DashboardController extends Controller
         $cardbalance += $request[$bal];
         $cardFind->update([
             'balance'=>$cardbalance,
-        ]);     
+        ]);
             $a = Auth::user();
             $a['balance'] = intval($a['balance']) - intval($request[$bal]);
             $a->save();
@@ -84,6 +86,6 @@ class DashboardController extends Controller
 
         return redirect()->back();
     }
-    
+
 
 }

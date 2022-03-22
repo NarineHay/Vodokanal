@@ -30,35 +30,35 @@
                     </div>
                 @endif
 
+                <div class="table-responsive">
+                    <table class=" table table-bordered">
+                    <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Эл. адрес</th>
+                    <th>Роль</th>
+                    <th width="280px">Действие</th>
+                    </tr>
+                    @foreach ($administrators as $key => $administrator)
+                    <tr>
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $administrator->first_name }}</td>
+                        <td>{{ $administrator->last_name }}</td>
+                        <td>{{ $administrator->email }}</td>
+                        <td>{{ $administrator->roles[0]['name'] }}</td>
 
-                <table class="table table-bordered">
-                 <tr>
-                   <th>#</th>
-                   <th>Имя</th>
-                   <th>Фамилия</th>
-                   <th>Эл. адрес</th>
-                   <th>Роль</th>
-                   <th width="280px">Действие</th>
-                 </tr>
-                 @foreach ($administrators as $key => $administrator)
-                  <tr>
-                    <td>{{ ++$i }}</td>
-                    <td>{{ $administrator->first_name }}</td>
-                    <td>{{ $administrator->last_name }}</td>
-                    <td>{{ $administrator->email }}</td>
-                    <td>{{ $administrator->roles[0]['name'] }}</td>
-
-                    <td>
-                       <a class="btn btn-info" href="{{ route('administration.show',$administrator->id) }}">Показывать</a>
-                       <a class="btn btn-primary" href="{{ route('administration.edit',$administrator->id) }}">Редактировать</a>
-                        {!! Form::open(['method' => 'DELETE','route' => ['administration.destroy', $administrator->id],'style'=>'display:inline']) !!}
-                            {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
-                        {!! Form::close() !!}
-                    </td>
-                  </tr>
-                 @endforeach
-                </table>
-
+                        <td>
+                        <a class="btn btn-info" href="{{ route('administration.show',$administrator->id) }}">Показывать</a>
+                        <a class="btn btn-primary" href="{{ route('administration.edit',$administrator->id) }}">Редактировать</a>
+                            {!! Form::open(['method' => 'DELETE','route' => ['administration.destroy', $administrator->id],'style'=>'display:inline']) !!}
+                                {!! Form::submit('Удалить', ['class' => 'btn btn-danger']) !!}
+                            {!! Form::close() !!}
+                        </td>
+                    </tr>
+                    @endforeach
+                    </table>
+                </div>
             </div><!--col-->
         </div><!--row-->
     </div>

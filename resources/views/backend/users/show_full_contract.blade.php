@@ -38,7 +38,7 @@
                         </div>
 
                         <div class="form-group_m">
-                            <label for="exampleInputPassword1">Добавить файл контракта</label>:
+                            <label for="exampleInputPassword1">Файл контракта</label>:
                            @foreach ($Contracts['ContractFile'] as $data)
                                <a href="/assets/contractfile/{{$data->file_name}}"><p>{{$data->file_name}}</p></a>
                            @endforeach

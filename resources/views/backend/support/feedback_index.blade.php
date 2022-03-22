@@ -15,11 +15,11 @@
                     @endif
                     <h3>Обратная связь Сообщение</h3><br>
 
-                    <div class="table-responsive">
+                    {{-- <div class="table-responsive"> --}}
 
                         <!--Table-->
-                        <table class="table">
-                      
+                        <table class="table table-bordered">
+
                           <!--Table head-->
                           <thead>
                             <tr>
@@ -30,7 +30,7 @@
                             </tr>
                           </thead>
                           <!--Table head-->
-                      
+
                           <!--Table body-->
                           <tbody>
                               @foreach ($Feedback as $Feedbacks)
@@ -50,17 +50,17 @@
                                 </td>
                               </tr>
                               @endforeach
-                            
+
                           </tbody>
                           <!--Table body-->
-                      
+
                         </table>
                         <!--Table-->
-                      
-                      </div>
+
+                      {{-- </div> --}}
                    </div>
 
-                
+
                 <!--card-body-->
             </div>
             <!--card-->

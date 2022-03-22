@@ -37,7 +37,7 @@ class CompletedController extends BaseController
         date_default_timezone_set( 'Europe/Moscow' );
         $mytime = Carbon::now();
         $job = CardJob::find($id);
-        if( $job ){
+        if( $job && $job->volume != 0 ){
             $update_job_status = '';
             $update_job = '';
             $total_card_balance = '';

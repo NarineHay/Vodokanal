@@ -29,45 +29,46 @@
                   <p>{{ $message }}</p>
                 </div>
                 @endif
+                <div class="table-responsive">
+                    <table class="w-100 table table-bordered">
+                    <tr>
+                    <th>#</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Эл. адрес</th>
+                    <th>Тип организации</th>
+                    <th>Название организации</th>
+                    <th>Остаток средств</th>
+                    <th>Статус</th>
+                    <th width="280px">Действие</th>
+                    </tr>
+                    @foreach ($data as $key => $user)
+                        @if (!$user->isAdmin())
 
-                <table class="table table-bordered">
-                 <tr>
-                   <th>#</th>
-                   <th>Имя</th>
-                   <th>Фамилия</th>
-                   <th>Отчество</th>
-                   <th>Эл. адрес</th>
-                   <th>Тип организации</th>
-                   <th>Название организации</th>
-                   <th>Остаток средств</th>
-                   <th>Статус</th>
-                   <th width="280px">Действие</th>
-                 </tr>
-                 @foreach ($data as $key => $user)
-                    @if (!$user->isAdmin())
+                            <tr>
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->last_name }}</td>
+                                <td>{{ $user->surname }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->company_type }}</td>
+                                <td>{{ $user->company_name }}</td>
+                                <td>{{ $user->balance }}</td>
+                                <td>{{ $user->status }}</td>
 
-                        <tr>
-                            <td>{{ ++$i }}</td>
-                            <td>{{ $user->first_name }}</td>
-                            <td>{{ $user->last_name }}</td>
-                            <td>{{ $user->surname }}</td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->company_type }}</td>
-                            <td>{{ $user->company_name }}</td>
-                            <td>{{ $user->balance }}</td>
-                            <td>{{ $user->status }}</td>
-
-                            <td>
-                            <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                            <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                                {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                                {!! Form::close() !!}
-                            </td>
-                        </tr>
-                    @endif
-                 @endforeach
-                </table>
+                                <td>
+                                <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                                        {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                                    {!! Form::close() !!}
+                                </td>
+                            </tr>
+                        @endif
+                    @endforeach
+                    </table>
+                </div>
 
 
                 {!! $data->render() !!}
