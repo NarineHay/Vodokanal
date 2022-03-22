@@ -5,8 +5,8 @@
 .aaaa{
     cursor: pointer;
 }
-.fff{
- 
+.big_block{
+    margin-left: -110px;
     display: flex;
     flex-wrap:wrap;
     flex-direction:row;
@@ -21,6 +21,6 @@
   height: 20em;
 }
 .card{
-  width: 350px;
+  width: 320px;
   margin-bottom: -20.5rem;
 }

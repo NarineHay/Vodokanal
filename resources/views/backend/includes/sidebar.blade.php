@@ -134,7 +134,7 @@
 
                     <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('backend.map') ? 'active' : '' }}"  href="{{ route('backend.map') }}">
-                            Карты
+                            Карта
                          </a>
                     </li>
                 </ul>
