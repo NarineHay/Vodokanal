@@ -142,5 +142,6 @@
            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97584.07285755496!2d44.41852743774754!3d40.15336930106129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1635705110672!5m2!1sen!2s" width="100%" height="450" style="border:1px solid blue;" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </div>
+    
 </section>
 @endsection
