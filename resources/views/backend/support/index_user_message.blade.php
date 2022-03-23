@@ -1,6 +1,13 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-<link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet">
-
+{{-- <link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet"> --}}
+<style>
+    table tr {
+  counter-increment: row-num;
+}
+table tr td:first-child::before {
+    content: counter(row-num);
+}
+</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>

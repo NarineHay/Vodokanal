@@ -15,23 +15,23 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav d-flex justify-content-around w-100 text-white">
                         <li class="nav-item">
-                            <a href="#section1" class="nav-link text-white  {{ request()->is('users*') ? 'active' : '' }} act">Тарифы</a>
+                            <a href="{{ route('index')}}/#section1" class="nav-link text-white  {{ request()->is('users*') ? 'active' : '' }} act">Тарифы</a>
                         </li>
                 
                         <li class="nav-item">
-                            <a href="#section2" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">О нас</a>
+                            <a href="{{ route('index')}}/#section2" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">О нас</a>
                         </li>
                    
                         <li class="nav-item">
-                            <a href="#section3" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Способы оплаты</a>
+                            <a href="{{ route('index')}}/#section3" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Способы оплаты</a>
                         </li>
                   
                         <li class="nav-item">
-                            <a href="#section4" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Места терминалов</a>
+                            <a href="{{ route('index')}}/#section4" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Места терминалов</a>
                         </li>
                 
                         <li class="nav-item">
-                            <a href="#section5" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Контакты</a>
+                            <a href="{{ route('index')}}/#section5" class="nav-link text-white {{ request()->is('users*') ? 'active' : '' }} act">Контакты</a>
                         </li>
                 </ul>
                 <ul class="navbar-nav d-flex justify-content-center reg" >

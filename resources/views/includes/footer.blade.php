@@ -8,31 +8,37 @@
             @endif
             <div class="d-flex flex-wrap justify-content-between foot_header">
                 <div class="foot w-50 ">
-                    <h2 class="py-3">Контакты</h2>   
+                    <h2 class="py-3">Контакты</h2>
                     <div class="w-75 d-flex flex-wrap justify-content-between">
                         @foreach($footer as $footers)
                         <div>
                             <ul>
+                                @if($footers->number)
                                 <li>
                                     <i class="bi bi-telephone"></i>
                                     <span>+{{$footers->number}}</span>
                                 </li>
+                                @endif
+                                @if($footers->number2)
                                 <li>
                                     <i class="bi bi-telephone"></i>
                                     <span>+{{$footers->number2}}</span>
                                 </li>
+                                @endif
+                                @if($footers->number3)
                                 <li>
                                     <i class="bi bi-telephone"></i>
                                     <span>+{{$footers->number3}}</span>
                                 </li>
+                                @endif
                             </ul>
                         </div>
                         @endforeach
-                        
+
                         @foreach($footer as $footers)
                             <div>
                                 <ul>
-                                    <li>Address, 1 Street, 20 Building </li>
+                                    <li>{{$footers->address}}</li>
                                     <li>{{$footers->email}}</li>
                                 </ul>
                             </div>
