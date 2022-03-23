@@ -85,7 +85,7 @@
                 @endforeach
                 @foreach ($Tarif as $Tarifs )
                     <div class="text-center pt-5 ">
-                        <a id="section3" class="py-2 px-5 text-white price">{{$Tarifs->price}} ₽ за куб.</a>
+                        <a  class="py-2 px-5 text-white price">{{$Tarifs->price}} ₽ за куб.</a>
                     </div>
                 @endforeach
             </div>
@@ -99,7 +99,7 @@
        
             <div class="d-flex align-items-center justify-content-center payment-methods">
             <hr>
-            <div class="text-center payment mx-2">Способы оплаты</div>
+            <div id="section3" class="text-center payment mx-2">Способы оплаты</div>
             <hr>
         </div>
         

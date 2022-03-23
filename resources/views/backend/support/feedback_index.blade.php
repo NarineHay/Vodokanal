@@ -1,5 +1,13 @@
 @extends('backend.layouts.app') @section('title' ) @section('content')
-<link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet">
+{{-- <link href="{{ asset('assets/css/feedback.css') }}" rel="stylesheet"> --}}
+<style>
+    table tr {
+  counter-increment: row-num;
+}
+table tr td:first-child::before {
+    content: counter(row-num);
+}
+</style>
 <div class="container-fluid mt-4">
     <div class="animated fadeIn">
         <div class="content-header"></div>
@@ -15,10 +23,43 @@
                     @endif
                     <h3>Обратная связь Сообщение</h3><br>
 
+
+                    <div class="container">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Эл. адрес</th>
+                              <th>Сообщение</th>
+                              <th>Действие</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ($Feedback as $Feedbacks)
+                                <tr>
+                                <td></td>
+                                <td>{{$Feedbacks->email}}</td>
+                                <td>{{$Feedbacks->message}}</td>
+                                <td>
+                                    @if($Feedbacks->status==false)
+                                        <i style="color:red; font-size:20px" class="fa fa-envelope" aria-hidden="true"></i>
+                                    @else
+                                        <i style="color:green; font-size:20px" class="fa fa-envelope-open" aria-hidden="true"></i>&nbsp;&nbsp;
+                                    @endif
+                                       <a href="{{route('backend.show_feedback',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-eye" aria-hidden="true"></i></a>&nbsp;&nbsp;
+                                       <a href="{{route('backend.feedback_delate_feed',$Feedbacks->id)}}"><i style="font-size:20px" class="fa fa-trash" aria-hidden="true"></i></a>
+                                </td>
+                                </tr>
+                                @endforeach
+
+                          </tbody>
+                        </table>
+                      </div>
+
                     {{-- <div class="table-responsive"> --}}
 
                         <!--Table-->
-                        <table class="table table-bordered">
+                        {{-- <table class="table table-bordered">
 
                           <!--Table head-->
                           <thead>
@@ -54,7 +95,7 @@
                           </tbody>
                           <!--Table body-->
 
-                        </table>
+                        </table> --}}
                         <!--Table-->
 
                       {{-- </div> --}}
