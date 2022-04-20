@@ -29,13 +29,13 @@
             @endforeach
             <hr>
         </div>
-        
+
         <div class="px-4 mt-2 mb-5 pb-4 ">
             @foreach ($Aboutus as $About_us)
                 {!!$About_us->content!!}
             @endforeach
         </div>
-        
+
 </section>
 <section class="container my-5">
     <div class="mb-4 d-flex align-items-center justify-content-center main-activities" >
@@ -44,10 +44,10 @@
             <div class="text-center payment px-1">{{$MainActivitie1s->title}}</div>
             <hr>
         @endforeach
-        
+
     </div>
     @foreach ($MainActivitie1 as $MainActivitie1s )
-      {!!$MainActivitie1s->content!!}  
+      {!!$MainActivitie1s->content!!}
     @endforeach
 </section>
 <section class="container my-5">
@@ -57,10 +57,10 @@
             <div class="text-center payment px-1">{{$MainActivitie2s->title}}</div>
             <hr>
         @endforeach
-        
+
     </div>
     @foreach ($MainActivitie2 as $MainActivitie2s)
-      {!!$MainActivitie2s->content!!}  
+      {!!$MainActivitie2s->content!!}
     @endforeach
 </section>
 <section class=" my-5"  >
@@ -71,7 +71,7 @@
                <source src="/assets/images/img_index/{{$Tarifs->img_path}}" type="video/mp4">
              </video>
             @endforeach
-           
+
             <div class="container tarif-cont py-5">
                 @foreach ($Tarif as $Tarifs )
                  <div class="d-flex justify-content-center mb-4">
@@ -96,13 +96,13 @@
 <!-- payment section start --------------------------------->
 <section class="container my-5">
     <div class="section_third_payment">
-       
+
             <div class="d-flex align-items-center justify-content-center payment-methods">
             <hr>
             <div id="section3" class="text-center payment mx-2">Способы оплаты</div>
             <hr>
         </div>
-        
+
         <div class="container pt-5 ">
             <div class="d-flex justify-content-center water">
                 @foreach ($Payment_method as $Payment_methods)
@@ -119,7 +119,7 @@
 </section>
 <!-------------------------------------------------------------->
 <section class="container">
-   
+
     <div class="p-3 align-items-center d-flex justify-content-center company-details">
         <hr>
         <div class="mx-2 payment text-center">Реквизиты компании</div>
@@ -141,6 +141,6 @@
         <div class="mt-4">
            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97584.07285755496!2d44.41852743774754!3d40.15336930106129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1635705110672!5m2!1sen!2s" width="100%" height="450" style="border:1px solid blue;" allowfullscreen="" loading="lazy"></iframe>
         </div>
-    </div> 
+    </div>
 </section>
 @endsection

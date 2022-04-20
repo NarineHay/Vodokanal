@@ -40,8 +40,10 @@ class ContractController extends Controller
                 'number'=>$request->number,
                 'date_start'=>$request->date_start,
                 'date_end'=>$request->date_end
+
             ]);
             $user->update(['status'=>1]);
+
         if($request->hasFile('file')) {
 
             foreach ($request->file('file') as $imagefile){
@@ -103,6 +105,8 @@ class ContractController extends Controller
             }
 
         }
+
+
 
         return redirect()->back()->with('message','Вы успешно редактировали');
 
