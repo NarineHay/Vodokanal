@@ -24,6 +24,7 @@ class ContractController extends Controller
      }
 
      public function store_contract(Request $request){
+           $user=User::find($request->user_id);
 
             $this->validate($request,[
                 'number'=>'required',
@@ -39,7 +40,9 @@ class ContractController extends Controller
                 'number'=>$request->number,
                 'date_start'=>$request->date_start,
                 'date_end'=>$request->date_end
-            ]);  
+
+            ]);
+            $user->update(['status'=>1]);
 
         if($request->hasFile('file')) {
 

@@ -15,9 +15,9 @@ class CreateFootersTable extends Migration
     {
         Schema::create('footers', function (Blueprint $table) {
             $table->id();
-            $table->string('number');
-            $table->string('number2');
-            $table->string('number3');
+            $table->string('number')->nullable();
+            $table->string('number2')->nullable();
+            $table->string('number3')->nullable();
             $table->string('address');
             $table->string('email');
             $table->timestamps();
