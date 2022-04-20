@@ -39,7 +39,7 @@ class ContractController extends Controller
                 'number'=>$request->number,
                 'date_start'=>$request->date_start,
                 'date_end'=>$request->date_end
-            ]);
+            ]);  
 
         if($request->hasFile('file')) {
 
@@ -102,6 +102,8 @@ class ContractController extends Controller
             }
 
         }
+
+
 
         return redirect()->back()->with('message','Вы успешно редактировали');
 
