@@ -17,12 +17,14 @@
         </div>
         <h4 class="fw-bold">Личные данные</h4>
         <table class="table shadow mb-5 bg-white rounded">
-            <form action="{{route('user.add_phone')}}" method="post">
+            <tbody>
+
                 <tr>
                     <th class="border border-1">добавить номера</th>
                     <th class="border border-1">подтвердить</th>
                 </tr>
                 <tr>
+                    <form action="{{route('user.add_phone')}}" method="post">
                     <td class="border border-1 py-3">
                         <input type="text" class="form-control py-2 @error('phone_number') is-invalid @enderror" name="phone_number" placeholder="Номер" style="background: #efefef;" />
                         @error('phone_number')
@@ -34,9 +36,36 @@
                     <td class="border border-1 py-3">
                         <input type="submit" class="form-control py-2 mx-auto" id="btn" style="background: #143b57; color: #fff;" value="добавить" />
                     </td>
+                </form>
                 </tr>
-            </form>
+
+                <tr >
+                    <td class="py-3 ml-auto" colspan="2">
+                        <div class="text-center my-3 {{ session('result') ? 'text-success' : 'text-danger' }}">
+                            {{ session('result_phone_number_message') || $errors->has('verify_token') ? session('result_phone_number_message') : '' }}
+                        </div>
+                        @if (session('result') || $errors->has('verify_token') || session('result_verify_phone_token'))
+                            <form action="{{route('user.verify_phone_token')}}" method="post" class="mt-2 text-center">
+                                <input name="verify_token" class="form-control mx-auto w-50 py-2  @error('verify_token') is-invalid @enderror">
+                                <input type="hidden" name="phone_numer" value="{{ session('phone_number')  ? session('phone_number') : old('phone_numer') }}">
+                                @error('verify_token')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <input type="submit" class="form-control w-50 py-2 mt-3 mx-auto" id="btn" style="background: #143b57; color: #fff;" value="Отправить код" />
+
+                            </form>
+                            <div class="mt-2 text-center {{ session('result_token') ? 'text-success' : 'text-danger' }} ">
+                                {{ session('result_verify_phone_token') ? session('result_verify_phone_token') : '' }}
+                            </div>
+                        @endif
+                    </td>
+                </tr>
+            </tbody>
+
         </table>
+
         <table class="table shadow mb-5 bg-white rounded">
             <tr>
                 <th class="border border-1">#</th>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller as Controller;
+use App\Notifications\CardAction;
+use App\PhoneNumber\QTSMS;
 use Illuminate\Http\Request;
 
 class BaseController extends Controller
@@ -42,5 +44,24 @@ class BaseController extends Controller
 
 
         return response()->json($response, $code);
+    }
+
+
+    public function sendCardDataNotification($user, $body) {
+
+        $cardData = [
+            'name' => 'Водоканал',
+            'body' => $body,
+            'thanks' => 'Спасибо.'
+        ];
+
+        $user->notify(new CardAction($cardData));
+    }
+
+    public function send_code($phone_number, $token){
+
+        $qtsms= new QTSMS('1694101', ' 16941011', 'https://a2p-sms-https.beeline.ru/proto/http/');
+        return $qtsms->post_message($token, $phone_number, 'Duedo');
+
     }
 }

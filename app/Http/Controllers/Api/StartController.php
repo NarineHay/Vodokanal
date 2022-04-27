@@ -50,13 +50,30 @@ class StartController extends BaseController
         $tarif = Tarif::findOrFail($request->tarif_id);
         $card = Card::findOrFail($request->card_id);
         $minimum_price=MinimumAmountOnTheCard::where('status', true)->first()->value;
-
+        $user=$card->user;
+        $phone_number='';
+        $phone_numbers = $user->phone_number;
+            foreach ($phone_numbers as $key => $value) {
+                if($value->status ==1){
+                    $phone_number = $value->phone_number;
+                    break;
+                }
+            }
         $volume = intval($request->volume);
         $price = $tarif->price;
         $price_selected_volume = $price * $volume;
         // $total_card_balance = $card->balance - $price_selected_volume;
 
             if($card->balance < $minimum_price || $card->balance < $price_selected_volume){
+
+                $body = "Отклонён отпуск воды. <br>
+                         Недостаточно средств на карте. <br>
+                         Номер карты: $card->card_number <br>
+                         Остаток на карте: $card->balance рублей";
+                $body_for_phone="Отклонён отпуск воды. Недостаточно средств на карте. Номер карты: $card->card_number. Остаток на карте: $card->balance рублей";
+
+                $this->sendCardDataNotification( $user, $body );
+                $this->send_code( $phone_number, $body_for_phone );
                 return $this->sendError('Недостаточно средств на карте.');
             }
             if($request->validated()){

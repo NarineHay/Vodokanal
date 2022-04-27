@@ -24,18 +24,19 @@
                         @foreach($Cars as $car)
                         <tr>
                           <td class=" border border-1 py-3">
-                              <h4>{{$car->model}}</h4>
+                              {{$car->model}}
                           </td>
                           <td class=" border border-1 py-3">
-                              <h4>{{$car->car_numbers}}</h4>
+                              {{$car->car_numbers}}
                           </td>
                           <td class=" border border-1 py-3">
-
+                              {{ $car->card->card_job->last() != null && $car->card->card_job->last()->status != "start" ? $car->card->card_job->last()->price : "---" }}
                           </td>
                           <td class=" border border-1 py-3">
-
+                            {{ $car->card->card_job->last() != null && $car->card->card_job->last()->status != 'start' ? $car->card->card_job->last()->volume : "---" }}
                           </td>
                           <td class=" border border-1 py-3">
+                            {{ $car->card->balance }}
 
                           </td>
                         </tr>

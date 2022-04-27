@@ -15,8 +15,6 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Backend\AboutUsController;
-use App\Http\Controllers\Backend\AdministrationController;
-use App\Http\Controllers\Backend\CompanyDetailsController;
 use App\Http\Controllers\Backend\MainActivities1Controller;
 use App\Http\Controllers\Backend\MainActivities2Controller;
 use App\Http\Controllers\Backend\MainHomePageController;
@@ -25,6 +23,8 @@ use App\Http\Controllers\Backend\PaymentMethodController;
 use App\Http\Controllers\Backend\FeeddbackController;
 use App\Http\Controllers\Backend\TerminalController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\AdministrationController;
+use App\Http\Controllers\Backend\CompanyDetailsController;
 
 use App\Http\Controllers\Backend\ContractController;
 use App\Http\Controllers\Backend\SupportTaskController;
@@ -60,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('support', [SupportController::class, 'support_tasks'])->name('support_create');
             Route::get('balance_replenishment', [BalanceReplenishmentController::class, 'index'])->name('balance_replenishment');
             Route::post('dashboard', [DashboardController::class, 'savenumber'])->name('add_phone');
+            Route::post('verify_phone_token', [DashboardController::class, 'verify_phone_token'])->name('verify_phone_token');
             Route::get('mycars', [DashboardController::class, 'indexcars'])->name('mycars');
             Route::get('dashboard/{id}', [DashboardController::class, 'delete'])->name('delete_phone');
             Route::post('dashboard_blance', [DashboardController::class, 'CreateBlance'])->name('dashboard_blance');

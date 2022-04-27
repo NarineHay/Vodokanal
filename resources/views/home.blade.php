@@ -129,18 +129,24 @@
         {!! $Our_company_detailss->content !!}
     @endforeach
 </section>
-<section class="pt-5">
+<section id="section4" class="pt-5">
     <div class="section_fifth_terminal pt-5">
         <div class="container">
             <div class="d-flex align-items-center justify-content-center terminal-locations">
                 <hr>
-                <div class="mx-2 payment text-center">Места терминалов </div>
+                <div class="mx-2 payment text-center">Места терминалов 8888</div>
                 <hr>
             </div>
         </div>
         <div class="mt-4">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97584.07285755496!2d44.41852743774754!3d40.15336930106129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1635705110672!5m2!1sen!2s" width="100%" height="450" style="border:1px solid blue;" allowfullscreen="" loading="lazy"></iframe>
+           <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97584.07285755496!2d44.41852743774754!3d40.15336930106129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2s!4v1635705110672!5m2!1sen!2s" width="100%" height="450" style="border:1px solid blue;" allowfullscreen="" loading="lazy"></iframe>-->
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d287116.1331650988!2d48.89852974388184!3d55.791757673014374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x415ead2b7caccd99%3A0x7fcb77b9b5ad8c65!2z0JrQsNC30LDQvdGMLCDQoNC10YHQvy4g0KLQsNGC0LDRgNGB0YLQsNC9LCDQoNC-0YHRgdC40Y8!5e0!3m2!1sru!2s!4v1647942057773!5m2!1sru!2s" class="w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+
         </div>
     </div>
 </section>
 @endsection
+@section('footer')
+    @include('includes.footer')
+@endsection
+

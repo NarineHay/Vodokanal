@@ -47,7 +47,16 @@ class StopController extends BaseController
                 $total_card_balance = '';
                 $job = CardJob::find($id);
                 $card = Card::where('id', $job->card_id)->first();
-
+                $user = $card->user;
+                
+                $phone_number='';
+                $phone_numbers = $user->phone_number;
+                foreach ($phone_numbers as $key => $value) {
+                    if($value->status ==1){
+                        $phone_number = $value->phone_number;
+                        break;
+                    }
+                }
                 if( $job ){
 
                     $job_status = JobStatus::where('job_id', $id)->first();
@@ -87,6 +96,16 @@ class StopController extends BaseController
                         return $this->sendError('Процесс уже завершен.');
                     }
                     if($update_job_status && $update_job && $update_card){
+                        $body = "Произведен отпуск воды. <br>
+                                <p>Номер карты: $card->card_number. <br>
+                                Количество отпущенной жидкости: $job->volume кубов. <br>
+                                Стоимость: $job->price рублей. <br>
+                                Остаток на карте: $total_card_balance рублей.";
+                        $body_for_phone = "Произведен отпуск воды. Номер карты: $card->card_number. Количество отпущенной жидкости: $job->volume кубов. Стоимость: $job->price рублей. Остаток на карте: $total_card_balance рублей.";
+
+                        $this->sendCardDataNotification( $user, $body );
+                        $phone_number != '' ? $this->send_code( $phone_number, $body_for_phone ) : null;
+                        // $this->send_code( $phone_number, $body_for_phone );
                         return $this->sendResponse(new StopResource($job), 'Произведен отпуск воды.');
                     }
                 }

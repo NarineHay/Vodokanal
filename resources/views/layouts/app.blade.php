@@ -20,7 +20,7 @@
         <script src="{{asset('/js/vadakanal_js.js')}}"></script>
         <link href="{{ asset('assets/css/nav.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/css/footer.css') }}" rel="stylesheet">
-       
+
         @yield('style')
 
     </head>
@@ -32,16 +32,9 @@
                 @yield('content')
             </div>
 
-            @include('includes.footer')
+            @yield('footer')
             @include('js.js')
         </div><!-- #app -->
 
-        <!-- Scripts -->
-        {{-- {!! script(mix('js/manifest.js')) !!} --}}
-        {{-- {!! script(mix('js/vendor.js')) !!} --}}
-        {{-- {!! script(mix('js/frontend.js')) !!} --}}
-
-        {{-- @include('includes.partials.ga') --}}
-    
     </body>
 </html>
