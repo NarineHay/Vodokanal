@@ -39,7 +39,7 @@ class DashboardController extends Controller
 
     public function send_code($phone_number, $token){
 
-        $qtsms= new QTSMS('1694101', ' 16941011', 'https://a2p-sms-https.beeline.ru/proto/http/');
+        $qtsms= new QTSMS('11111', ' 11111111', 'https://a2p-sms-https.beeline.ru/proto/http/');
         return $qtsms->post_message($token, $phone_number, 'Duedo');
 
     }
