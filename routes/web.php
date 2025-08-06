@@ -142,6 +142,7 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 })->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::get('card11', [CardController::class, 'index']);
+// ======================================== comment ===========================
 
 
 
